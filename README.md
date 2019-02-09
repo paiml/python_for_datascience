@@ -1,2 +1,2 @@
-# python_for_datascience
+# Python For Data Science
 Colab Notebooks for Pearson Video
