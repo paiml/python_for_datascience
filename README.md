@@ -1,6 +1,24 @@
 # Python For Data Science
 Colab Notebooks for Pearson Video
 
+
+## TOC:  Python For Data Science
+
+* [Lesson 2: Introduction to Colab](https://github.com/paiml/python_for_datascience/blob/master/Lesson2_Python_For_Data_Science_Introduction_to_Colab.ipynb)
+* [Lesson 3: Basics](https://github.com/paiml/python_for_datascience/blob/master/Lesson3_Python_For_Data_Science_Basics.ipynb)
+* [Lesson 4: Strings](https://github.com/paiml/python_for_datascience/blob/master/Lesson4_Python_For_Data_Science_Strings.ipynb)
+* [Lesson 5: Python Data Structures](https://github.com/paiml/python_for_datascience/blob/master/Lesson5_Python_For_Data_Science_Python_Data_structure.ipynb)
+* [Lesson 6: Data Conversion Recipes](https://github.com/paiml/python_for_datascience/blob/master/Lesson6_Python_For_Data_Science_Data_Conversion_Recipes.ipynb)
+* [Lesson 7: Execution Control](https://github.com/paiml/python_for_datascience/blob/master/Lesson7_Python_For_Datascience_Execution_Control.ipynb)
+* [Lesson 8: Functions](https://github.com/paiml/python_for_datascience/blob/master/Lesson8_Python_For_Data_Science_Functions.ipynb)
+* [Lesson 9: Data Science Libraries](https://github.com/paiml/python_for_datascience/blob/master/Lesson9_Python_For_Data_Science_Data_Science_Libraries.ipynb)
+* [Lesson 10: Functional Programming](https://github.com/paiml/python_for_datascience/blob/master/Lesson10_Python_For_Data_Science_Functional_Programming.ipynb)
+* [Lesson 11: Lazy Evaluation](https://github.com/paiml/python_for_datascience/blob/master/Lesson11_Python_For_Data_Science_Lazy_Evaluation.ipynb)
+* [Lesson 12:  Pattern Matching](https://github.com/paiml/python_for_datascience/blob/master/Lesson12_Python_For_Data_Science_Pattern_Matching.ipynb)
+* [Lesson 13:  Sorting](https://github.com/paiml/python_for_datascience/blob/master/Lesson13_Python_For_Data_Science_Sorting.ipynb)
+* [Lesson 14:  I/O](https://github.com/paiml/python_for_datascience/blob/master/Lesson14_Python_For_Data_Science_I_O.ipynb)
+* [Lesson 16:  Case Studies](https://github.com/paiml/python_for_datascience/blob/master/Lesson16_Python_For_Data_Science_CaseStudies.ipynb)
+
 ## Pragmatic AI Labs
 ![Pragmatic AI Labs](https://paiml.com/images/logo_with_slogan_white_background.png)
 
@@ -21,22 +39,6 @@ These notebooks and tutorials were produced by [Pragmatic AI Labs](https://paiml
 *   Reading content on [Pragmatic AI Medium](https://medium.com/pragmatic-ai-labs)
 *   Hear more about the some of the topics covered in [TWIML podcast](https://twimlai.com/twiml-talk-158-growth-hacking-sports-w-machine-learning-with-noah-gift/)
 
-## TOC:  Python For Data Science
-
-* [Lesson 2: Introduction to Colab](https://github.com/paiml/python_for_datascience/blob/master/Lesson2_Python_For_Data_Science_Introduction_to_Colab.ipynb)
-* [Lesson 3: Basics](https://github.com/paiml/python_for_datascience/blob/master/Lesson3_Python_For_Data_Science_Basics.ipynb)
-* [Lesson 4: Strings](https://github.com/paiml/python_for_datascience/blob/master/Lesson4_Python_For_Data_Science_Strings.ipynb)
-* [Lesson 5: Python Data Structures](https://github.com/paiml/python_for_datascience/blob/master/Lesson5_Python_For_Data_Science_Python_Data_structure.ipynb)
-* [Lesson 6: Data Conversion Recipes](https://github.com/paiml/python_for_datascience/blob/master/Lesson6_Python_For_Data_Science_Data_Conversion_Recipes.ipynb)
-* [Lesson 7: Execution Control](https://github.com/paiml/python_for_datascience/blob/master/Lesson7_Python_For_Datascience_Execution_Control.ipynb)
-* [Lesson 8: Functions](https://github.com/paiml/python_for_datascience/blob/master/Lesson8_Python_For_Data_Science_Functions.ipynb)
-* [Lesson 9: Data Science Libraries](https://github.com/paiml/python_for_datascience/blob/master/Lesson9_Python_For_Data_Science_Data_Science_Libraries.ipynb)
-* [Lesson 10: Functional Programming](https://github.com/paiml/python_for_datascience/blob/master/Lesson10_Python_For_Data_Science_Functional_Programming.ipynb)
-* [Lesson 11: Lazy Evaluation](https://github.com/paiml/python_for_datascience/blob/master/Lesson11_Python_For_Data_Science_Lazy_Evaluation.ipynb)
-* [Lesson 12:  Pattern Matching](https://github.com/paiml/python_for_datascience/blob/master/Lesson12_Python_For_Data_Science_Pattern_Matching.ipynb)
-* [Lesson 13:  Sorting](https://github.com/paiml/python_for_datascience/blob/master/Lesson13_Python_For_Data_Science_Sorting.ipynb)
-* [Lesson 14:  I/O](https://github.com/paiml/python_for_datascience/blob/master/Lesson14_Python_For_Data_Science_I_O.ipynb)
-* [Lesson 16:  Case Studies](https://github.com/paiml/python_for_datascience/blob/master/Lesson16_Python_For_Data_Science_CaseStudies.ipynb)
 
 
 
