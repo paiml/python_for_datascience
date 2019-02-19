@@ -19,7 +19,7 @@ These notebooks and tutorials were produced by [Pragmatic AI Labs](https://paiml
 *   Reading content on [Pragmatic AI Medium](https://medium.com/pragmatic-ai-labs)
 *   Hear more about the some of the topics covered in [TWIML podcast](https://twimlai.com/twiml-talk-158-growth-hacking-sports-w-machine-learning-with-noah-gift/)
 
-## TOC
+## TOC:  Python For Data Science
 
 * [Lesson 2: Introduction to Colab](https://github.com/paiml/python_for_datascience/blob/master/Lesson2_Python_For_Data_Science_Introduction_to_Colab.ipynb)
 * [Lesson 3: Basics](https://github.com/paiml/python_for_datascience/blob/master/Lesson3_Python_For_Data_Science_Basics.ipynb)
