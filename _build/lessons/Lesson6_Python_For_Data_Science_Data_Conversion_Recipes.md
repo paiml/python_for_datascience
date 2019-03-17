@@ -17,6 +17,22 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 # Lesson 6: Data Conversion Recipes
 
+## Pragmatic AI Labs
+
+
+
+![alt text](https://paiml.com/images/logo_with_slogan_white_background.png)
+
+This notebook was produced by [Pragmatic AI Labs](https://paiml.com/).  You can continue learning about these topics by:
+
+*   Buying a copy of [Pragmatic AI: An Introduction to Cloud-Based Machine Learning](http://www.informit.com/store/pragmatic-ai-an-introduction-to-cloud-based-machine-9780134863917)
+*   Reading an online copy of [Pragmatic AI:Pragmatic AI: An Introduction to Cloud-Based Machine Learning](https://www.safaribooksonline.com/library/view/pragmatic-ai-an/9780134863924/)
+*  Watching video [Essential Machine Learning and AI with Python and Jupyter Notebook-Video-SafariOnline](https://www.safaribooksonline.com/videos/essential-machine-learning/9780135261118) on Safari Books Online.
+* Watching video [AWS Certified Machine Learning-Speciality](https://learning.oreilly.com/videos/aws-certified-machine/9780135556597)
+* Purchasing video [Essential Machine Learning and AI with Python and Jupyter Notebook- Purchase Video](http://www.informit.com/store/essential-machine-learning-and-ai-with-python-and-jupyter-9780135261095)
+*   Viewing more content at [noahgift.com](https://noahgift.com/)
+
+
 ## 6.1 Convert lists to dicts, and dicts to lists
 
 ### Converting Lists to Dictionaries
@@ -27,7 +43,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 {:.input_area}
 ```
-d = dict( [('one', 1), ('two', 2), ('three', 3)] )
+key_values = [('one', 1), ('two', 2), ('three', 3)]
+d = dict( key_values )
 d
 ```
 
@@ -56,19 +73,6 @@ d
 ```
 
 
-
-
-
-{:.output .output_data_text}
-```
-{'accordian': 'Astor Pantaleón Piazzolla',
- 'banjo': 'Noam Pikelny',
- 'lute': 'Julian Bream',
- 'violin': 'Anne-Sophie Mutter'}
-```
-
-
-
 #### From keys
 
 
@@ -82,16 +86,6 @@ d
 ```
 
 
-
-
-
-{:.output .output_data_text}
-```
-{'Bill': 0, 'Jill': 0, 'Tom': 0, 'Will': 0}
-```
-
-
-
 ### Converting Dictionaries to  Lists
 
 
@@ -99,23 +93,42 @@ d
 {:.input_area}
 ```
 d = {'name': 'toby', 'id' : 14}
-print( list(d) )
-print( sorted(d) )
-print( list(d.values()) )
 ```
 
 
-{:.output .output_stream}
-```
-['name', 'id']
-['id', 'name']
-['toby', 14]
+#### Get a list of keys
 
+
+
+{:.input_area}
 ```
+list(d)
+```
+
+
+#### Get keys in sorted order
+
+
+
+{:.input_area}
+```
+sorted(d)
+```
+
+
+#### Get list of values
+
+
+
+{:.input_area}
+```
+list(d.values())
+```
+
 
 ## 6.2 Convert dicts to pandas Dataframe
 
-### Create dict from DataFrame
+### Create DataFrame using data parameter
 
 
 
@@ -177,6 +190,8 @@ DataFrame(data=d)
 
 
 
+### Use class from_dict method
+
 
 
 {:.input_area}
@@ -207,23 +222,25 @@ DataFrame.from_dict(d)
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>0</th>
-      <th>1</th>
-      <th>3</th>
+      <th>first</th>
+      <th>last</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>Edward</td>
-      <td>Robert</td>
-      <td>Earl</td>
+      <td>Jill</td>
+      <td>Stein</td>
     </tr>
     <tr>
       <th>1</th>
+      <td>Solma</td>
+      <td>Smith</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Elizabeth</td>
       <td>Tudor</td>
-      <td>Redford</td>
-      <td>Scruggs</td>
     </tr>
   </tbody>
 </table>
@@ -294,144 +311,311 @@ df
 
 
 
+### Assign column names
+
 
 
 {:.input_area}
 ```
 d = {'a': 'A', 'b': 'B', 'c': 'C'}
 df = DataFrame(list(d.items()), columns=['lower', 'upper'])
-print(df)
-#Dataframe.from_record
+df
 ```
 
 
-{:.output .output_stream}
-```
-  lower upper
-0     a     A
-1     b     B
-2     c     C
 
-```
+
+
+<div markdown="0" class="output output_html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>lower</th>
+      <th>upper</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>b</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>c</td>
+      <td>C</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+
 
 ## 6.3 Convert characters to integers and back
 
+### Cast str to int
 
-
-{:.input_area}
-```
-print( float('12.3'))
-# Casting to int
-print( int('011') )
-print( int('011', 2) )
-print( int('011', 6) )
-print( int('011', 6) )
-print( int('011', 2) )
-print( int('011', 8) ) 
-print( int('011', 16) )
-```
-
-
-{:.output .output_stream}
-```
-12.3
-11
-3
-7
-7
-3
-9
-17
-161
-
-```
+#### Base 10
 
 
 
 {:.input_area}
 ```
-one = str(1)
-print( type(one) )
-f"{one!r} is a string"
+int('011')
 ```
 
-
-{:.output .output_stream}
-```
-<class 'str'>
-
-```
 
 
 
 
 {:.output .output_data_text}
 ```
-"'1' is a string"
+11
 ```
 
 
+
+#### Base 2
 
 
 
 {:.input_area}
 ```
-# ascii codes
+int('011', 2)
 ```
+
+
+
+
+
+{:.output .output_data_text}
+```
+3
+```
+
+
+
+#### Base 6
+
+
+
+{:.input_area}
+```
+int('011', 6)
+```
+
+
+
+
+
+{:.output .output_data_text}
+```
+7
+```
+
+
+
+#### Base 8
+
+
+
+{:.input_area}
+```
+int('011', 8)
+```
+
+
+
+
+
+{:.output .output_data_text}
+```
+9
+```
+
+
+
+#### Base 16
+
+
+
+{:.input_area}
+```
+int('011', 16)
+```
+
+
+
+
+
+{:.output .output_data_text}
+```
+17
+```
+
+
+
+### Cast int to string
+
+
+
+{:.input_area}
+```
+one = str(1)
+type(one)
+
+```
+
+
+
+
+
+{:.output .output_data_text}
+```
+str
+```
+
 
 
 ## 6.4 Convert between hexadecimal, binary, and floats
 
-### Conversion to and from Floats
+### Cast to str from float
 
 
 
 
 {:.input_area}
 ```
-
-a_float = str(12.4)
-print( f" {a_float!r} is a {type(a_float)}" )
-
-a_float = float(a_float)
-print( f" {a_float!r} is a {type(a_float)}" )
-
-
-
+a_str = str(12.4)
+f" {a_str!r} is a {type(a_str)}"
 ```
 
 
-{:.output .output_stream}
-```
- '12.4' is a <class 'str'>
- 12.4 is a <class 'float'>
 
+
+
+{:.output .output_data_text}
 ```
+" '12.4' is a <class 'str'>"
+```
+
+
+
+### Cast to float from str
+
+
+
+{:.input_area}
+```
+a_str = "12.3"
+a_float = float(a_str)
+f" {a_float!r} is a {type(a_float)}"
+```
+
+
+
+
+
+{:.output .output_data_text}
+```
+" 12.3 is a <class 'float'>"
+```
+
+
 
 ### Hexadecimal
 
+#### Int to hex str
+
 
 
 {:.input_area}
 ```
-nt_hex = hex(18)
-print( f" hex(18) returns the {type(int_hex)}: {int_hex!r}" )
+int_hex = hex(18)
+f" hex(18) returns the {type(int_hex)}: {int_hex!r}"
 
-float_hex = 12.4.hex()
-print( f" 12.4.hex() returns the {type(float_hex)}: {float_hex!r}" )
+```
+
+
+
+
+
+{:.output .output_data_text}
+```
+" hex(18) returns the <class 'str'>: '0x12'"
 ```
 
 
-{:.output .output_stream}
-```
- hex(18) returns the <class 'str'>: '0x12'
- 12.4.hex() returns the <class 'str'>: '0x1.8cccccccccccdp+3'
 
+#### Float to hex str
+
+
+
+{:.input_area}
 ```
+float_hex = 12.0.hex()
+f" 12.4.hex() returns the {type(float_hex)}: {float_hex!r}"
+```
+
+
+
+
+
+{:.output .output_data_text}
+```
+" 12.4.hex() returns the <class 'str'>: '0x1.8000000000000p+3'"
+```
+
+
 
 [hex function](https://docs.python.org/3/library/functions.html)
 
 ### Conversion to and from binary
+
+#### Bytes literal
+Similar to strings, but limited to ASCII characters.
+
+
+
+{:.input_area}
+```
+bytes_str = b"some bytes literal"
+type(bytes_str)
+```
+
+
+
+
+
+{:.output .output_data_text}
+```
+bytes
+```
+
+
+
+#### Encode to bytes
 
 
 
@@ -440,18 +624,41 @@ print( f" 12.4.hex() returns the {type(float_hex)}: {float_hex!r}" )
 import base64
 bytes_str = b"Encode this string"
 encoded_str = base64.b64encode(bytes_str)
-print( encoded_str )
+f"The encoded string {encoded_str!r} is of type {type(encoded_str)}"
 
-print( base64.b64decode(encoded_str))
+
 ```
 
 
-{:.output .output_stream}
+
+
+
+{:.output .output_data_text}
 ```
-b'RW5jb2RlIHRoaXMgc3RyaW5n'
+"The encoded string b'RW5jb2RlIHRoaXMgc3RyaW5n' is of type <class 'bytes'>"
+```
+
+
+
+#### Decode from bytes
+
+
+
+{:.input_area}
+```
+base64.b64decode(encoded_str)
+```
+
+
+
+
+
+{:.output .output_data_text}
+```
 b'Encode this string'
-
 ```
+
+
 
 [base64-module](https://docs.python.org/3/library/base64.html#module-base64)
 

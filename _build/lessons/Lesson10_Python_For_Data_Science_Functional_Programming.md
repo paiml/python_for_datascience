@@ -18,7 +18,23 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 # Lesson 10: Functional Programming
 
 
-## Understand functional programming
+## Pragmatic AI Labs
+
+
+
+![alt text](https://paiml.com/images/logo_with_slogan_white_background.png)
+
+This notebook was produced by [Pragmatic AI Labs](https://paiml.com/).  You can continue learning about these topics by:
+
+*   Buying a copy of [Pragmatic AI: An Introduction to Cloud-Based Machine Learning](http://www.informit.com/store/pragmatic-ai-an-introduction-to-cloud-based-machine-9780134863917)
+*   Reading an online copy of [Pragmatic AI:Pragmatic AI: An Introduction to Cloud-Based Machine Learning](https://www.safaribooksonline.com/library/view/pragmatic-ai-an/9780134863924/)
+*  Watching video [Essential Machine Learning and AI with Python and Jupyter Notebook-Video-SafariOnline](https://www.safaribooksonline.com/videos/essential-machine-learning/9780135261118) on Safari Books Online.
+* Watching video [AWS Certified Machine Learning-Speciality](https://learning.oreilly.com/videos/aws-certified-machine/9780135556597)
+* Purchasing video [Essential Machine Learning and AI with Python and Jupyter Notebook- Purchase Video](http://www.informit.com/store/essential-machine-learning-and-ai-with-python-and-jupyter-9780135261095)
+*   Viewing more content at [noahgift.com](https://noahgift.com/)
+
+
+## 10.1 Understand functional programming
 
 
 
@@ -28,30 +44,11 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 {:.input_area}
 ```
-wind = 'Northeast'
+wind = 'Southeast'
 
 def describe_the_wind():
   return f'The wind blows from the {wind}'
 
-describe_the_wind()
-```
-
-
-
-
-
-{:.output .output_data_text}
-```
-'The wind blows from the Northeast'
-```
-
-
-
-
-
-{:.input_area}
-```
-wind = 'Southeast'
 describe_the_wind()
 ```
 
@@ -89,24 +86,6 @@ describe_the_wind('Northeast')
 
 
 
-
-
-{:.input_area}
-```
-describe_the_wind('Southeast')
-```
-
-
-
-
-
-{:.output .output_data_text}
-```
-'The wind blows from the Southeast'
-```
-
-
-
 ### Changing state
 
 
@@ -119,8 +98,38 @@ WIND = WINDS[0]
 def change_wind():
   global WIND
   WIND = WINDS[(WINDS.index(WIND) + 1)%3]
-
+  
+WIND
 ```
+
+
+
+
+
+{:.output .output_data_text}
+```
+'Northeast'
+```
+
+
+
+
+
+{:.input_area}
+```
+change_wind()
+WIND
+```
+
+
+
+
+
+{:.output .output_data_text}
+```
+'Northeast'
+```
+
 
 
 
@@ -133,15 +142,6 @@ for _ in WINDS:
 
 ```
 
-
-{:.output .output_stream}
-```
-Northeast
-Northwest
-Southeast
-Northeast
-
-```
 
 ### Functional approach
 
@@ -176,30 +176,12 @@ Southwest
 
 {:.input_area}
 ```
-d = {"vehicle": "ship", "owner": "Joseph Bruce Ismay"}
-
 def change_mutable_data(data):
   '''A function which changes
   mutable data.'''
   data['owner'] = 'White Star Line'
-d
-```
 
-
-
-
-
-{:.output .output_data_text}
-```
-{'owner': 'Joseph Bruce Ismay', 'vehicle': 'ship'}
-```
-
-
-
-
-
-{:.input_area}
-```
+  
 d = {"vehicle": "ship", "owner": "Joseph Bruce Ismay"}
 
 change_mutable_data(d)
@@ -230,24 +212,8 @@ def change_owner(data):
   new_data = data.copy()
   new_data['owner'] = 'White Star Line'
   return new_data
-d
-```
 
 
-
-
-
-{:.output .output_data_text}
-```
-{'owner': 'Joseph Bruce Ismay', 'vehicle': 'ship'}
-```
-
-
-
-
-
-{:.input_area}
-```
 changed = change_owner(d)
 changed
 ```
@@ -263,7 +229,7 @@ changed
 
 
 
-## Apply functions to data science workflows
+## 10.2 Apply functions to data science workflows
 
 
 
@@ -405,7 +371,7 @@ df.head()
 
 
 
-## Use map/reduce/filter
+## 10.3 Use map/reduce/filter
 
 
 ### map
@@ -532,6 +498,12 @@ print( reduce(operator.sub, debits, initial_balance) )
 ```
 
 
+{:.output .output_stream}
+```
+6405
+
+```
+
 ### filter
 
 
@@ -559,7 +531,7 @@ list(retval)
 
 
 
-## Use list comprehensions
+## 10.4 Use list comprehensions
 
 
 ### For loop
@@ -687,6 +659,16 @@ retval = filter(cap, characters)
 
 list(retval)
 ```
+
+
+
+
+
+{:.output .output_data_text}
+```
+['C', 'A', 'P', 'S']
+```
+
 
 
 ##### filtering in list comprehension
@@ -834,7 +816,7 @@ list_of_lists = [[1,2,3], [4,5,6], [7,8,9]]
 
 
 
-## Use dictionary comprehensions
+## 10.5 Use dictionary comprehensions
 
 
 

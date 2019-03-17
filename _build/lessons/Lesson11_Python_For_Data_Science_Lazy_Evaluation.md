@@ -17,6 +17,22 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 # Lesson 11: Lazy Evaluation
 
+## Pragmatic AI Labs
+
+
+
+![alt text](https://paiml.com/images/logo_with_slogan_white_background.png)
+
+This notebook was produced by [Pragmatic AI Labs](https://paiml.com/).  You can continue learning about these topics by:
+
+*   Buying a copy of [Pragmatic AI: An Introduction to Cloud-Based Machine Learning](http://www.informit.com/store/pragmatic-ai-an-introduction-to-cloud-based-machine-9780134863917)
+*   Reading an online copy of [Pragmatic AI:Pragmatic AI: An Introduction to Cloud-Based Machine Learning](https://www.safaribooksonline.com/library/view/pragmatic-ai-an/9780134863924/)
+*  Watching video [Essential Machine Learning and AI with Python and Jupyter Notebook-Video-SafariOnline](https://www.safaribooksonline.com/videos/essential-machine-learning/9780135261118) on Safari Books Online.
+* Watching video [AWS Certified Machine Learning-Speciality](https://learning.oreilly.com/videos/aws-certified-machine/9780135556597)
+* Purchasing video [Essential Machine Learning and AI with Python and Jupyter Notebook- Purchase Video](http://www.informit.com/store/essential-machine-learning-and-ai-with-python-and-jupyter-9780135261095)
+*   Viewing more content at [noahgift.com](https://noahgift.com/)
+
+
 ## 11.1 Use generators
 
 ### Lists and Generators
@@ -36,7 +52,7 @@ print(f"g_ten is a {type(g_ten)} and prints as: {g_ten}")
 {:.output .output_stream}
 ```
 l_ten is a <class 'list'> and prints as: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-g_ten is a <class 'generator'> and prints as: <generator object <genexpr> at 0x7fd2e812d830>
+g_ten is a <class 'generator'> and prints as: <generator object <genexpr> at 0x7fec69bbfc50>
 
 ```
 
@@ -50,21 +66,15 @@ next(g_ten)
 ```
 
 
-{:.output .output_traceback_line}
+
+
+
+{:.output .output_data_text}
+```
+1
 ```
 
-    ---------------------------------------------------------------------------
 
-    StopIteration                             Traceback (most recent call last)
-
-    <ipython-input-91-657d67eaf52c> in <module>()
-    ----> 1 next(g_ten)
-    
-
-    StopIteration: 
-
-
-```
 
 ### Iteration
 

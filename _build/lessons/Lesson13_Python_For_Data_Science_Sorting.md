@@ -18,6 +18,22 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 # Lesson 13 Sorting
 
 
+## Pragmatic AI Labs
+
+
+
+![alt text](https://paiml.com/images/logo_with_slogan_white_background.png)
+
+This notebook was produced by [Pragmatic AI Labs](https://paiml.com/).  You can continue learning about these topics by:
+
+*   Buying a copy of [Pragmatic AI: An Introduction to Cloud-Based Machine Learning](http://www.informit.com/store/pragmatic-ai-an-introduction-to-cloud-based-machine-9780134863917)
+*   Reading an online copy of [Pragmatic AI:Pragmatic AI: An Introduction to Cloud-Based Machine Learning](https://www.safaribooksonline.com/library/view/pragmatic-ai-an/9780134863924/)
+*  Watching video [Essential Machine Learning and AI with Python and Jupyter Notebook-Video-SafariOnline](https://www.safaribooksonline.com/videos/essential-machine-learning/9780135261118) on Safari Books Online.
+* Watching video [AWS Certified Machine Learning-Speciality](https://learning.oreilly.com/videos/aws-certified-machine/9780135556597)
+* Purchasing video [Essential Machine Learning and AI with Python and Jupyter Notebook- Purchase Video](http://www.informit.com/store/essential-machine-learning-and-ai-with-python-and-jupyter-9780135261095)
+*   Viewing more content at [noahgift.com](https://noahgift.com/)
+
+
 ## 13.1 Sort in python
 
 ### Understanding Sorting
@@ -271,7 +287,7 @@ food_facts.sort()
 
 {:.output .output_stream}
 ```
-3 loops, best of 3: 307 ns per loop
+3 loops, best of 3: 489 ns per loop
 
 ```
 
@@ -296,7 +312,7 @@ sorted(food_facts)
 
 {:.output .output_stream}
 ```
-3 loops, best of 3: 513 ns per loop
+3 loops, best of 3: 656 ns per loop
 
 ```
 
@@ -457,12 +473,6 @@ print(next(sorted_row))
 ```
 
 
-{:.output .output_stream}
-```
-['35% Fruit And Fiber Muesli', "Aunt Ginger's Snappy Granola", 'Coconut Almond Granola', 'Dark Chocolate Sea Salt & Turbinado Almonds', 'Maple Almond Granola', 'Organic Coconut Chips', 'Organic Garbanzo Beans', 'Organic Yellow Split Peas', 'Super Nutty Granola', 'Tricolor Tortellini']
-
-```
-
 ## 13.2 Create custom sorting functions
 
 ### Building a Shuffle Function
@@ -509,16 +519,16 @@ shuffled_food_items
 
 {:.output .output_data_text}
 ```
-["Whole Wheat 'N Honey Fig Bars",
+['Milk Chocolate Peanut Butter Malt Balls',
  'Organic Harvest Pilaf',
- 'Chocolate Nut Crunch',
- 'Organic Tamari Pumpkin Seed',
- 'Milk Chocolate Peanut Butter Malt Balls',
- 'Yogurt Pretzels',
- 'Split Pea Soup Mix',
- 'Swiss-Style Muesli',
  'Curry Lentil Soup Mix',
- 'Cranberries']
+ 'Yogurt Pretzels',
+ 'Organic Tamari Pumpkin Seed',
+ 'Chocolate Nut Crunch',
+ "Whole Wheat 'N Honey Fig Bars",
+ 'Split Pea Soup Mix',
+ 'Cranberries',
+ 'Swiss-Style Muesli']
 ```
 
 
@@ -644,6 +654,25 @@ sorted(foods, key=lambda food: food.protein)
 
 
 
+
+
+{:.input_area}
+```
+foods[0].__dict__
+type(foods[0])
+```
+
+
+
+
+
+{:.output .output_data_text}
+```
+__main__.Food
+```
+
+
+
 ## 13.3 Sort in pandas
 
 ### Sort by One Column:  Protein
@@ -652,7 +681,7 @@ sorted(foods, key=lambda food: food.protein)
 
 {:.input_area}
 ```
-df.sort_values(by=["proteins_100g"], ascending=False).head(10)
+df.sort_values(by=["carbohydrates_100g"], ascending=False).head(5)
 ```
 
 
@@ -689,104 +718,54 @@ df.sort_values(by=["proteins_100g"], ascending=False).head(10)
   </thead>
   <tbody>
     <tr>
-      <th>2377</th>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>0.00</td>
+      <th>42012</th>
+      <td>0.0</td>
+      <td>100.0</td>
+      <td>85.71</td>
+      <td>0.0</td>
+      <td>0.000</td>
+      <td>1700.0</td>
+      <td>Spongebob Squarepants Valentine Candy Card Kit</td>
+    </tr>
+    <tr>
+      <th>31827</th>
+      <td>0.0</td>
+      <td>100.0</td>
+      <td>80.00</td>
+      <td>0.0</td>
+      <td>0.000</td>
+      <td>1700.0</td>
+      <td>Marvel Avengers Assemble, Classroom Candy Mail...</td>
+    </tr>
+    <tr>
+      <th>31661</th>
+      <td>0.0</td>
+      <td>100.0</td>
       <td>100.00</td>
-      <td>0.00000</td>
-      <td>1700.00</td>
-      <td>Unflavored Gelatin</td>
+      <td>0.0</td>
+      <td>0.000</td>
+      <td>1700.0</td>
+      <td>White Crystal Sugar</td>
     </tr>
     <tr>
-      <th>37027</th>
+      <th>31665</th>
+      <td>0.0</td>
+      <td>100.0</td>
       <td>0.00</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>100.00</td>
-      <td>0.36322</td>
-      <td>1700.00</td>
-      <td>Unflavored Gelatin</td>
+      <td>0.0</td>
+      <td>0.254</td>
+      <td>1700.0</td>
+      <td>Dried Habanero Chiles</td>
     </tr>
     <tr>
-      <th>16674</th>
-      <td>6.82</td>
-      <td>22.73</td>
-      <td>13.64</td>
-      <td>86.36</td>
-      <td>14.77772</td>
-      <td>2120.51</td>
-      <td>Fisherman's Wharf, Cocktail Shrimp</td>
-    </tr>
-    <tr>
-      <th>37415</th>
-      <td>3.33</td>
-      <td>6.67</td>
-      <td>3.33</td>
-      <td>83.33</td>
-      <td>0.67818</td>
-      <td>1659.87</td>
-      <td>Whey &amp; Soy Protein, Flavored Drink Mix, Vanilla</td>
-    </tr>
-    <tr>
-      <th>133</th>
-      <td>4.60</td>
-      <td>8.80</td>
-      <td>6.00</td>
-      <td>78.05</td>
-      <td>1.21158</td>
-      <td>1655.85</td>
-      <td>Whey Protein aus Molke 500 Gramm Vanilla</td>
-    </tr>
-    <tr>
-      <th>131</th>
-      <td>4.60</td>
-      <td>8.80</td>
-      <td>6.00</td>
-      <td>78.05</td>
-      <td>1.21158</td>
-      <td>1655.85</td>
-      <td>Whey Protein aus Molke 1000 Gramm Vanilla</td>
-    </tr>
-    <tr>
-      <th>129</th>
-      <td>4.60</td>
-      <td>8.80</td>
-      <td>6.00</td>
-      <td>78.05</td>
-      <td>1.21158</td>
-      <td>1655.85</td>
-      <td>Whey Protein aus Molke Vanilla</td>
-    </tr>
-    <tr>
-      <th>33115</th>
-      <td>1.67</td>
-      <td>13.33</td>
-      <td>0.00</td>
-      <td>76.67</td>
-      <td>0.00000</td>
-      <td>1595.13</td>
-      <td>Vital Wheat</td>
-    </tr>
-    <tr>
-      <th>37392</th>
-      <td>6.25</td>
-      <td>8.33</td>
-      <td>4.17</td>
-      <td>75.00</td>
-      <td>0.63500</td>
-      <td>1660.36</td>
-      <td>Whey Protein Powder, Chocolate</td>
-    </tr>
-    <tr>
-      <th>16669</th>
-      <td>5.36</td>
-      <td>21.43</td>
-      <td>14.29</td>
-      <td>67.86</td>
-      <td>12.79144</td>
-      <td>1726.97</td>
-      <td>Fisherman's Wharf, Cocktail Shrimp</td>
+      <th>42366</th>
+      <td>0.0</td>
+      <td>100.0</td>
+      <td>88.89</td>
+      <td>0.0</td>
+      <td>0.000</td>
+      <td>1700.0</td>
+      <td>Iced Tea Mix, Lemon</td>
     </tr>
   </tbody>
 </table>
@@ -801,7 +780,7 @@ df.sort_values(by=["proteins_100g"], ascending=False).head(10)
 
 {:.input_area}
 ```
-df.sort_values(by=["sugars_100g", "salt_100g"], ascending=[False, False]).head(10)
+df.sort_values(by=["fat_100g", "salt_100g"], ascending=[False, False]).head(10)
 ```
 
 
@@ -838,104 +817,104 @@ df.sort_values(by=["sugars_100g", "salt_100g"], ascending=[False, False]).head(1
   </thead>
   <tbody>
     <tr>
-      <th>33151</th>
-      <td>0.0</td>
-      <td>0.0</td>
+      <th>8390</th>
       <td>100.0</td>
-      <td>0.0</td>
-      <td>71.1200</td>
-      <td>0.0</td>
-      <td>Turkey Brine Kit, Garlic &amp; Herb</td>
+      <td>20.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>1.524</td>
+      <td>4240.00</td>
+      <td>Horseradish Sauce</td>
     </tr>
     <tr>
-      <th>24783</th>
-      <td>0.0</td>
+      <th>44709</th>
       <td>100.0</td>
-      <td>100.0</td>
-      <td>0.0</td>
-      <td>24.1300</td>
-      <td>1700.0</td>
-      <td>Seasoning</td>
+      <td>17.86</td>
+      <td>3.57</td>
+      <td>10.71</td>
+      <td>0.381</td>
+      <td>4385.69</td>
+      <td>Roasted Pecans</td>
     </tr>
     <tr>
-      <th>4073</th>
-      <td>0.0</td>
+      <th>295</th>
       <td>100.0</td>
-      <td>100.0</td>
-      <td>0.0</td>
-      <td>7.6200</td>
-      <td>1700.0</td>
-      <td>Seasoning Rub, Sweet &amp; Spicy Seafood</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.000</td>
+      <td>3900.00</td>
+      <td>Ventura, Soybean - Peanut Frying Oil Blend</td>
     </tr>
     <tr>
-      <th>10282</th>
-      <td>0.0</td>
+      <th>5122</th>
       <td>100.0</td>
-      <td>100.0</td>
-      <td>0.0</td>
-      <td>2.5400</td>
-      <td>1700.0</td>
-      <td>Instant Pectin</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.000</td>
+      <td>3900.00</td>
+      <td>Corn Oil</td>
     </tr>
     <tr>
-      <th>17880</th>
-      <td>0.0</td>
+      <th>5123</th>
       <td>100.0</td>
-      <td>100.0</td>
-      <td>0.0</td>
-      <td>0.6350</td>
-      <td>1700.0</td>
-      <td>Cranberry Cosmos Cocktail Rimming Sugar</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.000</td>
+      <td>3900.00</td>
+      <td>Canola Oil</td>
     </tr>
     <tr>
-      <th>8822</th>
-      <td>0.0</td>
+      <th>5124</th>
       <td>100.0</td>
-      <td>100.0</td>
-      <td>0.0</td>
-      <td>0.5588</td>
-      <td>1700.0</td>
-      <td>Alaga, The Original Cane Flavor Syrup, Cane</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.000</td>
+      <td>3900.00</td>
+      <td>Vegetable Oil</td>
     </tr>
     <tr>
-      <th>8823</th>
-      <td>0.0</td>
+      <th>5125</th>
       <td>100.0</td>
-      <td>100.0</td>
-      <td>0.0</td>
-      <td>0.5588</td>
-      <td>1700.0</td>
-      <td>The Original Cane Syrup</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.000</td>
+      <td>3900.00</td>
+      <td>Vegetable Shortening</td>
     </tr>
     <tr>
-      <th>41157</th>
-      <td>0.0</td>
+      <th>5671</th>
       <td>100.0</td>
-      <td>100.0</td>
-      <td>0.0</td>
-      <td>0.3175</td>
-      <td>1700.0</td>
-      <td>Panela Brown Sugar Cane</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.000</td>
+      <td>3900.00</td>
+      <td>Organic Coconut Oil</td>
     </tr>
     <tr>
-      <th>41158</th>
-      <td>0.0</td>
+      <th>5797</th>
       <td>100.0</td>
-      <td>100.0</td>
-      <td>0.0</td>
-      <td>0.3175</td>
-      <td>1700.0</td>
-      <td>Panela Brown Sugar Cane</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.000</td>
+      <td>3900.00</td>
+      <td>Premium Sesame Oil (100% Pure)</td>
     </tr>
     <tr>
-      <th>41159</th>
-      <td>0.0</td>
+      <th>5798</th>
       <td>100.0</td>
-      <td>100.0</td>
-      <td>0.0</td>
-      <td>0.3175</td>
-      <td>1700.0</td>
-      <td>Panela</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.000</td>
+      <td>3900.00</td>
+      <td>Sesame Oil</td>
     </tr>
   </tbody>
 </table>
@@ -1130,8 +1109,148 @@ df.groupby("high_protein").median()
 
 
 
-## Notes
 
-Similar to Notes section of Powerpoint (where we can exchange ideas)
 
-* We may want Lesson 1 to be PowerPoint only
+{:.input_area}
+```
+df.groupby("high_protein").describe()
+```
+
+
+
+
+
+<div markdown="0" class="output output_html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="8" halign="left">carbohydrates_100g</th>
+      <th colspan="2" halign="left">energy_100g</th>
+      <th>...</th>
+      <th colspan="2" halign="left">salt_100g</th>
+      <th colspan="8" halign="left">sugars_100g</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+      <th>count</th>
+      <th>mean</th>
+      <th>...</th>
+      <th>75%</th>
+      <th>max</th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>high_protein</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>high_protein</th>
+      <td>4.0</td>
+      <td>7.350000</td>
+      <td>10.724610</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>3.335</td>
+      <td>10.685</td>
+      <td>22.73</td>
+      <td>4.0</td>
+      <td>1795.09500</td>
+      <td>...</td>
+      <td>4.203065</td>
+      <td>14.77772</td>
+      <td>4.0</td>
+      <td>4.242500</td>
+      <td>6.458671</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>1.665</td>
+      <td>5.9075</td>
+      <td>13.64</td>
+    </tr>
+    <tr>
+      <th>low_protein</th>
+      <td>45022.0</td>
+      <td>34.056436</td>
+      <td>29.557504</td>
+      <td>0.0</td>
+      <td>7.44</td>
+      <td>22.390</td>
+      <td>61.540</td>
+      <td>100.00</td>
+      <td>45022.0</td>
+      <td>1111.22544</td>
+      <td>...</td>
+      <td>1.440180</td>
+      <td>2032.00000</td>
+      <td>45022.0</td>
+      <td>16.006122</td>
+      <td>21.496335</td>
+      <td>-1.2</td>
+      <td>1.57</td>
+      <td>5.880</td>
+      <td>23.0800</td>
+      <td>100.00</td>
+    </tr>
+  </tbody>
+</table>
+<p>2 rows × 48 columns</p>
+</div>
+</div>
+
+
