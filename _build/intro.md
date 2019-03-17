@@ -8,6 +8,16 @@ next_page:
   title: 'GitHub repository'
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
+<html>
+<head>
+<meta name="google-site-verification" content="bkWyRPtr7Sjv5fIJKDNmPwlI_Ue219Nafc5bsmnvX3o" />
+<title> My title </title>
+</head> 
+<body>
+page contents
+</body>
+</html>
+
 ![Pragmatic AI Labs](https://paiml.com/images/logo_with_slogan_white_background.png)
 
 These notebooks and tutorials were produced by [Pragmatic AI Labs](https://paiml.com/).  You can continue learning about these topics by:
