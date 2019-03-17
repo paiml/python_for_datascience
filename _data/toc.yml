@@ -1,0 +1,104 @@
+# This file contains the order and numbering for all sections in the book.
+#
+# It is a sample TOC file to help you get started. Fill it out with entries
+# for your own content.
+#
+# Each entry has the following schema:
+#
+# - title: mytitle   # Title of chapter or section
+#   url: /myurl  # URL of section relative to the /content/ folder.
+#   sections:  # Contains a list of more entries that make up the chapter's sections
+#   not_numbered: true  # if the section shouldn't have a number in the sidebar
+#     (e.g. Introduction or appendices)
+#   expand_sections: true  # if you'd like the sections of this chapter to always
+#     be expanded in the sidebar.
+#   external: true  # Whether the URL is an external link or points to content in the book
+#
+# Below are some special values that trigger specific behavior:
+# - search: true  # Will provide a link to a search page
+# - divider: true  # Will insert a divider in the sidebar
+# - header: My Header  # Will insert a header with no link in the sidebar
+#
+# See the links below for an example.
+
+# Top-level page
+- title: Home
+  url: /intro
+  not_numbered: true
+
+# External link
+- title: GitHub repository
+  url: https://github.com/paiml/python_for_datascience
+  external: true
+  not_numbered: true
+
+# Adds a searchbar link
+- title: Search
+  search: true
+
+# Divider for meta-pages and content page
+- divider: true
+
+# Add a header and sample content section
+- header: Python for Data Science Video Supplement
+
+# Video Lesson
+- title: Lessons
+  url: /lessons/lessons
+  not_numbered: true
+  expand_sections: true
+  sections:
+  - title: Lesson 2 - Introduction to Colab
+    url: /lessons/Lesson2_Python_For_Data_Science_Introduction_to_Colab
+    not_numbered: true
+  - title: Lesson 3 - Basics
+    url: /lessons/Lesson3_Python_For_Data_Science_Basics
+    not_numbered: true
+  - title: Lesson 4 - Strings
+    url: /lessons/Lesson4_Python_For_Data_Science_Strings
+    not_numbered: true
+  - title: Lesson 5 - Data Structures
+    url: /lessons/Lesson5_Python_For_Data_Science_Python_Data_structure
+    not_numbered: true
+  - title: Lesson 6 - Data Conversion Recipes
+    url: /lessons/Lesson6_Python_For_Data_Science_Data_Conversion_Recipes
+    not_numbered: true
+  - title: Lesson 7 - Execution Control
+    url: /lessons/Lesson7_Python_For_Datascience_Execution_Control
+    not_numbered: true
+  - title: Lesson 8 - Functions
+    url: /lessons/Lesson8_Python_For_Data_Science_Functions
+    not_numbered: true
+  - title: Lesson 9 - Data Science Libraries
+    url: /lessons/Lesson9_Python_For_Data_Science_Data_Science_Libraries
+    not_numbered: true
+  - title: Lesson 10 - Functional Programming
+    url: /lessons/Lesson10_Python_For_Data_Science_Functional_Programming
+    not_numbered: true
+  - title: Lesson 11 - Lazy Evaluation
+    url: /lessons/Lesson11_Python_For_Data_Science_Lazy_Evaluation
+    not_numbered: true
+  - title: Lesson 12 - Pattern Matching
+    url: /lessons/Lesson12_Python_For_Data_Science_Pattern_Matching
+    not_numbered: true
+  - title: Lesson 13 - Sorting
+    url: /lessons/Lesson13_Python_For_Data_Science_Sorting
+    not_numbered: true
+  - title: Lesson 14 - I/O
+    url: /lessons/Lesson14_Python_For_Data_Science_I_O
+    not_numbered: true
+  - title: Lesson 15 - CaseStudies
+    url: /lessons/Lesson15_Python_For_Data_Science_CaseStudies
+    not_numbered: true
+
+
+
+
+
+
+
+
+
+
+
+

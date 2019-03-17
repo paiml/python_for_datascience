@@ -1,0 +1,2282 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Lesson 5 - Data Structures</title>
+  <meta name="description" content="">
+
+  <link rel="canonical" href="/YOUR%20URL//lessons/Lesson5_Python_For_Data_Science_Python_Data_structure.html">
+  <link rel="alternate" type="application/rss+xml" title="Python for Data Science" href="/YOUR%20URL//feed.xml">
+
+  <meta property="og:url"         content="/YOUR%20URL//lessons/Lesson5_Python_For_Data_Science_Python_Data_structure.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Lesson 5 - Data Structures" />
+<meta property="og:description" content="" />
+<meta property="og:image"       content="" />
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage":
+    "YOUR URL//lessons/Lesson5_Python_For_Data_Science_Python_Data_structure.html",
+  "headline":
+    "Lesson 5 - Data Structures",
+  "datePublished":
+    "2019-03-17T15:28:48-07:00",
+  "dateModified":
+    "2019-03-17T15:28:48-07:00",
+  "description":
+    "",
+  "author": {
+    "@type": "Person",
+    "name": "Pragmatic AI Labs"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "YOUR URL/",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "YOUR URL/",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css ">
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    CommonHTML: {
+        linebreaks: {
+            automatic: true,
+        },
+    },
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML' async></script>
+
+  <!-- DOM updating function -->
+  <script>
+const runWhenDOMLoaded = cb => {
+  if (document.readyState != 'loading') {
+    cb()
+  } else if (document.addEventListener) {
+    document.addEventListener('DOMContentLoaded', cb)
+  } else {
+    document.attachEvent('onreadystatechange', function() {
+      if (document.readyState == 'complete') cb()
+    })
+  }
+}
+
+// Helper function to init things quickly
+initFunction = function(myfunc) {
+  runWhenDOMLoaded(myfunc);
+  document.addEventListener('turbolinks:load', myfunc);
+};
+</script>
+
+  <!-- Define some javascript variables that will be useful in other javascript -->
+  <script>
+    const site_basename = '/';
+  </script>
+
+  <!-- Add AnchorJS to let headers be linked -->
+  <script src="/assets/js/anchor.min.js"  type="text/javascript"></script>
+  <script>
+
+initFunction(function () {
+    anchors.add("main h1, main h2, main h3, main h4")
+});
+
+</script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="/assets/js/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  <script src="https://unpkg.com/nbinteract-core" async></script>
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+<script type="text/x-thebe-config">
+    {
+      requestKernel: true,
+      binderOptions: {
+        repo: 'YOUR-ORG/YOUR-REPO',
+        ref: 'master',
+      },
+      kernelOptions: {
+        name: 'python3',
+      }
+    }
+</script>
+<script src="https://unpkg.com/thebelab@0.3.3/lib/index.js"></script>
+<script>
+    /**
+     * Add attributes to Thebelab blocks
+     */
+
+    const initThebelab = () => {
+        const addThebelabToCodeCells = () => {
+            console.log("Adding thebelab to code cells...");
+            // If Thebelab hasn't loaded, wait a bit and try again. This
+            // happens because we load ClipboardJS asynchronously.
+            if (window.thebelab === undefined) {
+                setTimeout(addThebelabToCodeCells, 250)
+            return
+            }
+
+            // If we already detect a Thebelab cell, don't re-run
+            if (document.querySelectorAll('div.thebelab-cell').length > 0) {
+                return;
+            }
+
+            // Find all code cells, replace with Thebelab interactive code cells
+            const codeCells = document.querySelectorAll('.input_area pre')
+            codeCells.forEach((codeCell, index) => {
+                const id = codeCellId(index)
+                codeCell.setAttribute('data-executable', 'true')
+
+                // Figure out the language it uses and add this too
+                var parentDiv = codeCell.parentElement.parentElement;
+                var arrayLength = parentDiv.classList.length;
+                for (var ii = 0; ii < arrayLength; ii++) {
+                    var parts = parentDiv.classList[ii].split('language-');
+                    if (parts.length === 2) {
+                        // If found, assign dataLanguage and break the loop
+                        var dataLanguage = parts[1];
+                        break;
+                    }
+                }
+                codeCell.setAttribute('data-language', dataLanguage)
+
+                // If the code cell is hidden, show it
+                var inputCheckbox = document.querySelector(`input#hidebtn${codeCell.id}`);
+                if (inputCheckbox !== null) {
+                    setCodeCellVisibility(inputCheckbox, 'visible');
+                }
+            });
+
+            // Remove the event listener from the page so keyboard press doesn't
+            // Change page
+            document.removeEventListener('keydown', initPageNav)
+            keyboardListener = false;
+
+            // Init thebelab
+            thebelab.bootstrap();
+
+            // Remove copy buttons since they won't work anymore
+            const copyButtons = document.querySelectorAll('.copybtn')
+            copyButtons.forEach((copyButton, index) => {
+                copyButton.remove();
+            });
+
+            // Remove outputs since they'll be stale
+            const outputs = document.querySelectorAll('.output *, .output')
+            outputs.forEach((output, index) => {
+                output.remove();
+            });
+        }
+
+        // Add event listener for the function to modify code cells
+        const thebelabButton = document.getElementById('interact-button-thebelab');
+        if (thebelabButton === null) {
+            setTimeout(initThebelab, 250)
+        return
+        };
+        thebelabButton.addEventListener('click', addThebelabToCodeCells);
+    }
+
+    // Initialize Thebelab
+    initFunction(initThebelab);
+</script>
+
+
+  <!-- Google analytics -->
+  <script src="/assets/js/ga.js" async></script>
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" async></script>
+
+  <!-- Load JS that depends on site variables -->
+  <script>
+/**
+ * Set up copy/paste for code blocks
+ */
+const codeCellId = index => `codecell${index}`
+
+const clipboardButton = id =>
+  `<a class="btn copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#${id}">
+    <img src="/assets/images/copy-button.svg" alt="Copy to clipboard">
+  </a>`
+
+// Clears selected text since ClipboardJS will select the text when copying
+const clearSelection = () => {
+  if (window.getSelection) {
+    window.getSelection().removeAllRanges()
+  } else if (document.selection) {
+    document.selection.empty()
+  }
+}
+
+// Changes tooltip text for two seconds, then changes it back
+const temporarilyChangeTooltip = (el, newText) => {
+  const oldText = el.getAttribute('data-tooltip')
+  el.setAttribute('data-tooltip', newText)
+  setTimeout(() => el.setAttribute('data-tooltip', oldText), 2000)
+}
+
+const addCopyButtonToCodeCells = () => {
+  // If ClipboardJS hasn't loaded, wait a bit and try again. This
+  // happens because we load ClipboardJS asynchronously.
+  if (window.ClipboardJS === undefined) {
+    setTimeout(addCopyButtonToCodeCells, 250)
+    return
+  }
+
+  const codeCells = document.querySelectorAll('div.highlighter-rouge:not(.output) pre')
+  codeCells.forEach((codeCell, index) => {
+    const id = codeCellId(index)
+    codeCell.setAttribute('id', id)
+    if (document.querySelector(`pre#${id} + a`) == null) {
+      codeCell.insertAdjacentHTML('afterend', clipboardButton(id));
+    }
+  })
+
+  const clipboard = new ClipboardJS('.copybtn')
+  clipboard.on('success', event => {
+    clearSelection()
+    temporarilyChangeTooltip(event.trigger, 'Copied!')
+  })
+
+  clipboard.on('error', event => {
+    temporarilyChangeTooltip(event.trigger, 'Failed to copy')
+  })
+
+  // Get rid of clipboard before the next page visit to avoid memory leak
+  document.addEventListener('turbolinks:before-visit', () =>
+    clipboard.destroy()
+  )
+}
+
+initFunction(addCopyButtonToCodeCells);
+</script>
+
+  <!-- Hide cell code -->
+  
+<script>
+/**
+Add buttons to hide code cells
+*/
+
+
+var setCodeCellVisibility = function(inputField, kind) {
+    // Update the image and class for hidden
+    var id = inputField.getAttribute('data-id');
+    var codeCell = document.querySelector(`#${id}`);
+
+    if (kind === "visible") {
+        codeCell.classList.remove('hidden');
+        inputField.checked = true;
+    } else {
+        codeCell.classList.add('hidden');
+        inputField.checked = false;
+    }
+}
+
+var toggleCodeCellVisibility = function (event) {
+    // The label is clicked, and now we decide what to do based on the input field's clicked status
+    if (event.target.tagName === "LABEL") {
+        var inputField = event.target.previousElementSibling;
+    } else {
+        // It is the span inside the target
+        var inputField = event.target.parentElement.previousElementSibling;
+    }
+
+    if (inputField.checked === true) {
+        setCodeCellVisibility(inputField, "visible");
+    } else {
+        setCodeCellVisibility(inputField, "hidden");
+    }
+}
+
+
+// Button constructor
+const hideCodeButton = id => `<input class="hidebtn" type="checkbox" id="hidebtn${id}" data-id="${id}"><label title="Toggle cell" for="hidebtn${id}" class="plusminus"><span class="pm_h"></span><span class="pm_v"></span></label>`
+
+var addHideButton = function () {
+  // If a hide button is already added, don't add another
+  if (document.querySelector('div.hidecode input') !== null) {
+      return;
+  }
+
+  // Find the input cells and add a hide button
+  document.querySelectorAll('div.input_area div.highlight').forEach(function (item, index) {
+    if (!item.parentElement.classList.contains("hidecode")) {
+        // Skip the cell if it doesn't have a hidecode class
+        return;
+    }
+
+    const id = codeCellId(index)
+    item.setAttribute('id', id);
+    item.insertAdjacentHTML('afterend', hideCodeButton(id))
+
+    // Set up the visibility toggle
+    hideLink = document.querySelector(`#${id} + input + label`);
+    hideLink.addEventListener('click', toggleCodeCellVisibility)
+  });
+}
+
+
+// Initialize the hide buttos
+var initHiddenCells = function () {
+    // Add hide buttons to the cells
+    addHideButton();
+
+    // Toggle the code cells that should be hidden
+    document.querySelectorAll('div.hidecode input').forEach(function (item) {
+        setCodeCellVisibility(item, 'hidden');
+        item.checked = true;
+    })
+}
+
+initFunction(initHiddenCells);
+
+</script>
+
+
+  <!-- Load custom website scripts -->
+  <script src="/assets/js/scripts.js" async></script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  
+
+  <!-- Lunr search code - will only be executed on the /search page -->
+  <script src="/assets/js/lunr/lunr.min.js" type="text/javascript"></script>
+  <script>var initQuery = function() {
+  // See if we have a search box
+  var searchInput = document.querySelector('input#lunr_search');
+  if (searchInput === null) {
+    return;
+  }
+
+  // Function to parse our lunr cache
+  var idx = lunr(function () {
+    this.field('title')
+    this.field('excerpt')
+    this.field('categories')
+    this.field('tags')
+    this.ref('id')
+
+    this.pipeline.remove(lunr.trimmer)
+
+    for (var item in store) {
+      this.add({
+        title: store[item].title,
+        excerpt: store[item].excerpt,
+        categories: store[item].categories,
+        tags: store[item].tags,
+        id: item
+      })
+    }
+  });
+
+  // Run search upon keyup
+  searchInput.addEventListener('keyup', function () {
+    var resultdiv = document.querySelector('#results');
+    var query = document.querySelector("input#lunr_search").value.toLowerCase();
+    var result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+      // Empty the results div
+      while (resultdiv.firstChild) {
+        resultdiv.removeChild(resultdiv.firstChild);
+      }
+
+    resultdiv.insertAdjacentHTML('afterbegin', '<p class="results__found">'+result.length+' Result(s) found</p>');
+    for (var item in result) {
+      var ref = result[item].ref;
+      if(store[ref].teaser){
+        var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<div class="archive__item-teaser">'+
+                '<img src="'+store[ref].teaser+'" alt="">'+
+              '</div>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      else{
+    	  var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      resultdiv.insertAdjacentHTML('beforeend', searchitem);
+    }
+  });
+};
+
+initFunction(initQuery);
+</script>
+</head>
+
+  <body>
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <a href="https://jupyter.org/jupyter-book/"><img src="/images/logo.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">Python for Data Science</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/intro.html"
+        >
+          
+          Home
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="https://github.com/paiml/python_for_datascience"
+        >
+          
+          GitHub repository
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+        <li class="c-sidebar__chapter"><a class="c-sidebar__entry" href="/search.html">Search</a></li>
+        
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Python for Data Science Video Supplement</li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/lessons/lessons.html"
+        >
+          
+          Lessons
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson2_Python_For_Data_Science_Introduction_to_Colab.html"
+                >
+                  
+                  Lesson 2 - Introduction to Colab
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson3_Python_For_Data_Science_Basics.html"
+                >
+                  
+                  Lesson 3 - Basics
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson4_Python_For_Data_Science_Strings.html"
+                >
+                  
+                  Lesson 4 - Strings
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry c-sidebar__entry--active"
+                  href="/lessons/Lesson5_Python_For_Data_Science_Python_Data_structure.html"
+                >
+                  
+                  Lesson 5 - Data Structures
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson6_Python_For_Data_Science_Data_Conversion_Recipes.html"
+                >
+                  
+                  Lesson 6 - Data Conversion Recipes
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson7_Python_For_Datascience_Execution_Control.html"
+                >
+                  
+                  Lesson 7 - Execution Control
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson8_Python_For_Data_Science_Functions.html"
+                >
+                  
+                  Lesson 8 - Functions
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson9_Python_For_Data_Science_Data_Science_Libraries.html"
+                >
+                  
+                  Lesson 9 - Data Science Libraries
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson10_Python_For_Data_Science_Functional_Programming.html"
+                >
+                  
+                  Lesson 10 - Functional Programming
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson11_Python_For_Data_Science_Lazy_Evaluation.html"
+                >
+                  
+                  Lesson 11 - Lazy Evaluation
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson12_Python_For_Data_Science_Pattern_Matching.html"
+                >
+                  
+                  Lesson 12 - Pattern Matching
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson13_Python_For_Data_Science_Sorting.html"
+                >
+                  
+                  Lesson 13 - Sorting
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson14_Python_For_Data_Science_I_O.html"
+                >
+                  
+                  Lesson 14 - I/O
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson15_Python_For_Data_Science_CaseStudies.html"
+                >
+                  
+                  Lesson 15 - CaseStudies
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">A product of <a href="https://paiml.com">Pragmatic AI Labs</a></p>
+</nav>
+
+      
+      <!-- Shamelessly copied from minimal mistakes -->
+
+
+<!-- TOC will only show up if it has at least one item -->
+
+
+  <aside class="sidebar__right">
+    <nav class="onthispage">
+      <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#51-use-lists-and-tuples">5.1 Use lists and tuples</a>
+    <ul>
+      <li><a href="#sequences">Sequences</a></li>
+      <li><a href="#creating-an-empty-list">Creating an empty list</a></li>
+      <li><a href="#using-square-brackets-with-initial-values">Using square brackets with initial values</a></li>
+      <li><a href="#casting-an-iterable">Casting an iterable</a></li>
+      <li><a href="#creating-using-multiplication">Creating using multiplication</a></li>
+      <li><a href="#mixing-data-types">Mixing data types</a></li>
+      <li><a href="#indexing">Indexing</a></li>
+      <li><a href="#adding-to-a-list">Adding to a list</a></li>
+      <li><a href="#change-item-at-some-position">Change item at some position</a></li>
+      <li><a href="#swap-two-items">Swap two items</a></li>
+      <li><a href="#removing-items-from-a-list">Removing items from a list</a></li>
+      <li><a href="#create-tuple-using-brackets">Create tuple using brackets</a></li>
+      <li><a href="#create-tuple-with-commas">Create tuple with commas</a></li>
+      <li><a href="#create-empty-tuple">Create empty tuple</a></li>
+      <li><a href="#create-tuple-with-single-item">Create tuple with single item</a></li>
+      <li><a href="#behaviours-shared-by-lists-and-tuples">Behaviours shared by lists and tuples</a></li>
+      <li><a href="#check-item-in-sequence">Check item in sequence</a></li>
+      <li><a href="#check-item-not-in-sequence">Check item not in sequence</a></li>
+      <li><a href="#slicing">Slicing</a></li>
+      <li><a href="#unpacking">Unpacking</a></li>
+      <li><a href="#extended-unpacking">Extended unpacking</a></li>
+      <li><a href="#using-list-as-stack">Using list as Stack</a></li>
+    </ul>
+  </li>
+  <li><a href="#52-explore-dictionaries">5.2 Explore dictionaries</a>
+    <ul>
+      <li><a href="#create-an-empty-dict-using-constructor">Create an empty dict using constructor</a></li>
+      <li><a href="#create-a-dictionary-based-on-keyvalue-pairs">Create a dictionary based on key/value pairs</a></li>
+      <li><a href="#create-an-empty-dict-using-curley-braces">Create an empty dict using curley braces</a></li>
+      <li><a href="#use-curley-braces-to-create-a-dictionary-with-initial-keyvalues">Use curley braces to create a dictionary with initial key/values</a></li>
+      <li><a href="#access-value-using-key">Access value using key</a></li>
+      <li><a href="#add-a-keyvalue-pair-to-an-existing-dictionary">Add a key/value pair to an existing dictionary</a></li>
+      <li><a href="#update-value-for-existing-key">Update value for existing key</a></li>
+      <li><a href="#get-keys">Get keys</a></li>
+      <li><a href="#get-values">Get values</a></li>
+      <li><a href="#get-iterable-keys-and-items">Get iterable keys and items</a></li>
+      <li><a href="#use-items-in-for-loop">Use items in for loop</a></li>
+      <li><a href="#check-if-dictionary-has-key">Check if dictionary has key</a></li>
+      <li><a href="#get-method">Get method</a></li>
+      <li><a href="#remove-item">Remove item</a></li>
+      <li><a href="#keys-must-be-immutable">Keys must be immutable</a></li>
+    </ul>
+  </li>
+  <li><a href="#53-dive-into-sets">5.3 Dive into sets</a>
+    <ul>
+      <li><a href="#create-set-from-tuple-or-list">Create set from tuple or list</a></li>
+      <li><a href="#create-set-from-a-string">Create set from a string</a></li>
+      <li><a href="#create-set-using-curley-braces">Create set using curley braces</a></li>
+      <li><a href="#adding-to-a-set">Adding to a set</a></li>
+      <li><a href="#popping-from-a-set">Popping from a set</a></li>
+      <li><a href="#indexing-1">Indexing</a></li>
+      <li><a href="#checking-membership">Checking membership</a></li>
+      <li><a href="#set-operations">Set operations</a></li>
+    </ul>
+  </li>
+  <li><a href="#54-work-with-the-numpy-array">5.4 Work with the numpy array</a>
+    <ul>
+      <li><a href="#create-a-numpy-array-from-a-list-of-lists">Create a numpy array from a list of lists</a></li>
+      <li><a href="#initialize-an-array-of-zeros">Initialize an array of zeros</a></li>
+      <li><a href="#initialize-and-array-of-ones">Initialize and array of ones</a></li>
+      <li><a href="#using-arrange">Using arrange</a></li>
+      <li><a href="#using-reshape">Using reshape</a></li>
+      <li><a href="#introspection">Introspection</a></li>
+      <li><a href="#setting-the-data-type">Setting the data type</a></li>
+      <li><a href="#array-slicing">Array Slicing</a></li>
+      <li><a href="#math-operations">Math operations</a></li>
+      <li><a href="#matrix-operations">Matrix operations</a></li>
+    </ul>
+  </li>
+  <li><a href="#55-use-the-pandas-dataframe">5.5 Use the Pandas DataFrame</a>
+    <ul>
+      <li><a href="#create-a-dataframe">Create a DataFrame</a></li>
+      <li><a href="#head---looking-at-the-top">Head - looking at the top</a></li>
+      <li><a href="#setting-number-of-rows-returned-with-head">Setting number of rows returned with head</a></li>
+      <li><a href="#tail---looking-at-the-bottom">Tail - looking at the bottom</a></li>
+      <li><a href="#describe---descriptive-statistics">Describe - descriptive statistics</a></li>
+      <li><a href="#access-one-column">Access one column</a></li>
+      <li><a href="#slice-a-column">Slice a column</a></li>
+      <li><a href="#use-conditions-to-filter">Use conditions to filter</a></li>
+    </ul>
+  </li>
+  <li><a href="#56-use-the-pandas-series">5.6 Use the pandas Series</a>
+    <ul>
+      <li><a href="#create-a-series">Create a series</a></li>
+      <li><a href="#series-introspection-methods">Series introspection methods</a></li>
+      <li><a href="#a-pandas-dataframe-is-composed-of-pandas-series">A Pandas DataFrame is composed of Pandas Series.</a></li>
+      <li><a href="#some-useful-helper-methods-of-a-series">Some useful helper methods of a Series</a></li>
+    </ul>
+  </li>
+</ul>
+    </nav>
+  </aside>
+
+
+      
+      <main class="c-textbook__page" tabindex="-1">
+          <div class="o-wrapper">
+            <div class="c-sidebar-toggle">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <button
+    id="js-sidebar-toggle"
+    class="hamburger hamburger--arrowalt is-active"
+  >
+    <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+    </span>
+    <span class="c-sidebar-toggle__label">Toggle Sidebar</span>
+  </button>
+</div>
+
+            
+<div class="buttons">
+<a href="/content/lessons/Lesson5_Python_For_Data_Science_Python_Data_structure.ipynb" download>
+<button id="interact-button-download" class="interact-button">Download</button>
+</a>
+
+<button id="interact-button-thebelab" class="interact-button">Thebelab</button>
+
+
+
+
+</div>
+
+
+            <div class="c-textbook__content">
+              <p><a href="https://colab.research.google.com/github/paiml/python_for_datascience/blob/master/Lesson5_Python_For_Data_Science_Python_Data_structure.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab" /></a></p>
+
+<h1 id="lesson-5-python-data-structures">Lesson 5: Python Data Structures</h1>
+
+<h2 id="51-use-lists-and-tuples">5.1 Use lists and tuples</h2>
+
+<h3 id="sequences">Sequences</h3>
+<p>Lists, tuples, and strings are all Python sequences, and share many of the same methods.</p>
+
+<h3 id="creating-an-empty-list">Creating an empty list</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>empty = []
+empty
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[]
+</code></pre></div></div>
+
+<h3 id="using-square-brackets-with-initial-values">Using square brackets with initial values</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>numbers = [1, 2, 3]
+numbers
+
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 2, 3]
+</code></pre></div></div>
+
+<h3 id="casting-an-iterable">Casting an iterable</h3>
+<p>Any iterable can be cast to a list</p>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>numbers = list(range(10))
+numbers
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+</code></pre></div></div>
+
+<h3 id="creating-using-multiplication">Creating using multiplication</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>num_players = 10
+scores = [0] * num_players
+scores
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+</code></pre></div></div>
+
+<h3 id="mixing-data-types">Mixing data types</h3>
+<p>Lists can contain multple data types</p>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mixed = ['a', 1, 2.0, [13], {}]
+mixed
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['a', 1, 2.0, [13], {}]
+</code></pre></div></div>
+
+<h3 id="indexing">Indexing</h3>
+<p>Items in lists can be accessed using indices in a similar fashion to strings.</p>
+
+<h4 id="access-first-item">Access first item</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>numbers[0]
+
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+</code></pre></div></div>
+
+<h4 id="access-last-item">Access last item</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>numbers[-2]
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>8
+</code></pre></div></div>
+
+<h4 id="access-any-item">Access any item</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>numbers[4]
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
+</code></pre></div></div>
+
+<h3 id="adding-to-a-list">Adding to a list</h3>
+
+<h4 id="append-to-the-end-of-a-list">Append to the end of a list</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>letters = ['a']
+letters.append('c')
+letters
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['a', 'c']
+</code></pre></div></div>
+
+<h4 id="insert-at-beginning-of-list">Insert at beginning of list</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>letters.insert(0, 'b')
+letters
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['b', 'a', 'c']
+</code></pre></div></div>
+
+<h4 id="insert-at-arbitrary-position">Insert at arbitrary position</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>letters.insert(2, 'c')
+letters
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['b', 'a', 'c', 'c']
+</code></pre></div></div>
+
+<h4 id="extending-with-another-list">Extending with another list</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>more_letters = ['e', 'f', 'g']
+letters.extend(more_letters)
+letters
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['b', 'a', 'c', 'c', 'e', 'f', 'g']
+</code></pre></div></div>
+
+<h3 id="change-item-at-some-position">Change item at some position</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>letters[3] = 'd'
+letters
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['b', 'a', 'c', 'd', 'e', 'f', 'g']
+</code></pre></div></div>
+
+<h3 id="swap-two-items">Swap two items</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>letters[0], letters[1] = letters[1], letters[0]
+letters
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['a', 'b', 'c', 'd', 'e', 'f', 'g']
+</code></pre></div></div>
+
+<h3 id="removing-items-from-a-list">Removing items from a list</h3>
+
+<h4 id="pop-from-the-end">Pop from the end</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>letters = ['a', 'b', 'c', 'd', 'e', 'f']
+letters.pop()
+letters
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['a', 'b', 'c', 'd', 'e']
+</code></pre></div></div>
+
+<h4 id="pop-by-index">Pop by index</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>letters.pop(2)
+letters
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['a', 'b', 'd', 'e']
+</code></pre></div></div>
+
+<h4 id="remove-specific-item">Remove specific item</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>letters.remove('d')
+letters
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['a', 'b', 'e']
+</code></pre></div></div>
+
+<h3 id="create-tuple-using-brackets">Create tuple using brackets</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tup = (1, 2, 3)
+tup
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(1, 2, 3)
+</code></pre></div></div>
+
+<h3 id="create-tuple-with-commas">Create tuple with commas</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tup = 1, 2, 3
+tup
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(1, 2, 3)
+</code></pre></div></div>
+
+<h3 id="create-empty-tuple">Create empty tuple</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tup = ()
+tup
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>()
+</code></pre></div></div>
+
+<h3 id="create-tuple-with-single-item">Create tuple with single item</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tup = 1,
+tup
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(1,)
+</code></pre></div></div>
+
+<h3 id="behaviours-shared-by-lists-and-tuples">Behaviours shared by lists and tuples</h3>
+<p>The following sequence behaviors are shared by lists and tuples</p>
+
+<h3 id="check-item-in-sequence">Check item in sequence</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3 in (1, 2, 3, 4, 5)
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<h3 id="check-item-not-in-sequence">Check item not in sequence</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'a' not in [1, 2, 3, 4, 5]
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<h3 id="slicing">Slicing</h3>
+
+<h4 id="setting-start-slice-to-the-end">Setting start, slice to the end</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>letters = 'a', 'b', 'c', 'd', 'e', 'f'
+letters[3:4]
+
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>('d',)
+</code></pre></div></div>
+
+<h4 id="set-end-slice-from-beginning">Set end, slice from beginning</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>letters[:4]
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>('a', 'b', 'c', 'd')
+</code></pre></div></div>
+
+<h4 id="index-from-end-of-sequence">Index from end of sequence</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>letters[-4:]
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>('c', 'd', 'e', 'f')
+</code></pre></div></div>
+
+<h4 id="setting-step">Setting step</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>letters[1::-2]
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>('b',)
+</code></pre></div></div>
+
+<h3 id="unpacking">Unpacking</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>first, middle = [1, 2, 3]
+
+f"first = {first},  middle = {middle},  last = {last}"
+</code></pre></div></div>
+
+<div class="output output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    ---------------------------------------------------------------------------
+
+    ValueError                                Traceback (most recent call last)
+
+    &lt;ipython-input-38-c24a37f354b9&gt; in &lt;module&gt;()
+    ----&gt; 1 first, middle = [1, 2, 3]
+          2 
+          3 f"first = {first},  middle = {middle},  last = {last}"
+
+
+    ValueError: too many values to unpack (expected 2)
+
+
+</code></pre></div></div>
+
+<h3 id="extended-unpacking">Extended unpacking</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>first, *middle, last = (1, 2, 3, 4, 5)
+
+f"first = {first},  middle = {middle},  last = {last}"
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'first = 1,  middle = [2, 3, 4],  last = 5'
+</code></pre></div></div>
+
+<h3 id="using-list-as-stack">Using list as Stack</h3>
+<p>A stack is a LIFO (last in, first out) data structure which can be simulated using a list</p>
+
+<h4 id="push-onto-the-stack-using-append">Push onto the stack using append</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stack = []
+stack.append('first on')
+stack.append('second on')
+stack.append('third on')
+stack
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['first on', 'second on', 'third on']
+</code></pre></div></div>
+
+<h4 id="retrieve-items-last-one-first-using-pop">Retrieve items, last one first using <strong>pop</strong></h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>f"Retrieved first: {stack.pop()!r}, retrieved second: {stack.pop()!r}, retrieved last: {stack.pop()!r}"
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"Retrieved first: 'third on', retrieved second: 'second on', retrieved last: 'first on'"
+</code></pre></div></div>
+
+<h2 id="52-explore-dictionaries">5.2 Explore dictionaries</h2>
+<p>Dictionaries are mappings of key value pairs.</p>
+
+<h3 id="create-an-empty-dict-using-constructor">Create an empty dict using constructor</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dictionary = {}
+dictionary
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{}
+</code></pre></div></div>
+
+<h3 id="create-a-dictionary-based-on-keyvalue-pairs">Create a dictionary based on key/value pairs</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>key_values = [['key-1','value-1'], ['key-2', 'value-2']]
+dictionary = dict(key_values)
+dictionary
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'key-1': 'value-1', 'key-2': 'value-2'}
+</code></pre></div></div>
+
+<h3 id="create-an-empty-dict-using-curley-braces">Create an empty dict using curley braces</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dictionary = {}
+dictionary
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{}
+</code></pre></div></div>
+
+<h3 id="use-curley-braces-to-create-a-dictionary-with-initial-keyvalues">Use curley braces to create a dictionary with initial key/values</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dictionary = {'key-1': 'value-1',
+              'key-2': 'value-2'}
+
+dictionary
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'key-1': 'value-1', 'key-2': 'value-2'}
+</code></pre></div></div>
+
+<h3 id="access-value-using-key">Access value using key</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dictionary['key-1']
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'value-1'
+</code></pre></div></div>
+
+<h3 id="add-a-keyvalue-pair-to-an-existing-dictionary">Add a key/value pair to an existing dictionary</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dictionary['key-3'] = 'value-3'
+
+dictionary
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'key-1': 'value-1', 'key-2': 'value-2', 'key-3': 'value-3'}
+</code></pre></div></div>
+
+<h3 id="update-value-for-existing-key">Update value for existing key</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dictionary['key-2'] = 'new-value-2'
+dictionary['key-2']
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'new-value-2'
+</code></pre></div></div>
+
+<h3 id="get-keys">Get keys</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>list(dictionary.keys())
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['key-1', 'key-2', 'key-3']
+</code></pre></div></div>
+
+<h3 id="get-values">Get values</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dictionary.values()
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dict_values(['value-1', 'new-value-2', 'value-3'])
+</code></pre></div></div>
+
+<h3 id="get-iterable-keys-and-items">Get iterable keys and items</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dictionary.items()
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dict_items([('key-1', 'value-1'), ('key-2', 'new-value-2'), ('key-3', 'value-3')])
+</code></pre></div></div>
+
+<h3 id="use-items-in-for-loop">Use items in for loop</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for key, value in dictionary.items():
+  print(f"{key}: {value}")
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>key-1: value-1
+key-2: new-value-2
+key-3: value-3
+
+</code></pre></div></div>
+
+<h3 id="check-if-dictionary-has-key">Check if dictionary has key</h3>
+<p>The ‘in’ syntax we used with sequences checks the dicts keys for membership.</p>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'key-5' in dictionary
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
+</code></pre></div></div>
+
+<h3 id="get-method">Get method</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dictionary.get("bad key", "default value")
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'default value'
+</code></pre></div></div>
+
+<h3 id="remove-item">Remove item</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>del(dictionary['key-1'])
+dictionary
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'key-2': 'new-value-2', 'key-3': 'value-3'}
+</code></pre></div></div>
+
+<h3 id="keys-must-be-immutable">Keys must be immutable</h3>
+
+<h4 id="list-as-key">List as key</h4>
+<p>Lists are mutable and not hashable</p>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>items = ['item-1', 'item-2', 'item-3']
+
+map = {}
+
+map[items] = "some-value"
+</code></pre></div></div>
+
+<div class="output output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    ---------------------------------------------------------------------------
+
+    TypeError                                 Traceback (most recent call last)
+
+    &lt;ipython-input-66-25faa77a670a&gt; in &lt;module&gt;()
+          3 map = {}
+          4 
+    ----&gt; 5 map[items] = "some-value"
+    
+
+    TypeError: unhashable type: 'list'
+
+
+</code></pre></div></div>
+
+<h4 id="tuple-as-a-key">Tuple as a key</h4>
+<p>Tuples are immutable and hence hashable</p>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>items = 'item-1', 'item-2', 'item-3'
+map = {}
+map[items] = "some-value"
+
+map
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{('item-1', 'item-2', 'item-3'): 'some-value'}
+</code></pre></div></div>
+
+<h2 id="53-dive-into-sets">5.3 Dive into sets</h2>
+
+<h3 id="create-set-from-tuple-or-list">Create set from tuple or list</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>letters = 'a', 'a', 'a', 'b', 'c'
+unique_letters = set(letters)
+unique_letters
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'a', 'b', 'c'}
+</code></pre></div></div>
+
+<h3 id="create-set-from-a-string">Create set from a string</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unique_chars = set('mississippi')
+unique_chars
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'i', 'm', 'p', 's'}
+</code></pre></div></div>
+
+<h3 id="create-set-using-curley-braces">Create set using curley braces</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unique_num = {1, 1, 2, 3, 4, 5, 5}
+unique_num
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{1, 2, 3, 4, 5}
+</code></pre></div></div>
+
+<h3 id="adding-to-a-set">Adding to a set</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unique_num.add(6)
+unique_num
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{1, 2, 3, 4, 5, 6}
+</code></pre></div></div>
+
+<h3 id="popping-from-a-set">Popping from a set</h3>
+<p>Pop method removes and returns a random element of the set</p>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unique_num.pop()
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+</code></pre></div></div>
+
+<h3 id="indexing-1">Indexing</h3>
+<p>Sets have no order, and hence cannot be accessed via indexing</p>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unique_num[4]
+</code></pre></div></div>
+
+<div class="output output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    ---------------------------------------------------------------------------
+
+    TypeError                                 Traceback (most recent call last)
+
+    &lt;ipython-input-75-c928415e5703&gt; in &lt;module&gt;()
+    ----&gt; 1 unique_num[4]
+    
+
+    TypeError: 'set' object does not support indexing
+
+
+</code></pre></div></div>
+
+<h3 id="checking-membership">Checking membership</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3 in unique_num
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<h3 id="set-operations">Set operations</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>s1 = { 1 ,2 ,3 ,4, 5, 6, 7}
+s2 = { 0, 2, 4, 6, 8 }
+</code></pre></div></div>
+
+<h4 id="items-in-first-set-but-not-in-the-second">Items in first set, but not in the second</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>s1 - s2
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{1, 3, 5, 7}
+</code></pre></div></div>
+
+<h4 id="items-in-either-or-both-sets">Items in either or both sets</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>s1 | s2
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{0, 1, 2, 3, 4, 5, 6, 7, 8}
+</code></pre></div></div>
+
+<h4 id="items-in-both-sets">Items in both sets</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>s1 &amp; s2
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{2, 4, 6}
+</code></pre></div></div>
+
+<h4 id="items-in-either-set-but-not-both">Items in either set, but not both</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>s1 ^ s2
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{0, 1, 3, 5, 7, 8}
+</code></pre></div></div>
+
+<h2 id="54-work-with-the-numpy-array">5.4 Work with the numpy array</h2>
+
+<p>Numpy is an opened source numerical computing libary for python. The numpy array is a datastructure representing multidimension arrays which is optimized for both memory and performance.</p>
+
+<h3 id="create-a-numpy-array-from-a-list-of-lists">Create a numpy array from a list of lists</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import numpy as np
+list_of_lists = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]
+
+np_array = np.array(list_of_lists)
+
+np_array
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[ 1,  2,  3,  4],
+       [ 5,  6,  7,  8],
+       [ 9, 10, 11, 12],
+       [13, 14, 15, 16]])
+</code></pre></div></div>
+
+<h3 id="initialize-an-array-of-zeros">Initialize an array of zeros</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>zeros_array = np.zeros( (4, 5) )
+zeros_array
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[0., 0., 0., 0., 0.],
+       [0., 0., 0., 0., 0.],
+       [0., 0., 0., 0., 0.],
+       [0., 0., 0., 0., 0.]])
+</code></pre></div></div>
+
+<h3 id="initialize-and-array-of-ones">Initialize and array of ones</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ones_array = np.ones( (6, 6) )
+ones_array
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[1., 1., 1., 1., 1., 1.],
+       [1., 1., 1., 1., 1., 1.],
+       [1., 1., 1., 1., 1., 1.],
+       [1., 1., 1., 1., 1., 1.],
+       [1., 1., 1., 1., 1., 1.],
+       [1., 1., 1., 1., 1., 1.]])
+</code></pre></div></div>
+
+<h3 id="using-arrange">Using arrange</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nine = np.arange( 9 )
+nine
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0, 1, 2, 3, 4, 5, 6, 7, 8])
+</code></pre></div></div>
+
+<h3 id="using-reshape">Using reshape</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nine.reshape(3,3)
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[0, 1, 2],
+       [3, 4, 5],
+       [6, 7, 8]])
+</code></pre></div></div>
+
+<h3 id="introspection">Introspection</h3>
+
+<h4 id="get-the-data-type">Get the data type</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>np_array.dtype
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dtype('int64')
+</code></pre></div></div>
+
+<h4 id="get-the-arrays-shape">Get the array’s shape</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>np_array.shape
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(4, 4)
+</code></pre></div></div>
+
+<h4 id="get-the-number-of-items-in-the-array">Get the number of items in the array</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>np_array.size
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>16
+</code></pre></div></div>
+
+<h4 id="get-the-size-of-the-array-in-bytes">Get the size of the array in bytes</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>np_array.nbytes
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>128
+</code></pre></div></div>
+
+<h3 id="setting-the-data-type">Setting the data type</h3>
+
+<h4 id="dtype-parameter">dtype parameter</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>np_array = np.array(list_of_lists, dtype=np.int8)
+np_array
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[ 1,  2,  3,  4],
+       [ 5,  6,  7,  8],
+       [ 9, 10, 11, 12],
+       [13, 14, 15, 16]], dtype=int8)
+</code></pre></div></div>
+
+<h4 id="size-reduction">Size reduction</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>np_array.nbytes
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>16
+</code></pre></div></div>
+
+<h4 id="the-data-type-setting-is-immutible">The data type setting is immutible</h4>
+<p>Data may be truncated if the data type is restrictive.</p>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>np_array[0][0] = 1.7344567
+np_array[0][0]
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+</code></pre></div></div>
+
+<h3 id="array-slicing">Array Slicing</h3>
+
+<ul>
+  <li>Slicing can be used to get a view reprsenting a sub-array.</li>
+  <li>The slice is a view to the original array, the data is not copied to a new data structure</li>
+  <li>The slice is taken in the form: array[ rows, columns ]</li>
+</ul>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>np_array
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[ 1,  2,  3,  4],
+       [ 5,  6,  7,  8],
+       [ 9, 10, 11, 12],
+       [13, 14, 15, 16]], dtype=int8)
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>np_array[2:, :3]
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[ 9, 10, 11],
+       [13, 14, 15]], dtype=int8)
+</code></pre></div></div>
+
+<h3 id="math-operations">Math operations</h3>
+
+<ul>
+  <li>Unlike a unlike nested lists, matrix operations perform mathimatical operations on data</li>
+</ul>
+
+<h4 id="create-two-3-x-3-arrays">Create two 3 x 3 arrays</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>np_array_1 = np.arange(9).reshape(3,3)
+np_array_1
+
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[0, 1, 2],
+       [3, 4, 5],
+       [6, 7, 8]])
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>np_array_2 = np.arange(10, 19).reshape(3,3)
+np_array_2
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[10, 11, 12],
+       [13, 14, 15],
+       [16, 17, 18]])
+</code></pre></div></div>
+
+<h4 id="multiply-the-arrays">Multiply the arrays</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>np_array_1 * np_array_2
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[  0,  11,  24],
+       [ 39,  56,  75],
+       [ 96, 119, 144]])
+</code></pre></div></div>
+
+<h4 id="add-the-arrays">Add the arrays</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>np_array_1 + np_array_2
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[10, 12, 14],
+       [16, 18, 20],
+       [22, 24, 26]])
+</code></pre></div></div>
+
+<h3 id="matrix-operations">Matrix operations</h3>
+
+<h4 id="transpose">Transpose</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>np_array.T
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[ 1,  5,  9, 13],
+       [ 2,  6, 10, 14],
+       [ 3,  7, 11, 15],
+       [ 4,  8, 12, 16]], dtype=int8)
+</code></pre></div></div>
+
+<h4 id="dot-product">Dot product</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>np_array_1.dot(np_array_2)
+
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([[ 45,  48,  51],
+       [162, 174, 186],
+       [279, 300, 321]])
+</code></pre></div></div>
+
+<h2 id="55-use-the-pandas-dataframe">5.5 Use the Pandas DataFrame</h2>
+<ul>
+  <li>One of the most highly leveraged data structures for data science</li>
+  <li>A table-like two dimensional data structure.</li>
+</ul>
+
+<h3 id="create-a-dataframe">Create a DataFrame</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import pandas as pd
+first_names = ['henry', 'rolly', 'molly', 'frank', 'david', 'steven', 'gwen', 'arthur']
+last_names = ['smith', 'brocker', 'stein', 'bach', 'spencer', 'de wilde', 'mason', 'davis']
+ages = [43, 23, 78, 56, 26, 14, 46, 92]
+
+df = pd.DataFrame({ 'first': first_names, 'last': last_names, 'age': ages})
+df
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>first</th>
+      <th>last</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>43</td>
+      <td>henry</td>
+      <td>smith</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>23</td>
+      <td>rolly</td>
+      <td>brocker</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>78</td>
+      <td>molly</td>
+      <td>stein</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>56</td>
+      <td>frank</td>
+      <td>bach</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>26</td>
+      <td>david</td>
+      <td>spencer</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>14</td>
+      <td>steven</td>
+      <td>de wilde</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>46</td>
+      <td>gwen</td>
+      <td>mason</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>92</td>
+      <td>arthur</td>
+      <td>davis</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<h3 id="head---looking-at-the-top">Head - looking at the top</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df.head(10)
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>first</th>
+      <th>last</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>43</td>
+      <td>henry</td>
+      <td>smith</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>23</td>
+      <td>rolly</td>
+      <td>brocker</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>78</td>
+      <td>molly</td>
+      <td>stein</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>56</td>
+      <td>frank</td>
+      <td>bach</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>26</td>
+      <td>david</td>
+      <td>spencer</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>14</td>
+      <td>steven</td>
+      <td>de wilde</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>46</td>
+      <td>gwen</td>
+      <td>mason</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>92</td>
+      <td>arthur</td>
+      <td>davis</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<h3 id="setting-number-of-rows-returned-with-head">Setting number of rows returned with head</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df.head(3)
+</code></pre></div></div>
+
+<h3 id="tail---looking-at-the-bottom">Tail - looking at the bottom</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df.tail(2)
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>first</th>
+      <th>last</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>6</th>
+      <td>46</td>
+      <td>gwen</td>
+      <td>mason</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>92</td>
+      <td>arthur</td>
+      <td>davis</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<h3 id="describe---descriptive-statistics">Describe - descriptive statistics</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df.describe()
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>8.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>47.250000</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>27.227874</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>14.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>25.250000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>44.500000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>61.500000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>92.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<h3 id="access-one-column">Access one column</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df['first']
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0     henry
+1     rolly
+2     molly
+3     frank
+4     david
+5    steven
+6      gwen
+7    arthur
+Name: first, dtype: object
+</code></pre></div></div>
+
+<h3 id="slice-a-column">Slice a column</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df['first'][4:]
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4     david
+5    steven
+6      gwen
+7    arthur
+Name: first, dtype: object
+</code></pre></div></div>
+
+<h3 id="use-conditions-to-filter">Use conditions to filter</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df[df['age'] &gt; 50]
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>first</th>
+      <th>last</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>78</td>
+      <td>molly</td>
+      <td>stein</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>56</td>
+      <td>frank</td>
+      <td>bach</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>92</td>
+      <td>arthur</td>
+      <td>davis</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<h2 id="56-use-the-pandas-series">5.6 Use the pandas Series</h2>
+
+<ul>
+  <li>A one dimensional labeled array</li>
+  <li>Contains data of only one type</li>
+  <li>Similar to a column in a spreedsheet</li>
+</ul>
+
+<h3 id="create-a-series">Create a series</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pd_series = pd.Series( [1, 2, 3 ] )
+pd_series
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0    1
+1    2
+2    3
+dtype: int64
+</code></pre></div></div>
+
+<h3 id="series-introspection-methods">Series introspection methods</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>f"This series is made up of {pd_series.size} items whose data type is {pd_series.dtype}"
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'This series is made up of 3 items whose data type is int64'
+</code></pre></div></div>
+
+<h3 id="a-pandas-dataframe-is-composed-of-pandas-series">A Pandas DataFrame is composed of Pandas Series.</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>age = df.age
+type( age )
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pandas.core.series.Series
+</code></pre></div></div>
+
+<h3 id="some-useful-helper-methods-of-a-series">Some useful helper methods of a Series</h3>
+
+<h4 id="mean">mean</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pd_series = pd.Series([ 1, 2, 3, 5, 6, 6, 6, 7, 8])
+pd_series.mean()
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4.888888888888889
+</code></pre></div></div>
+
+<h4 id="unique">Unique</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pd_series.unique()
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1, 2, 3, 5, 6, 7, 8])
+</code></pre></div></div>
+
+<h4 id="max">Max</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pd_series.min()
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+</code></pre></div></div>
+
+<h1 id="notes">Notes:</h1>
+<p><a href="https://docs.python.org/3/tutorial/datastructures.html">Lists</a></p>
+
+<p><a href="https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences">Tuples and sequences</a></p>
+
+<p><a href="https://docs.python.org/3/tutorial/datastructures.html#dictionaries">Dictionaries</a></p>
+
+<p><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html">Numpy arrays</a></p>
+
+<p><a href="https://pandas.pydata.org/pandas-docs/version/0.21/generated/pandas.DataFrame.html">Pandas DataFrame</a></p>
+
+<p><a href="https://pandas.pydata.org/pandas-docs/version/0.23.4/generated/pandas.Series.html">Pandas Series</a></p>
+
+
+              <nav class="c-page__nav">
+  
+    
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/lessons/Lesson4_Python_For_Data_Science_Strings">
+      〈 <span class="u-margin-right-tiny"></span> Lesson 4 - Strings
+    </a>
+  
+
+  
+    
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/lessons/Lesson6_Python_For_Data_Science_Data_Conversion_Recipes">
+      Lesson 6 - Data Conversion Recipes <span class="u-margin-right-tiny"></span> 〉
+    </a>
+  
+</nav>
+
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+  </body>
+</html>

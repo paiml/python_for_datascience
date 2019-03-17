@@ -1,0 +1,1907 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Lesson 8 - Functions</title>
+  <meta name="description" content="">
+
+  <link rel="canonical" href="/YOUR%20URL//lessons/Lesson8_Python_For_Data_Science_Functions.html">
+  <link rel="alternate" type="application/rss+xml" title="Python for Data Science" href="/YOUR%20URL//feed.xml">
+
+  <meta property="og:url"         content="/YOUR%20URL//lessons/Lesson8_Python_For_Data_Science_Functions.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Lesson 8 - Functions" />
+<meta property="og:description" content="" />
+<meta property="og:image"       content="" />
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage":
+    "YOUR URL//lessons/Lesson8_Python_For_Data_Science_Functions.html",
+  "headline":
+    "Lesson 8 - Functions",
+  "datePublished":
+    "2019-03-17T15:28:48-07:00",
+  "dateModified":
+    "2019-03-17T15:28:48-07:00",
+  "description":
+    "",
+  "author": {
+    "@type": "Person",
+    "name": "Pragmatic AI Labs"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "YOUR URL/",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "YOUR URL/",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css ">
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    CommonHTML: {
+        linebreaks: {
+            automatic: true,
+        },
+    },
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML' async></script>
+
+  <!-- DOM updating function -->
+  <script>
+const runWhenDOMLoaded = cb => {
+  if (document.readyState != 'loading') {
+    cb()
+  } else if (document.addEventListener) {
+    document.addEventListener('DOMContentLoaded', cb)
+  } else {
+    document.attachEvent('onreadystatechange', function() {
+      if (document.readyState == 'complete') cb()
+    })
+  }
+}
+
+// Helper function to init things quickly
+initFunction = function(myfunc) {
+  runWhenDOMLoaded(myfunc);
+  document.addEventListener('turbolinks:load', myfunc);
+};
+</script>
+
+  <!-- Define some javascript variables that will be useful in other javascript -->
+  <script>
+    const site_basename = '/';
+  </script>
+
+  <!-- Add AnchorJS to let headers be linked -->
+  <script src="/assets/js/anchor.min.js"  type="text/javascript"></script>
+  <script>
+
+initFunction(function () {
+    anchors.add("main h1, main h2, main h3, main h4")
+});
+
+</script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="/assets/js/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  <script src="https://unpkg.com/nbinteract-core" async></script>
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+<script type="text/x-thebe-config">
+    {
+      requestKernel: true,
+      binderOptions: {
+        repo: 'YOUR-ORG/YOUR-REPO',
+        ref: 'master',
+      },
+      kernelOptions: {
+        name: 'python3',
+      }
+    }
+</script>
+<script src="https://unpkg.com/thebelab@0.3.3/lib/index.js"></script>
+<script>
+    /**
+     * Add attributes to Thebelab blocks
+     */
+
+    const initThebelab = () => {
+        const addThebelabToCodeCells = () => {
+            console.log("Adding thebelab to code cells...");
+            // If Thebelab hasn't loaded, wait a bit and try again. This
+            // happens because we load ClipboardJS asynchronously.
+            if (window.thebelab === undefined) {
+                setTimeout(addThebelabToCodeCells, 250)
+            return
+            }
+
+            // If we already detect a Thebelab cell, don't re-run
+            if (document.querySelectorAll('div.thebelab-cell').length > 0) {
+                return;
+            }
+
+            // Find all code cells, replace with Thebelab interactive code cells
+            const codeCells = document.querySelectorAll('.input_area pre')
+            codeCells.forEach((codeCell, index) => {
+                const id = codeCellId(index)
+                codeCell.setAttribute('data-executable', 'true')
+
+                // Figure out the language it uses and add this too
+                var parentDiv = codeCell.parentElement.parentElement;
+                var arrayLength = parentDiv.classList.length;
+                for (var ii = 0; ii < arrayLength; ii++) {
+                    var parts = parentDiv.classList[ii].split('language-');
+                    if (parts.length === 2) {
+                        // If found, assign dataLanguage and break the loop
+                        var dataLanguage = parts[1];
+                        break;
+                    }
+                }
+                codeCell.setAttribute('data-language', dataLanguage)
+
+                // If the code cell is hidden, show it
+                var inputCheckbox = document.querySelector(`input#hidebtn${codeCell.id}`);
+                if (inputCheckbox !== null) {
+                    setCodeCellVisibility(inputCheckbox, 'visible');
+                }
+            });
+
+            // Remove the event listener from the page so keyboard press doesn't
+            // Change page
+            document.removeEventListener('keydown', initPageNav)
+            keyboardListener = false;
+
+            // Init thebelab
+            thebelab.bootstrap();
+
+            // Remove copy buttons since they won't work anymore
+            const copyButtons = document.querySelectorAll('.copybtn')
+            copyButtons.forEach((copyButton, index) => {
+                copyButton.remove();
+            });
+
+            // Remove outputs since they'll be stale
+            const outputs = document.querySelectorAll('.output *, .output')
+            outputs.forEach((output, index) => {
+                output.remove();
+            });
+        }
+
+        // Add event listener for the function to modify code cells
+        const thebelabButton = document.getElementById('interact-button-thebelab');
+        if (thebelabButton === null) {
+            setTimeout(initThebelab, 250)
+        return
+        };
+        thebelabButton.addEventListener('click', addThebelabToCodeCells);
+    }
+
+    // Initialize Thebelab
+    initFunction(initThebelab);
+</script>
+
+
+  <!-- Google analytics -->
+  <script src="/assets/js/ga.js" async></script>
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" async></script>
+
+  <!-- Load JS that depends on site variables -->
+  <script>
+/**
+ * Set up copy/paste for code blocks
+ */
+const codeCellId = index => `codecell${index}`
+
+const clipboardButton = id =>
+  `<a class="btn copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#${id}">
+    <img src="/assets/images/copy-button.svg" alt="Copy to clipboard">
+  </a>`
+
+// Clears selected text since ClipboardJS will select the text when copying
+const clearSelection = () => {
+  if (window.getSelection) {
+    window.getSelection().removeAllRanges()
+  } else if (document.selection) {
+    document.selection.empty()
+  }
+}
+
+// Changes tooltip text for two seconds, then changes it back
+const temporarilyChangeTooltip = (el, newText) => {
+  const oldText = el.getAttribute('data-tooltip')
+  el.setAttribute('data-tooltip', newText)
+  setTimeout(() => el.setAttribute('data-tooltip', oldText), 2000)
+}
+
+const addCopyButtonToCodeCells = () => {
+  // If ClipboardJS hasn't loaded, wait a bit and try again. This
+  // happens because we load ClipboardJS asynchronously.
+  if (window.ClipboardJS === undefined) {
+    setTimeout(addCopyButtonToCodeCells, 250)
+    return
+  }
+
+  const codeCells = document.querySelectorAll('div.highlighter-rouge:not(.output) pre')
+  codeCells.forEach((codeCell, index) => {
+    const id = codeCellId(index)
+    codeCell.setAttribute('id', id)
+    if (document.querySelector(`pre#${id} + a`) == null) {
+      codeCell.insertAdjacentHTML('afterend', clipboardButton(id));
+    }
+  })
+
+  const clipboard = new ClipboardJS('.copybtn')
+  clipboard.on('success', event => {
+    clearSelection()
+    temporarilyChangeTooltip(event.trigger, 'Copied!')
+  })
+
+  clipboard.on('error', event => {
+    temporarilyChangeTooltip(event.trigger, 'Failed to copy')
+  })
+
+  // Get rid of clipboard before the next page visit to avoid memory leak
+  document.addEventListener('turbolinks:before-visit', () =>
+    clipboard.destroy()
+  )
+}
+
+initFunction(addCopyButtonToCodeCells);
+</script>
+
+  <!-- Hide cell code -->
+  
+<script>
+/**
+Add buttons to hide code cells
+*/
+
+
+var setCodeCellVisibility = function(inputField, kind) {
+    // Update the image and class for hidden
+    var id = inputField.getAttribute('data-id');
+    var codeCell = document.querySelector(`#${id}`);
+
+    if (kind === "visible") {
+        codeCell.classList.remove('hidden');
+        inputField.checked = true;
+    } else {
+        codeCell.classList.add('hidden');
+        inputField.checked = false;
+    }
+}
+
+var toggleCodeCellVisibility = function (event) {
+    // The label is clicked, and now we decide what to do based on the input field's clicked status
+    if (event.target.tagName === "LABEL") {
+        var inputField = event.target.previousElementSibling;
+    } else {
+        // It is the span inside the target
+        var inputField = event.target.parentElement.previousElementSibling;
+    }
+
+    if (inputField.checked === true) {
+        setCodeCellVisibility(inputField, "visible");
+    } else {
+        setCodeCellVisibility(inputField, "hidden");
+    }
+}
+
+
+// Button constructor
+const hideCodeButton = id => `<input class="hidebtn" type="checkbox" id="hidebtn${id}" data-id="${id}"><label title="Toggle cell" for="hidebtn${id}" class="plusminus"><span class="pm_h"></span><span class="pm_v"></span></label>`
+
+var addHideButton = function () {
+  // If a hide button is already added, don't add another
+  if (document.querySelector('div.hidecode input') !== null) {
+      return;
+  }
+
+  // Find the input cells and add a hide button
+  document.querySelectorAll('div.input_area div.highlight').forEach(function (item, index) {
+    if (!item.parentElement.classList.contains("hidecode")) {
+        // Skip the cell if it doesn't have a hidecode class
+        return;
+    }
+
+    const id = codeCellId(index)
+    item.setAttribute('id', id);
+    item.insertAdjacentHTML('afterend', hideCodeButton(id))
+
+    // Set up the visibility toggle
+    hideLink = document.querySelector(`#${id} + input + label`);
+    hideLink.addEventListener('click', toggleCodeCellVisibility)
+  });
+}
+
+
+// Initialize the hide buttos
+var initHiddenCells = function () {
+    // Add hide buttons to the cells
+    addHideButton();
+
+    // Toggle the code cells that should be hidden
+    document.querySelectorAll('div.hidecode input').forEach(function (item) {
+        setCodeCellVisibility(item, 'hidden');
+        item.checked = true;
+    })
+}
+
+initFunction(initHiddenCells);
+
+</script>
+
+
+  <!-- Load custom website scripts -->
+  <script src="/assets/js/scripts.js" async></script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  
+
+  <!-- Lunr search code - will only be executed on the /search page -->
+  <script src="/assets/js/lunr/lunr.min.js" type="text/javascript"></script>
+  <script>var initQuery = function() {
+  // See if we have a search box
+  var searchInput = document.querySelector('input#lunr_search');
+  if (searchInput === null) {
+    return;
+  }
+
+  // Function to parse our lunr cache
+  var idx = lunr(function () {
+    this.field('title')
+    this.field('excerpt')
+    this.field('categories')
+    this.field('tags')
+    this.ref('id')
+
+    this.pipeline.remove(lunr.trimmer)
+
+    for (var item in store) {
+      this.add({
+        title: store[item].title,
+        excerpt: store[item].excerpt,
+        categories: store[item].categories,
+        tags: store[item].tags,
+        id: item
+      })
+    }
+  });
+
+  // Run search upon keyup
+  searchInput.addEventListener('keyup', function () {
+    var resultdiv = document.querySelector('#results');
+    var query = document.querySelector("input#lunr_search").value.toLowerCase();
+    var result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+      // Empty the results div
+      while (resultdiv.firstChild) {
+        resultdiv.removeChild(resultdiv.firstChild);
+      }
+
+    resultdiv.insertAdjacentHTML('afterbegin', '<p class="results__found">'+result.length+' Result(s) found</p>');
+    for (var item in result) {
+      var ref = result[item].ref;
+      if(store[ref].teaser){
+        var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<div class="archive__item-teaser">'+
+                '<img src="'+store[ref].teaser+'" alt="">'+
+              '</div>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      else{
+    	  var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      resultdiv.insertAdjacentHTML('beforeend', searchitem);
+    }
+  });
+};
+
+initFunction(initQuery);
+</script>
+</head>
+
+  <body>
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <a href="https://jupyter.org/jupyter-book/"><img src="/images/logo.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">Python for Data Science</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/intro.html"
+        >
+          
+          Home
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="https://github.com/paiml/python_for_datascience"
+        >
+          
+          GitHub repository
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+        <li class="c-sidebar__chapter"><a class="c-sidebar__entry" href="/search.html">Search</a></li>
+        
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Python for Data Science Video Supplement</li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/lessons/lessons.html"
+        >
+          
+          Lessons
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson2_Python_For_Data_Science_Introduction_to_Colab.html"
+                >
+                  
+                  Lesson 2 - Introduction to Colab
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson3_Python_For_Data_Science_Basics.html"
+                >
+                  
+                  Lesson 3 - Basics
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson4_Python_For_Data_Science_Strings.html"
+                >
+                  
+                  Lesson 4 - Strings
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson5_Python_For_Data_Science_Python_Data_structure.html"
+                >
+                  
+                  Lesson 5 - Data Structures
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson6_Python_For_Data_Science_Data_Conversion_Recipes.html"
+                >
+                  
+                  Lesson 6 - Data Conversion Recipes
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson7_Python_For_Datascience_Execution_Control.html"
+                >
+                  
+                  Lesson 7 - Execution Control
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry c-sidebar__entry--active"
+                  href="/lessons/Lesson8_Python_For_Data_Science_Functions.html"
+                >
+                  
+                  Lesson 8 - Functions
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson9_Python_For_Data_Science_Data_Science_Libraries.html"
+                >
+                  
+                  Lesson 9 - Data Science Libraries
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson10_Python_For_Data_Science_Functional_Programming.html"
+                >
+                  
+                  Lesson 10 - Functional Programming
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson11_Python_For_Data_Science_Lazy_Evaluation.html"
+                >
+                  
+                  Lesson 11 - Lazy Evaluation
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson12_Python_For_Data_Science_Pattern_Matching.html"
+                >
+                  
+                  Lesson 12 - Pattern Matching
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson13_Python_For_Data_Science_Sorting.html"
+                >
+                  
+                  Lesson 13 - Sorting
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson14_Python_For_Data_Science_I_O.html"
+                >
+                  
+                  Lesson 14 - I/O
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson15_Python_For_Data_Science_CaseStudies.html"
+                >
+                  
+                  Lesson 15 - CaseStudies
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">A product of <a href="https://paiml.com">Pragmatic AI Labs</a></p>
+</nav>
+
+      
+      <!-- Shamelessly copied from minimal mistakes -->
+
+
+<!-- TOC will only show up if it has at least one item -->
+
+
+  <aside class="sidebar__right">
+    <nav class="onthispage">
+      <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
+      <ul class="toc__menu">
+  <li><a href="#81-write-and-use-functions">8.1 Write and use functions</a>
+    <ul>
+      <li><a href="#building-blocks-of-distributed-computing">Building blocks of distributed computing</a></li>
+      <li><a href="#key-components-of-functions">Key Components of Functions</a></li>
+    </ul>
+  </li>
+  <li><a href="#82-write-and-use-decorators">8.2 Write and use decorators</a>
+    <ul>
+      <li><a href="#using-decorators">Using Decorators</a></li>
+      <li><a href="#writing-decorators">Writing Decorators</a></li>
+    </ul>
+  </li>
+  <li><a href="#83-compose-closure-functions">8.3 Compose closure functions</a>
+    <ul>
+      <li><a href="#functions-with-state">Functions with state</a></li>
+    </ul>
+  </li>
+  <li><a href="#84-use-lambda">8.4 Use lambda</a>
+    <ul>
+      <li><a href="#yagni">YAGNI</a></li>
+      <li><a href="#close-encounters-with-lambdas">Close Encounters with Lambdas</a></li>
+    </ul>
+  </li>
+  <li><a href="#85-advanced-use-of-functions">8.5 Advanced Use of Functions</a>
+    <ul>
+      <li><a href="#applying-a-function-to-a-pandas-dataframe">Applying a Function to a Pandas DataFrame</a></li>
+      <li><a href="#partial-functions">Partial Functions</a></li>
+    </ul>
+  </li>
+</ul>
+    </nav>
+  </aside>
+
+
+      
+      <main class="c-textbook__page" tabindex="-1">
+          <div class="o-wrapper">
+            <div class="c-sidebar-toggle">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <button
+    id="js-sidebar-toggle"
+    class="hamburger hamburger--arrowalt is-active"
+  >
+    <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+    </span>
+    <span class="c-sidebar-toggle__label">Toggle Sidebar</span>
+  </button>
+</div>
+
+            
+<div class="buttons">
+<a href="/content/lessons/Lesson8_Python_For_Data_Science_Functions.ipynb" download>
+<button id="interact-button-download" class="interact-button">Download</button>
+</a>
+
+<button id="interact-button-thebelab" class="interact-button">Thebelab</button>
+
+
+
+
+</div>
+
+
+            <div class="c-textbook__content">
+              <p><a href="https://colab.research.google.com/github/paiml/python_for_datascience/blob/master/Lesson8_Python_For_Data_Science_Functions.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab" /></a></p>
+
+<h1 id="lesson-8-functions">Lesson 8: Functions</h1>
+
+<h2 id="81-write-and-use-functions">8.1 Write and use functions</h2>
+
+<h3 id="building-blocks-of-distributed-computing">Building blocks of distributed computing</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def work(input):
+  """Processes input and returns output"""
+  
+  output = input + 1
+  return output
+
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>work(1)
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+</code></pre></div></div>
+
+<h3 id="key-components-of-functions">Key Components of Functions</h3>
+
+<h4 id="docstrings">Docstrings</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def docstring():
+  """Triple Quoted documentation!"""
+  
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docstring?
+</code></pre></div></div>
+
+<h4 id="arguments--keyword-and-positional">Arguments:  Keyword and Positional</h4>
+
+<ul>
+  <li><em>Positional</em>:  Order based processing</li>
+  <li><em>Keyword</em>:  Key/Value processing</li>
+</ul>
+
+<h5 id="positional">Positional</h5>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def positional(first,second,third):
+  """Processes arguments to function in order"""
+  
+  print(f"Processed first {first}")
+  print(f"Processed second {second}")
+  print(f"Processed third {third}")
+  
+  
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>positional(1, 2, 3)
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Processed first 1
+Processed second 2
+Processed third 3
+
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>positional(2, 3, 1)
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Processed first 2
+Processed second 3
+Processed third 1
+
+</code></pre></div></div>
+
+<h5 id="keyword">Keyword</h5>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def keyword(first=1, second=2, third=3):
+  """Processed in any order"""
+  
+  print(f"Processed first {first}")
+  print(f"Processed second {second}")
+  print(f"Processed third {third}")
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>keyword(1,2,3)
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Processed first 1
+Processed second 2
+Processed third 3
+
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>keyword(second=2, third=3, first=1)
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Processed first 1
+Processed second 2
+Processed third 3
+
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>keyword(second=2)
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Processed first 1
+Processed second 2
+Processed third 3
+
+</code></pre></div></div>
+
+<h4 id="return">Return</h4>
+
+<p>Default is None</p>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def bridge_to_nowhere():pass
+  
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bridge_to_nowhere() == None
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>type(bridge_to_nowhere())
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NoneType
+</code></pre></div></div>
+
+<p>Most useful functions return something</p>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def more_than_zero():
+  
+  return 1
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>more_than_zero() == 1
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<p>Functions can return functions</p>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def inner_peace():
+  """A deep function"""
+  
+  def peace():
+    return "piece"
+  
+  return peace
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>inner = inner_peace()
+print(f"Hey, I need that {inner()}")
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hey, I need that piece
+
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>inner2 = inner_peace()
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>type(inner2)
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function
+</code></pre></div></div>
+
+<h2 id="82-write-and-use-decorators">8.2 Write and use decorators</h2>
+
+<h3 id="using-decorators">Using Decorators</h3>
+
+<p>Very common to use for dispatching a function via:</p>
+
+<ul>
+  <li>Command-line tools</li>
+  <li>Web Routes</li>
+  <li>Speeding up Python code</li>
+</ul>
+
+<h4 id="command-line-tools">Command-line Tools</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%%python
+import click
+
+def less_than_zero():
+  
+  return {"iron_man": -1}
+
+@click.command()
+def run():
+  
+  rdj = less_than_zero()
+  click.echo(f"Robert Downey Junior is versatile {rdj}")
+  
+if __name__== "__main__":
+  run()
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Robert Downey Junior is versatile {'iron_man': -1}
+
+</code></pre></div></div>
+
+<h4 id="web-app">Web App</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%%writefile run.py
+from flask import Flask
+app = Flask(__name__)
+
+def less_than_zero():
+  
+  return {"iron_man": -1}
+
+@app.route('/')
+def runit():
+  return less_than_zero()
+  
+
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Overwriting run.py
+
+</code></pre></div></div>
+
+<p>curl localhost:5000/ {‘iron_man’: -1}</p>
+
+<h4 id="using-numba">Using Numba</h4>
+
+<p>Using numba Just in Time Compiler (JIT) can dramatically speed up code</p>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def crunchy_normal():
+  count = 0
+  num = 10000000
+  for i in range(num):
+    count += num  
+  return count
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%%time
+crunchy_normal()
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CPU times: user 906 ms, sys: 581 µs, total: 907 ms
+Wall time: 908 ms
+
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>100000000000000
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from numba import jit
+
+@jit(nopython=True)
+def crunchy():
+  count = 0
+  num = 10000000
+  for i in range(num):
+    count += num  
+  return count
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%%time
+crunchy()
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CPU times: user 113 ms, sys: 15.9 ms, total: 129 ms
+Wall time: 194 ms
+
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>100000000000000
+</code></pre></div></div>
+
+<h3 id="writing-decorators">Writing Decorators</h3>
+
+<h4 id="instrumentation-decorator">Instrumentation Decorator</h4>
+
+<p>Using a decorator to time, debug or instrument code is very common</p>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from functools import wraps
+import time
+
+def instrument(f):
+    @wraps(f)
+    def wrap(*args, **kw):
+        ts = time.time()
+        result = f(*args, **kw)
+        te = time.time()
+        print(f"function: {f.__name__}, args: [{args}, {kw}] took: {te-ts} sec")
+        return result
+    return wrap
+</code></pre></div></div>
+
+<p>Using decorator to time execution of a function</p>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from time import sleep
+
+@instrument
+def simulated_work(count, task):
+  """simulates work"""
+  
+  print("Starting work")
+  sleep(count)
+  processed = f"one {task} leap"
+  return processed
+  
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>simulated_work(3, task="small")  
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Starting work
+function: simulated_work, args: [(3,), {'task': 'small'}] took: 3.0027008056640625 sec
+
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'one small leap'
+</code></pre></div></div>
+
+<h2 id="83-compose-closure-functions">8.3 Compose closure functions</h2>
+
+<h3 id="functions-with-state">Functions with state</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def calorie_counter():
+    """Counts calories"""
+    
+    protein = 0
+    fat = 0
+    carbohydrate = 0
+    total = 0
+    def calorie_counter_inner(food):
+        nonlocal protein
+        nonlocal fat
+        nonlocal carbohydrate
+        if food == "protein":
+          protein += 4
+        elif food == "carbohydrate":
+          carbohydrate += 4
+        elif food == "fat":
+          fat += 9
+        total = protein + carbohydrate + fat
+        print(f"Consumed {total} calories of protein: {protein}, carbohydrate: {carbohydrate}, fat: {fat}")
+    return calorie_counter_inner
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>meal = calorie_counter()
+type(meal)
+
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>meal("carbohydrate")
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Consumed 4 calories of protein: 0, carbohydrate: 4, fat: 0
+
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>meal("fat")
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Consumed 13 calories of protein: 0, carbohydrate: 4, fat: 9
+
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>meal("protein")
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Consumed 17 calories of protein: 4, carbohydrate: 4, fat: 9
+
+</code></pre></div></div>
+
+<h2 id="84-use-lambda">8.4 Use lambda</h2>
+
+<h3 id="yagni">YAGNI</h3>
+
+<p><strong>Y</strong>ou <strong>A</strong>in’t <strong>G</strong>onna <strong>N</strong>eed** I**t</p>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import this
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>func = lambda x: x**x
+func(4)
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>256
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def expo(x):
+  return x**x
+
+expo(4)
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>256
+</code></pre></div></div>
+
+<h3 id="close-encounters-with-lambdas">Close Encounters with Lambdas</h3>
+
+<p>Used in series or DataFrame</p>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import pandas as pd
+
+series = pd.Series([1, 5, 10])
+series.apply(lambda x: x**x)
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0              1
+1           3125
+2    10000000000
+dtype: int64
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def expo(x):
+  return x**x
+
+expo(4)
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import pandas as pd
+
+series = pd.Series([1, 5, 10])
+series.apply(expo)
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0              1
+1           3125
+2    10000000000
+dtype: int64
+</code></pre></div></div>
+
+<h2 id="85-advanced-use-of-functions">8.5 Advanced Use of Functions</h2>
+
+<h3 id="applying-a-function-to-a-pandas-dataframe">Applying a Function to a Pandas DataFrame</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import pandas as pd
+df = pd.read_csv(
+    "https://raw.githubusercontent.com/noahgift/food/master/data/features.en.openfoodfacts.org.products.csv")
+df.drop(["Unnamed: 0", "exceeded", "g_sum", "energy_100g"], axis=1, inplace=True) #drop two rows we don't need
+df.head()
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fat_100g</th>
+      <th>carbohydrates_100g</th>
+      <th>sugars_100g</th>
+      <th>proteins_100g</th>
+      <th>salt_100g</th>
+      <th>reconstructed_energy</th>
+      <th>product</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>28.57</td>
+      <td>64.29</td>
+      <td>14.29</td>
+      <td>3.57</td>
+      <td>0.00000</td>
+      <td>2267.85</td>
+      <td>Banana Chips Sweetened (Whole)</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>17.86</td>
+      <td>60.71</td>
+      <td>17.86</td>
+      <td>17.86</td>
+      <td>0.63500</td>
+      <td>2032.23</td>
+      <td>Peanuts</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>57.14</td>
+      <td>17.86</td>
+      <td>3.57</td>
+      <td>17.86</td>
+      <td>1.22428</td>
+      <td>2835.70</td>
+      <td>Organic Salted Nut Mix</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>18.75</td>
+      <td>57.81</td>
+      <td>15.62</td>
+      <td>14.06</td>
+      <td>0.13970</td>
+      <td>1953.04</td>
+      <td>Organic Muesli</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>36.67</td>
+      <td>36.67</td>
+      <td>3.33</td>
+      <td>16.67</td>
+      <td>1.60782</td>
+      <td>2336.91</td>
+      <td>Zen Party Mix</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def high_protein(row):
+  """Creates a high or low protein category"""
+  
+  if row &gt; 80:
+    return "high_protein"
+  return "low_protein"
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df["high_protein"] = df["proteins_100g"].apply(high_protein)
+df.head()
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fat_100g</th>
+      <th>carbohydrates_100g</th>
+      <th>sugars_100g</th>
+      <th>proteins_100g</th>
+      <th>salt_100g</th>
+      <th>reconstructed_energy</th>
+      <th>product</th>
+      <th>high_protein</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>28.57</td>
+      <td>64.29</td>
+      <td>14.29</td>
+      <td>3.57</td>
+      <td>0.00000</td>
+      <td>2267.85</td>
+      <td>Banana Chips Sweetened (Whole)</td>
+      <td>low_protein</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>17.86</td>
+      <td>60.71</td>
+      <td>17.86</td>
+      <td>17.86</td>
+      <td>0.63500</td>
+      <td>2032.23</td>
+      <td>Peanuts</td>
+      <td>low_protein</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>57.14</td>
+      <td>17.86</td>
+      <td>3.57</td>
+      <td>17.86</td>
+      <td>1.22428</td>
+      <td>2835.70</td>
+      <td>Organic Salted Nut Mix</td>
+      <td>low_protein</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>18.75</td>
+      <td>57.81</td>
+      <td>15.62</td>
+      <td>14.06</td>
+      <td>0.13970</td>
+      <td>1953.04</td>
+      <td>Organic Muesli</td>
+      <td>low_protein</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>36.67</td>
+      <td>36.67</td>
+      <td>3.33</td>
+      <td>16.67</td>
+      <td>1.60782</td>
+      <td>2336.91</td>
+      <td>Zen Party Mix</td>
+      <td>low_protein</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df.describe()
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fat_100g</th>
+      <th>carbohydrates_100g</th>
+      <th>sugars_100g</th>
+      <th>proteins_100g</th>
+      <th>salt_100g</th>
+      <th>reconstructed_energy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>45028.000000</td>
+      <td>45028.000000</td>
+      <td>45028.000000</td>
+      <td>45028.000000</td>
+      <td>45028.000000</td>
+      <td>45028.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>10.765910</td>
+      <td>34.054788</td>
+      <td>16.005614</td>
+      <td>6.619437</td>
+      <td>1.469631</td>
+      <td>1111.332304</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>14.930087</td>
+      <td>29.557017</td>
+      <td>21.495512</td>
+      <td>7.936770</td>
+      <td>12.794943</td>
+      <td>791.621634</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>-1.200000</td>
+      <td>-3.570000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>0.000000</td>
+      <td>7.440000</td>
+      <td>1.570000</td>
+      <td>0.000000</td>
+      <td>0.063500</td>
+      <td>334.520000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>3.170000</td>
+      <td>22.390000</td>
+      <td>5.880000</td>
+      <td>4.000000</td>
+      <td>0.635000</td>
+      <td>1121.540000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>17.860000</td>
+      <td>61.540000</td>
+      <td>23.080000</td>
+      <td>9.520000</td>
+      <td>1.440180</td>
+      <td>1678.460000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>100.000000</td>
+      <td>100.000000</td>
+      <td>100.000000</td>
+      <td>100.000000</td>
+      <td>2032.000000</td>
+      <td>4475.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<h3 id="partial-functions">Partial Functions</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from functools import partial
+
+def multiple_sort(column_one, column_two):
+  """Performs multiple sort on a pandas DataFrame"""
+  
+  sorted_df = df.sort_values(by=[column_one, column_two], 
+                 ascending=[False, False])
+  return sorted_df
+  
+multisort = partial(multiple_sort, "sugars_100g")
+type(multisort)
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>functools.partial
+</code></pre></div></div>
+
+<p>Find sugary and fatty food</p>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df = multisort("fat_100g")
+df.head()
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fat_100g</th>
+      <th>carbohydrates_100g</th>
+      <th>sugars_100g</th>
+      <th>proteins_100g</th>
+      <th>salt_100g</th>
+      <th>reconstructed_energy</th>
+      <th>product</th>
+      <th>high_protein</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>8254</th>
+      <td>25.00</td>
+      <td>100.00</td>
+      <td>100.0</td>
+      <td>0.00</td>
+      <td>0.00000</td>
+      <td>2675.00</td>
+      <td>Princess Mix Decorations</td>
+      <td>low_protein</td>
+    </tr>
+    <tr>
+      <th>8255</th>
+      <td>25.00</td>
+      <td>100.00</td>
+      <td>100.0</td>
+      <td>0.00</td>
+      <td>0.00000</td>
+      <td>2675.00</td>
+      <td>Frosted Mix</td>
+      <td>low_protein</td>
+    </tr>
+    <tr>
+      <th>8253</th>
+      <td>12.50</td>
+      <td>100.00</td>
+      <td>100.0</td>
+      <td>0.00</td>
+      <td>0.00000</td>
+      <td>2187.50</td>
+      <td>Holiday Happiness Mix</td>
+      <td>low_protein</td>
+    </tr>
+    <tr>
+      <th>9371</th>
+      <td>1.79</td>
+      <td>85.71</td>
+      <td>100.0</td>
+      <td>7.14</td>
+      <td>0.04572</td>
+      <td>1648.26</td>
+      <td>Organic Just Cherries</td>
+      <td>low_protein</td>
+    </tr>
+    <tr>
+      <th>222</th>
+      <td>0.00</td>
+      <td>100.00</td>
+      <td>100.0</td>
+      <td>0.00</td>
+      <td>0.00000</td>
+      <td>1700.00</td>
+      <td>Tnt Exploding Candy</td>
+      <td>low_protein</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>Find sugary and salty food</p>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df = multisort("salt_100g")
+df.head()
+</code></pre></div></div>
+
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fat_100g</th>
+      <th>carbohydrates_100g</th>
+      <th>sugars_100g</th>
+      <th>proteins_100g</th>
+      <th>salt_100g</th>
+      <th>reconstructed_energy</th>
+      <th>product</th>
+      <th>high_protein</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>33151</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>100.0</td>
+      <td>0.0</td>
+      <td>71.120</td>
+      <td>0.0</td>
+      <td>Turkey Brine Kit, Garlic &amp; Herb</td>
+      <td>low_protein</td>
+    </tr>
+    <tr>
+      <th>24783</th>
+      <td>0.0</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>0.0</td>
+      <td>24.130</td>
+      <td>1700.0</td>
+      <td>Seasoning</td>
+      <td>low_protein</td>
+    </tr>
+    <tr>
+      <th>4073</th>
+      <td>0.0</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>0.0</td>
+      <td>7.620</td>
+      <td>1700.0</td>
+      <td>Seasoning Rub, Sweet &amp; Spicy Seafood</td>
+      <td>low_protein</td>
+    </tr>
+    <tr>
+      <th>10282</th>
+      <td>0.0</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>0.0</td>
+      <td>2.540</td>
+      <td>1700.0</td>
+      <td>Instant Pectin</td>
+      <td>low_protein</td>
+    </tr>
+    <tr>
+      <th>17880</th>
+      <td>0.0</td>
+      <td>100.0</td>
+      <td>100.0</td>
+      <td>0.0</td>
+      <td>0.635</td>
+      <td>1700.0</td>
+      <td>Cranberry Cosmos Cocktail Rimming Sugar</td>
+      <td>low_protein</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+
+              <nav class="c-page__nav">
+  
+    
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/lessons/Lesson7_Python_For_Datascience_Execution_Control">
+      〈 <span class="u-margin-right-tiny"></span> Lesson 7 - Execution Control
+    </a>
+  
+
+  
+    
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/lessons/Lesson9_Python_For_Data_Science_Data_Science_Libraries">
+      Lesson 9 - Data Science Libraries <span class="u-margin-right-tiny"></span> 〉
+    </a>
+  
+</nav>
+
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Search the site</title>
+  <meta name="description" content="Python For Data Science Supplemental Book for Pearson Video">
+
+  <link rel="canonical" href="/YOUR%20URL//search">
+  <link rel="alternate" type="application/rss+xml" title="Python for Data Science" href="/YOUR%20URL//feed.xml">
+
+  <meta property="og:url"         content="/YOUR%20URL//search" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Search the site" />
+<meta property="og:description" content="Python For Data Science Supplemental Book for Pearson Video" />
+<meta property="og:image"       content="" />
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage":
+    "YOUR URL//search",
+  "headline":
+    "Search the site",
+  "datePublished":
+    "2019-03-17T15:28:48-07:00",
+  "dateModified":
+    "2019-03-17T15:28:48-07:00",
+  "description":
+    "Python For Data Science Supplemental Book for Pearson Video",
+  "author": {
+    "@type": "Person",
+    "name": "Pragmatic AI Labs"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "YOUR URL/",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "YOUR URL/",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css ">
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    CommonHTML: {
+        linebreaks: {
+            automatic: true,
+        },
+    },
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML' async></script>
+
+  <!-- DOM updating function -->
+  <script>
+const runWhenDOMLoaded = cb => {
+  if (document.readyState != 'loading') {
+    cb()
+  } else if (document.addEventListener) {
+    document.addEventListener('DOMContentLoaded', cb)
+  } else {
+    document.attachEvent('onreadystatechange', function() {
+      if (document.readyState == 'complete') cb()
+    })
+  }
+}
+
+// Helper function to init things quickly
+initFunction = function(myfunc) {
+  runWhenDOMLoaded(myfunc);
+  document.addEventListener('turbolinks:load', myfunc);
+};
+</script>
+
+  <!-- Define some javascript variables that will be useful in other javascript -->
+  <script>
+    const site_basename = '/';
+  </script>
+
+  <!-- Add AnchorJS to let headers be linked -->
+  <script src="/assets/js/anchor.min.js"  type="text/javascript"></script>
+  <script>
+
+initFunction(function () {
+    anchors.add("main h1, main h2, main h3, main h4")
+});
+
+</script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="/assets/js/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  <script src="https://unpkg.com/nbinteract-core" async></script>
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+<script type="text/x-thebe-config">
+    {
+      requestKernel: true,
+      binderOptions: {
+        repo: 'YOUR-ORG/YOUR-REPO',
+        ref: 'master',
+      },
+      kernelOptions: {
+        name: 'python3',
+      }
+    }
+</script>
+<script src="https://unpkg.com/thebelab@0.3.3/lib/index.js"></script>
+<script>
+    /**
+     * Add attributes to Thebelab blocks
+     */
+
+    const initThebelab = () => {
+        const addThebelabToCodeCells = () => {
+            console.log("Adding thebelab to code cells...");
+            // If Thebelab hasn't loaded, wait a bit and try again. This
+            // happens because we load ClipboardJS asynchronously.
+            if (window.thebelab === undefined) {
+                setTimeout(addThebelabToCodeCells, 250)
+            return
+            }
+
+            // If we already detect a Thebelab cell, don't re-run
+            if (document.querySelectorAll('div.thebelab-cell').length > 0) {
+                return;
+            }
+
+            // Find all code cells, replace with Thebelab interactive code cells
+            const codeCells = document.querySelectorAll('.input_area pre')
+            codeCells.forEach((codeCell, index) => {
+                const id = codeCellId(index)
+                codeCell.setAttribute('data-executable', 'true')
+
+                // Figure out the language it uses and add this too
+                var parentDiv = codeCell.parentElement.parentElement;
+                var arrayLength = parentDiv.classList.length;
+                for (var ii = 0; ii < arrayLength; ii++) {
+                    var parts = parentDiv.classList[ii].split('language-');
+                    if (parts.length === 2) {
+                        // If found, assign dataLanguage and break the loop
+                        var dataLanguage = parts[1];
+                        break;
+                    }
+                }
+                codeCell.setAttribute('data-language', dataLanguage)
+
+                // If the code cell is hidden, show it
+                var inputCheckbox = document.querySelector(`input#hidebtn${codeCell.id}`);
+                if (inputCheckbox !== null) {
+                    setCodeCellVisibility(inputCheckbox, 'visible');
+                }
+            });
+
+            // Remove the event listener from the page so keyboard press doesn't
+            // Change page
+            document.removeEventListener('keydown', initPageNav)
+            keyboardListener = false;
+
+            // Init thebelab
+            thebelab.bootstrap();
+
+            // Remove copy buttons since they won't work anymore
+            const copyButtons = document.querySelectorAll('.copybtn')
+            copyButtons.forEach((copyButton, index) => {
+                copyButton.remove();
+            });
+
+            // Remove outputs since they'll be stale
+            const outputs = document.querySelectorAll('.output *, .output')
+            outputs.forEach((output, index) => {
+                output.remove();
+            });
+        }
+
+        // Add event listener for the function to modify code cells
+        const thebelabButton = document.getElementById('interact-button-thebelab');
+        if (thebelabButton === null) {
+            setTimeout(initThebelab, 250)
+        return
+        };
+        thebelabButton.addEventListener('click', addThebelabToCodeCells);
+    }
+
+    // Initialize Thebelab
+    initFunction(initThebelab);
+</script>
+
+
+  <!-- Google analytics -->
+  <script src="/assets/js/ga.js" async></script>
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" async></script>
+
+  <!-- Load JS that depends on site variables -->
+  <script>
+/**
+ * Set up copy/paste for code blocks
+ */
+const codeCellId = index => `codecell${index}`
+
+const clipboardButton = id =>
+  `<a class="btn copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#${id}">
+    <img src="/assets/images/copy-button.svg" alt="Copy to clipboard">
+  </a>`
+
+// Clears selected text since ClipboardJS will select the text when copying
+const clearSelection = () => {
+  if (window.getSelection) {
+    window.getSelection().removeAllRanges()
+  } else if (document.selection) {
+    document.selection.empty()
+  }
+}
+
+// Changes tooltip text for two seconds, then changes it back
+const temporarilyChangeTooltip = (el, newText) => {
+  const oldText = el.getAttribute('data-tooltip')
+  el.setAttribute('data-tooltip', newText)
+  setTimeout(() => el.setAttribute('data-tooltip', oldText), 2000)
+}
+
+const addCopyButtonToCodeCells = () => {
+  // If ClipboardJS hasn't loaded, wait a bit and try again. This
+  // happens because we load ClipboardJS asynchronously.
+  if (window.ClipboardJS === undefined) {
+    setTimeout(addCopyButtonToCodeCells, 250)
+    return
+  }
+
+  const codeCells = document.querySelectorAll('div.highlighter-rouge:not(.output) pre')
+  codeCells.forEach((codeCell, index) => {
+    const id = codeCellId(index)
+    codeCell.setAttribute('id', id)
+    if (document.querySelector(`pre#${id} + a`) == null) {
+      codeCell.insertAdjacentHTML('afterend', clipboardButton(id));
+    }
+  })
+
+  const clipboard = new ClipboardJS('.copybtn')
+  clipboard.on('success', event => {
+    clearSelection()
+    temporarilyChangeTooltip(event.trigger, 'Copied!')
+  })
+
+  clipboard.on('error', event => {
+    temporarilyChangeTooltip(event.trigger, 'Failed to copy')
+  })
+
+  // Get rid of clipboard before the next page visit to avoid memory leak
+  document.addEventListener('turbolinks:before-visit', () =>
+    clipboard.destroy()
+  )
+}
+
+initFunction(addCopyButtonToCodeCells);
+</script>
+
+  <!-- Hide cell code -->
+  
+<script>
+/**
+Add buttons to hide code cells
+*/
+
+
+var setCodeCellVisibility = function(inputField, kind) {
+    // Update the image and class for hidden
+    var id = inputField.getAttribute('data-id');
+    var codeCell = document.querySelector(`#${id}`);
+
+    if (kind === "visible") {
+        codeCell.classList.remove('hidden');
+        inputField.checked = true;
+    } else {
+        codeCell.classList.add('hidden');
+        inputField.checked = false;
+    }
+}
+
+var toggleCodeCellVisibility = function (event) {
+    // The label is clicked, and now we decide what to do based on the input field's clicked status
+    if (event.target.tagName === "LABEL") {
+        var inputField = event.target.previousElementSibling;
+    } else {
+        // It is the span inside the target
+        var inputField = event.target.parentElement.previousElementSibling;
+    }
+
+    if (inputField.checked === true) {
+        setCodeCellVisibility(inputField, "visible");
+    } else {
+        setCodeCellVisibility(inputField, "hidden");
+    }
+}
+
+
+// Button constructor
+const hideCodeButton = id => `<input class="hidebtn" type="checkbox" id="hidebtn${id}" data-id="${id}"><label title="Toggle cell" for="hidebtn${id}" class="plusminus"><span class="pm_h"></span><span class="pm_v"></span></label>`
+
+var addHideButton = function () {
+  // If a hide button is already added, don't add another
+  if (document.querySelector('div.hidecode input') !== null) {
+      return;
+  }
+
+  // Find the input cells and add a hide button
+  document.querySelectorAll('div.input_area div.highlight').forEach(function (item, index) {
+    if (!item.parentElement.classList.contains("hidecode")) {
+        // Skip the cell if it doesn't have a hidecode class
+        return;
+    }
+
+    const id = codeCellId(index)
+    item.setAttribute('id', id);
+    item.insertAdjacentHTML('afterend', hideCodeButton(id))
+
+    // Set up the visibility toggle
+    hideLink = document.querySelector(`#${id} + input + label`);
+    hideLink.addEventListener('click', toggleCodeCellVisibility)
+  });
+}
+
+
+// Initialize the hide buttos
+var initHiddenCells = function () {
+    // Add hide buttons to the cells
+    addHideButton();
+
+    // Toggle the code cells that should be hidden
+    document.querySelectorAll('div.hidecode input').forEach(function (item) {
+        setCodeCellVisibility(item, 'hidden');
+        item.checked = true;
+    })
+}
+
+initFunction(initHiddenCells);
+
+</script>
+
+
+  <!-- Load custom website scripts -->
+  <script src="/assets/js/scripts.js" async></script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  
+
+  <!-- Lunr search code - will only be executed on the /search page -->
+  <script src="/assets/js/lunr/lunr.min.js" type="text/javascript"></script>
+  <script>var initQuery = function() {
+  // See if we have a search box
+  var searchInput = document.querySelector('input#lunr_search');
+  if (searchInput === null) {
+    return;
+  }
+
+  // Function to parse our lunr cache
+  var idx = lunr(function () {
+    this.field('title')
+    this.field('excerpt')
+    this.field('categories')
+    this.field('tags')
+    this.ref('id')
+
+    this.pipeline.remove(lunr.trimmer)
+
+    for (var item in store) {
+      this.add({
+        title: store[item].title,
+        excerpt: store[item].excerpt,
+        categories: store[item].categories,
+        tags: store[item].tags,
+        id: item
+      })
+    }
+  });
+
+  // Run search upon keyup
+  searchInput.addEventListener('keyup', function () {
+    var resultdiv = document.querySelector('#results');
+    var query = document.querySelector("input#lunr_search").value.toLowerCase();
+    var result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+      // Empty the results div
+      while (resultdiv.firstChild) {
+        resultdiv.removeChild(resultdiv.firstChild);
+      }
+
+    resultdiv.insertAdjacentHTML('afterbegin', '<p class="results__found">'+result.length+' Result(s) found</p>');
+    for (var item in result) {
+      var ref = result[item].ref;
+      if(store[ref].teaser){
+        var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<div class="archive__item-teaser">'+
+                '<img src="'+store[ref].teaser+'" alt="">'+
+              '</div>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      else{
+    	  var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      resultdiv.insertAdjacentHTML('beforeend', searchitem);
+    }
+  });
+};
+
+initFunction(initQuery);
+</script>
+</head>
+
+  <body>
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <a href="https://jupyter.org/jupyter-book/"><img src="/images/logo.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">Python for Data Science</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/intro.html"
+        >
+          
+          Home
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="https://github.com/paiml/python_for_datascience"
+        >
+          
+          GitHub repository
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+        <li class="c-sidebar__chapter"><a class="c-sidebar__entry" href="/search.html">Search</a></li>
+        
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">Python for Data Science Video Supplement</li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/lessons/lessons.html"
+        >
+          
+          Lessons
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson2_Python_For_Data_Science_Introduction_to_Colab.html"
+                >
+                  
+                  Lesson 2 - Introduction to Colab
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson3_Python_For_Data_Science_Basics.html"
+                >
+                  
+                  Lesson 3 - Basics
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson4_Python_For_Data_Science_Strings.html"
+                >
+                  
+                  Lesson 4 - Strings
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson5_Python_For_Data_Science_Python_Data_structure.html"
+                >
+                  
+                  Lesson 5 - Data Structures
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson6_Python_For_Data_Science_Data_Conversion_Recipes.html"
+                >
+                  
+                  Lesson 6 - Data Conversion Recipes
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson7_Python_For_Datascience_Execution_Control.html"
+                >
+                  
+                  Lesson 7 - Execution Control
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson8_Python_For_Data_Science_Functions.html"
+                >
+                  
+                  Lesson 8 - Functions
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson9_Python_For_Data_Science_Data_Science_Libraries.html"
+                >
+                  
+                  Lesson 9 - Data Science Libraries
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson10_Python_For_Data_Science_Functional_Programming.html"
+                >
+                  
+                  Lesson 10 - Functional Programming
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson11_Python_For_Data_Science_Lazy_Evaluation.html"
+                >
+                  
+                  Lesson 11 - Lazy Evaluation
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson12_Python_For_Data_Science_Pattern_Matching.html"
+                >
+                  
+                  Lesson 12 - Pattern Matching
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson13_Python_For_Data_Science_Sorting.html"
+                >
+                  
+                  Lesson 13 - Sorting
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson14_Python_For_Data_Science_I_O.html"
+                >
+                  
+                  Lesson 14 - I/O
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/lessons/Lesson15_Python_For_Data_Science_CaseStudies.html"
+                >
+                  
+                  Lesson 15 - CaseStudies
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">A product of <a href="https://paiml.com">Pragmatic AI Labs</a></p>
+</nav>
+
+      
+      <main class="c-textbook__page" tabindex="-1">
+          <div class="o-wrapper">
+            <div class="c-sidebar-toggle">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <button
+    id="js-sidebar-toggle"
+    class="hamburger hamburger--arrowalt is-active"
+  >
+    <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+    </span>
+    <span class="c-sidebar-toggle__label">Toggle Sidebar</span>
+  </button>
+</div>
+
+            
+
+            <div class="c-textbook__content">
+              <div class="search-content__inner-wrap">
+    <input type="text" id="lunr_search" class="search-input" tabindex="-1" placeholder="'Enter your search term...''" />
+    <div id="results" class="results"></div>
+</div>
+
+<script>
+    // Add the lunr store since we will now search it
+    var store = [{
+        "title": "Features and customization",
+        
+        "excerpt":
+            "Features This is a short demonstration textbook to show the general layout / style of textbooks built with Jupyter and Jekyll. The markdown files for this page (and others in the textbook) is generated from the notebooks with the scripts/generate_textbook.py script, which is called when you run make book. The content for the book is contained in a folder in the site’s repository called content/. It has a combination of markdown and Jupyter notebooks. This content is rendered into the textbook that you see here! To begin, click on one of the chapter sections in the sidebar to the left....",
+        "categories": [],
+        "tags": [],
+        "url": "YOUR%20URL/features/features.html",
+        "teaser":null},{
+        "title": "Markdown files",
+        
+        "excerpt":
+            "Creating book content The two kinds of files that contain course content are: Jupyter Notebooks Markdown files Each are contained in the content/ folder and referenced from _data/toc.yml. If the file is markdown, it will be copied over with front-matter YAML added so that Jekyll can parse it Sidebars with Jekyll You may notice that there’s a sidebar to the right (if your screen is wide enough). These are automatically generated from the headers that are present in your page. The sidebar will automatically capture all 2nd and 3rd level section headers. The best way to designate these headers is...",
+        "categories": [],
+        "tags": [],
+        "url": "YOUR%20URL/features/markdown.html",
+        "teaser":null},{
+        "title": "Jupyter notebooks",
+        
+        "excerpt":
+            "Content with notebooks You can also create content with Jupyter Notebooks. The content for the current page is contained in a Jupyter Notebook in the notebooks/ folder of the repository. This means that we can include code blocks and their outputs, and export them to Jekyll markdown. You can find the original notebook for this page at this address Markdown + notebooks As it is markdown, you can embed images, HTML, etc into your posts! You an also $add_{math}$ and or But make sure you \\$Escape \\$your \\$dollar signs \\$you want to keep! Code blocks and image outputs Textbooks with...",
+        "categories": [],
+        "tags": [],
+        "url": "YOUR%20URL/features/notebooks.html",
+        "teaser":null},{
+        "title": "Home",
+        
+        "excerpt":
+            "These notebooks and tutorials were produced by Pragmatic AI Labs. You can continue learning about these topics by: Buying a copy of Pragmatic AI: An Introduction to Cloud-Based Machine Learning Watching 8+ Hour Video Series on Safari: Essential Machine Learning and AI with Python and Jupyter Notebook Reading online with Safari: Pragmatic AI: An Introduction to Cloud-Based Machine Learning, First Edition Watching video Essential Machine Learning and AI with Python and Jupyter Notebook-Video-SafariOnline on Safari Books Online. Watching video AWS Certified Machine Learning-Speciality Watching learning path Essential Machine Learning and Pragmatic AI Purchasing video Essential Machine Learning and AI with...",
+        "categories": [],
+        "tags": [],
+        "url": "YOUR%20URL/intro.html",
+        "teaser":null},{
+        "title": "Lesson 10 - Functional Programming",
+        
+        "excerpt":
+            "Lesson 10: Functional Programming Understand functional programming Depending on state wind = 'Northeast' def describe_the_wind(): return f'The wind blows from the {wind}' describe_the_wind() 'The wind blows from the Northeast' wind = 'Southeast' describe_the_wind() 'The wind blows from the Southeast' Functional approach def describe_the_wind(wind): return f'The wind blows from the {wind}' describe_the_wind('Northeast') 'The wind blows from the Northeast' describe_the_wind('Southeast') 'The wind blows from the Southeast' Changing state WINDS = ['Northeast', 'Northwest', 'Southeast', 'Southwest'] WIND = WINDS[0] def change_wind(): global WIND WIND = WINDS[(WINDS.index(WIND) + 1)%3] for _ in WINDS: print(WIND) change_wind() Northeast Northwest Southeast Northeast Functional approach def change_wind(wind_index): winds =...",
+        "categories": [],
+        "tags": [],
+        "url": "YOUR%20URL/lessons/Lesson10_Python_For_Data_Science_Functional_Programming.html",
+        "teaser":null},{
+        "title": "Lesson 11 - Lazy Evaluation",
+        
+        "excerpt":
+            "Lesson 11: Lazy Evaluation 11.1 Use generators Lists and Generators l_ten = [x for x in range(10)] g_ten = (x for x in range(10)) print(f\"l_ten is a {type(l_ten)} and prints as: {l_ten}\") print(f\"g_ten is a {type(g_ten)} and prints as: {g_ten}\") l_ten is a &lt;class 'list'&gt; and prints as: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] g_ten is a &lt;class 'generator'&gt; and prints as: &lt;generator object &lt;genexpr&gt; at 0x7fd2e812d830&gt; Next next(g_ten) --------------------------------------------------------------------------- StopIteration Traceback (most recent call last) &lt;ipython-input-91-657d67eaf52c&gt; in &lt;module&gt;() ----&gt; 1 next(g_ten) StopIteration: Iteration for x in g_ten: print(x) 0 1 2 3 4 5 6...",
+        "categories": [],
+        "tags": [],
+        "url": "YOUR%20URL/lessons/Lesson11_Python_For_Data_Science_Lazy_Evaluation.html",
+        "teaser":null},{
+        "title": "Lesson 12 - Pattern Matching",
+        
+        "excerpt":
+            "Lesson 12: Pattern Matching 12.1 Perform simple pattern matching \"sol\" in \"absolute\" True 'absolute'.startswith('ab') True 'absolute'.endswith('lute') True 'absolute'.find('sol') 2 12.2 Use regular expressions # TDL SDL LN text = ''' Ahab: ahab@pequod.com Peleg: peleg@pequod.com Ishmael: ishmael@pequod.com Herman: herman@acushnet.io Pollard: pollard@essex.me ''' Simple matching import re re.match(\"Ahab:\", text ) &lt;_sre.SRE_Match object; span=(0, 5), match='Ahab:'&gt; if re.match(\"Ahab:\", text ): print(\"We found Ahab\") We found Ahab if re.match(\"Peleg\", text): print(\"We found Peleg\") else: print(\"No Peleg found!\") No Peleg found! Search if re.search(\"Peleg\", text): print(\"We found Peleg\") else: print(\"No Peleg found!\") We found Peleg Character sets re.search(\"[A-Z][a-z]\", text) &lt;_sre.SRE_Match object; span=(0, 2), match='Ah'&gt; re.search(\"[A-Za-z]+\",...",
+        "categories": [],
+        "tags": [],
+        "url": "YOUR%20URL/lessons/Lesson12_Python_For_Data_Science_Pattern_Matching.html",
+        "teaser":null},{
+        "title": "Lesson 13 - Sorting",
+        
+        "excerpt":
+            "Lesson 13 Sorting 13.1 Sort in python Understanding Sorting Python has powerful built-in sorting World Food Facts DataSet Original Data Source: https://www.kaggle.com/openfoodfacts/world-food-facts Modified Source: https://www.kaggle.com/lwodarzek/nutrition-table-clustering/output Ingest import pandas as pd df = pd.read_csv( \"https://raw.githubusercontent.com/noahgift/food/master/data/features.en.openfoodfacts.org.products.csv\") df.drop([\"Unnamed: 0\", \"exceeded\", \"g_sum\", \"energy_100g\"], axis=1, inplace=True) #drop two rows we don't need df = df.drop(df.index[[1,11877]]) #drop outlier df.rename(index=str, columns={\"reconstructed_energy\": \"energy_100g\"}, inplace=True) df.head() fat_100g carbohydrates_100g sugars_100g proteins_100g salt_100g energy_100g product 0 28.57 64.29 14.29 3.57 0.00000 2267.85 Banana Chips Sweetened (Whole) 2 57.14 17.86 3.57 17.86 1.22428 2835.70 Organic Salted Nut Mix 3 18.75 57.81 15.62 14.06 0.13970 1953.04 Organic Muesli 4 36.67 36.67 3.33 16.67...",
+        "categories": [],
+        "tags": [],
+        "url": "YOUR%20URL/lessons/Lesson13_Python_For_Data_Science_Sorting.html",
+        "teaser":null},{
+        "title": "Lesson 14 - I/O",
+        
+        "excerpt":
+            "Lesson 14: I/O 14.1 Reading and Writing Files and Serializing Data in Python Working with Files Writing to a file with ‘context’ with open(\"food.txt\", \"w\") as workfile: workfile.write(\"whey protein\\n\") workfile.write(\"cliff bar\") !cat food.txt whey protein cliff bar Reading a file with ‘context’ with open(\"food.txt\", \"r\") as workfile: #print(workfile.readlines()) print(workfile.read()) whey protein cliff bar Serialization Techniques Ingest import pandas as pd df = pd.read_csv( \"https://raw.githubusercontent.com/noahgift/food/master/data/features.en.openfoodfacts.org.products.csv\") df.drop([\"Unnamed: 0\", \"exceeded\", \"g_sum\", \"energy_100g\"], axis=1, inplace=True) #drop two rows we don't need df = df.drop(df.index[[1,11877]]) #drop outlier df.rename(index=str, columns={\"reconstructed_energy\": \"energy_100g\"}, inplace=True) df.head() fat_100g carbohydrates_100g sugars_100g proteins_100g salt_100g energy_100g product 0 28.57 64.29 14.29 3.57 0.00000...",
+        "categories": [],
+        "tags": [],
+        "url": "YOUR%20URL/lessons/Lesson14_Python_For_Data_Science_I_O.html",
+        "teaser":null},{
+        "title": "Lesson 15 - CaseStudies",
+        
+        "excerpt":
+            "Lesson 16: Case Studies 16.4 Ludwig (Open Source AutoML) Github Project URL: https://uber.github.io/ludwig/ Install Ludwig !pip install --upgrade numpy #must restart colab runtime !pip install --upgrade scikit-image !pip install -q ludwig !python -m spacy download en Requirement already up-to-date: numpy in /usr/local/lib/python3.6/dist-packages (1.16.1) Collecting scikit-image \u001b[?25l Downloading https://files.pythonhosted.org/packages/24/06/d560630eb9e36d90d69fe57d9ff762d8f501664ce478b8a0ae132b3c3008/scikit_image-0.14.2-cp36-cp36m-manylinux1_x86_64.whl (25.3MB) \u001b[K 100% |████████████████████████████████| 25.3MB 1.9MB/s \u001b[?25hCollecting pillow&gt;=4.3.0 (from scikit-image) \u001b[?25l Downloading https://files.pythonhosted.org/packages/85/5e/e91792f198bbc5a0d7d3055ad552bc4062942d27eaf75c3e2783cf64eae5/Pillow-5.4.1-cp36-cp36m-manylinux1_x86_64.whl (2.0MB) \u001b[K 100% |████████████████████████████████| 2.0MB 18.3MB/s \u001b[?25hRequirement already satisfied, skipping upgrade: scipy&gt;=0.17.0 in /usr/local/lib/python3.6/dist-packages (from scikit-image) (1.1.0) Requirement already satisfied, skipping upgrade: matplotlib&gt;=2.0.0 in /usr/local/lib/python3.6/dist-packages (from scikit-image) (3.0.2) Requirement already satisfied, skipping upgrade: six&gt;=1.10.0 in /usr/local/lib/python3.6/dist-packages (from scikit-image) (1.11.0)...",
+        "categories": [],
+        "tags": [],
+        "url": "YOUR%20URL/lessons/Lesson15_Python_For_Data_Science_CaseStudies.html",
+        "teaser":null},{
+        "title": "Lesson 2 - Introduction to Colab",
+        
+        "excerpt":
+            "Lesson 2 Introduction to Colab Pragmatic AI Labs This notebook was produced by Pragmatic AI Labs. You can continue learning about these topics by: Buying a copy of Pragmatic AI: An Introduction to Cloud-Based Machine Learning Reading an online copy of Pragmatic AI:Pragmatic AI: An Introduction to Cloud-Based Machine Learning Watching video Essential Machine Learning and AI with Python and Jupyter Notebook-Video-SafariOnline on Safari Books Online. Watching video AWS Certified Machine Learning-Speciality Purchasing video Essential Machine Learning and AI with Python and Jupyter Notebook- Purchase Video Viewing more content at noahgift.com 2.1 First Colab Document What is Colab? Hosted Jupyter...",
+        "categories": [],
+        "tags": [],
+        "url": "YOUR%20URL/lessons/Lesson2_Python_For_Data_Science_Introduction_to_Colab.html",
+        "teaser":null},{
+        "title": "Lesson 3 - Basics",
+        
+        "excerpt":
+            "Lesson 3 Basics Pragmatic AI Labs This notebook was produced by Pragmatic AI Labs. You can continue learning about these topics by: Buying a copy of Pragmatic AI: An Introduction to Cloud-Based Machine Learning Reading an online copy of Pragmatic AI:Pragmatic AI: An Introduction to Cloud-Based Machine Learning Watching video Essential Machine Learning and AI with Python and Jupyter Notebook-Video-SafariOnline on Safari Books Online. Watching video AWS Certified Machine Learning-Speciality Purchasing video Essential Machine Learning and AI with Python and Jupyter Notebook- Purchase Video Viewing more content at noahgift.com 3.1 Write procedural code ### Procedural Statements Procedural statements are literally...",
+        "categories": [],
+        "tags": [],
+        "url": "YOUR%20URL/lessons/Lesson3_Python_For_Data_Science_Basics.html",
+        "teaser":null},{
+        "title": "Lesson 4 - Strings",
+        
+        "excerpt":
+            "Lesson 4 Strings 4.1 Use string methods Case Manipulation captain = \"Patrick Tayluer\" captain.capitalize() 'Patrick tayluer' captain.lower() 'patrick tayluer' captain.swapcase() 'pATRICK tAYLUER' captain.title() 'Patrick Tayluer' captain.upper() 'PATRICK TAYLUER' Remove Whitespace ship = \" The Yankee Clipper \" ship ship.strip() ship.rstrip() ship.lstrip() Content Manipulation port = \"Boston\" port.center(12, '*') port.ljust(12) port.rjust(12) for port_city in ['Liverpool', 'Boston', 'New York', 'Philadelphia']: print(port_city.rjust(12)) \"FILADELFIA\".replace(\"F\", \"PH\") '-5'.zfill(3) Spitting and Joining words_string = \"Here,Are,Some,Words\" words_string words = words_string.split(',') words ' '.join(words) multiline = \"Sometimes we are given\\na multiline document\\nas a single string\" multiline for line in multiline.splitlines(): print(line) Interrogation river = 'Mississippi' river.count('s') river.index('pp') river.index('r') river.find('r')...",
+        "categories": [],
+        "tags": [],
+        "url": "YOUR%20URL/lessons/Lesson4_Python_For_Data_Science_Strings.html",
+        "teaser":null},{
+        "title": "Lesson 5 - Data Structures",
+        
+        "excerpt":
+            "Lesson 5: Python Data Structures 5.1 Use lists and tuples Sequences Lists, tuples, and strings are all Python sequences, and share many of the same methods. Creating an empty list empty = [] empty [] Using square brackets with initial values numbers = [1, 2, 3] numbers [1, 2, 3] Casting an iterable Any iterable can be cast to a list numbers = list(range(10)) numbers [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] Creating using multiplication num_players = 10 scores = [0] * num_players scores [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] Mixing data types...",
+        "categories": [],
+        "tags": [],
+        "url": "YOUR%20URL/lessons/Lesson5_Python_For_Data_Science_Python_Data_structure.html",
+        "teaser":null},{
+        "title": "Lesson 6 - Data Conversion Recipes",
+        
+        "excerpt":
+            "Lesson 6: Data Conversion Recipes 6.1 Convert lists to dicts, and dicts to lists Converting Lists to Dictionaries Create basic dictionary d = dict( [('one', 1), ('two', 2), ('three', 3)] ) d {'one': 1, 'three': 3, 'two': 2} Zip two lists instruments = [ 'violin', 'lute', 'banjo', 'accordian'] players = [ 'Anne-Sophie Mutter', 'Julian Bream', 'Noam Pikelny', 'Astor Pantaleón Piazzolla'] d = dict(zip(instruments, players)) d {'accordian': 'Astor Pantaleón Piazzolla', 'banjo': 'Noam Pikelny', 'lute': 'Julian Bream', 'violin': 'Anne-Sophie Mutter'} From keys racers = ['Tom', 'Bill', 'Will', 'Jill'] start_distance = 0 d = dict.fromkeys(racers, start_distance) d {'Bill': 0, 'Jill': 0, 'Tom': 0,...",
+        "categories": [],
+        "tags": [],
+        "url": "YOUR%20URL/lessons/Lesson6_Python_For_Data_Science_Data_Conversion_Recipes.html",
+        "teaser":null},{
+        "title": "Lesson 7 - Execution Control",
+        
+        "excerpt":
+            "Lesson 7 Execution Control 7.1 Learn to loop with for loops Using Loops The for loop is one of the most fundamental control structures in Python. One common pattern is to use the range function to generate a range of values, then to iterate on them. Using a Simple For Loop built in range() function creates an iterable res = range(3) res range(0, 3) for i in range(1,6): print(i) 1 2 3 4 5 For loop over an iterable (list) Another common pattern is to iterate on a list (or any iterable) friends = [\"Moby\", \"Ahab\", \"Stubb\"] for friend in...",
+        "categories": [],
+        "tags": [],
+        "url": "YOUR%20URL/lessons/Lesson7_Python_For_Datascience_Execution_Control.html",
+        "teaser":null},{
+        "title": "Lesson 8 - Functions",
+        
+        "excerpt":
+            "Lesson 8: Functions 8.1 Write and use functions Building blocks of distributed computing def work(input): \"\"\"Processes input and returns output\"\"\" output = input + 1 return output work(1) 2 Key Components of Functions Docstrings def docstring(): \"\"\"Triple Quoted documentation!\"\"\" docstring? Arguments: Keyword and Positional Positional: Order based processing Keyword: Key/Value processing Positional def positional(first,second,third): \"\"\"Processes arguments to function in order\"\"\" print(f\"Processed first {first}\") print(f\"Processed second {second}\") print(f\"Processed third {third}\") positional(1, 2, 3) Processed first 1 Processed second 2 Processed third 3 positional(2, 3, 1) Processed first 2 Processed second 3 Processed third 1 Keyword def keyword(first=1, second=2, third=3): \"\"\"Processed in...",
+        "categories": [],
+        "tags": [],
+        "url": "YOUR%20URL/lessons/Lesson8_Python_For_Data_Science_Functions.html",
+        "teaser":null},{
+        "title": "Lesson 9 - Data Science Libraries",
+        
+        "excerpt":
+            "Lesson 9 Data Science Libraries Setup Tasks Install Latest Plotly import plotly plotly.__version__ '3.6.1' !pip uninstall -q -y plotly !pip install plotly==3.6.0 !pip install -q --upgrade cufflinks Collecting plotly==3.6.0 \u001b[?25l Downloading https://files.pythonhosted.org/packages/4d/59/63a5a05532a67b1c49283e8b7885bbe55454a1eef8443e97a7479bb9964b/plotly-3.6.0.tar.gz (31.1MB) \u001b[K 100% |████████████████████████████████| 31.1MB 999kB/s \u001b[?25hRequirement already satisfied: decorator&gt;=4.0.6 in /usr/local/lib/python3.6/dist-packages (from plotly==3.6.0) (4.3.2) Requirement already satisfied: nbformat&gt;=4.2 in /usr/local/lib/python3.6/dist-packages (from plotly==3.6.0) (4.4.0) Requirement already satisfied: pytz in /usr/local/lib/python3.6/dist-packages (from plotly==3.6.0) (2018.9) Requirement already satisfied: requests in /usr/local/lib/python3.6/dist-packages (from plotly==3.6.0) (2.18.4) Collecting retrying&gt;=1.3.3 (from plotly==3.6.0) Downloading https://files.pythonhosted.org/packages/44/ef/beae4b4ef80902f22e3af073397f079c96969c69b2c7d52a57ea9ae61c9d/retrying-1.3.3.tar.gz Requirement already satisfied: six in /usr/local/lib/python3.6/dist-packages (from plotly==3.6.0) (1.11.0) Requirement already satisfied: traitlets&gt;=4.1 in /usr/local/lib/python3.6/dist-packages (from nbformat&gt;=4.2-&gt;plotly==3.6.0) (4.3.2) Requirement already...",
+        "categories": [],
+        "tags": [],
+        "url": "YOUR%20URL/lessons/Lesson9_Python_For_Data_Science_Data_Science_Libraries.html",
+        "teaser":null},{
+        "title": "Lessons",
+        
+        "excerpt":
+            "Python for Data Science Lessons These notebooks and tutorials were produced by Pragmatic AI Labs. You can continue learning about these topics by: Buying a copy of Pragmatic AI: An Introduction to Cloud-Based Machine Learning Watching 8+ Hour Video Series on Safari: Essential Machine Learning and AI with Python and Jupyter Notebook Reading online with Safari: Pragmatic AI: An Introduction to Cloud-Based Machine Learning, First Edition Watching video Essential Machine Learning and AI with Python and Jupyter Notebook-Video-SafariOnline on Safari Books Online. Watching video AWS Certified Machine Learning-Speciality Watching learning path Essential Machine Learning and Pragmatic AI Purchasing video Essential...",
+        "categories": [],
+        "tags": [],
+        "url": "YOUR%20URL/lessons/lessons.html",
+        "teaser":null},]
+</script>
+              <nav class="c-page__nav">
+  
+
+  
+</nav>
+
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+  </body>
+</html>
