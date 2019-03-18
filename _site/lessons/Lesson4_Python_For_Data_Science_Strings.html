@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
   
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119562796-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-119562796-2');
+</script>
+
 
   <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
-
+  <meta name="google-site-verification" content="bkWyRPtr7Sjv5fIJKDNmPwlI_Ue219Nafc5bsmnvX3o" />
   <title>Lesson 4 - Strings</title>
   <meta name="description" content="">
 
-  <link rel="canonical" href="/YOUR%20URL//lessons/Lesson4_Python_For_Data_Science_Strings.html">
-  <link rel="alternate" type="application/rss+xml" title="Python for Data Science" href="/YOUR%20URL//feed.xml">
+  <link rel="canonical" href="https://paiml.github.io/python_for_datascience/lessons/Lesson4_Python_For_Data_Science_Strings.html">
+  <link rel="alternate" type="application/rss+xml" title="Python for Data Science" href="https://paiml.github.io/python_for_datascience/feed.xml">
 
-  <meta property="og:url"         content="/YOUR%20URL//lessons/Lesson4_Python_For_Data_Science_Strings.html" />
+  <meta property="og:url"         content="https://paiml.github.io/python_for_datascience/lessons/Lesson4_Python_For_Data_Science_Strings.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Lesson 4 - Strings" />
 <meta property="og:description" content="" />
@@ -25,13 +35,13 @@
   "@context": "http://schema.org",
   "@type": "NewsArticle",
   "mainEntityOfPage":
-    "YOUR URL//lessons/Lesson4_Python_For_Data_Science_Strings.html",
+    "https://paiml.github.io/python_for_datascience/lessons/Lesson4_Python_For_Data_Science_Strings.html",
   "headline":
     "Lesson 4 - Strings",
   "datePublished":
-    "2019-03-17T15:28:48-07:00",
+    "2019-03-17T17:33:21-07:00",
   "dateModified":
-    "2019-03-17T15:28:48-07:00",
+    "2019-03-17T17:33:21-07:00",
   "description":
     "",
   "author": {
@@ -43,21 +53,21 @@
     "name": "Data 100 at UC Berkeley",
     "logo": {
       "@type": "ImageObject",
-      "url": "YOUR URL/",
+      "url": "https://paiml.github.io/python_for_datascience",
       "width": 60,
       "height": 60
     }
   },
   "image": {
     "@type": "ImageObject",
-    "url": "YOUR URL/",
+    "url": "https://paiml.github.io/python_for_datascience",
     "height": 60,
     "width": 60
   }
 }
 
   </script>
-  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="stylesheet" href="/python_for_datascience/assets/css/styles.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css ">
   <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
@@ -76,7 +86,7 @@
   <meta name="theme-color" content="#233947">
 
   <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="/images/logo/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="/python_for_datascience/images/logo/favicon.ico">
 
   <!-- MathJax Config -->
   <!-- Allow inline math using $ and automatically break long math lines -->
@@ -120,11 +130,11 @@ initFunction = function(myfunc) {
 
   <!-- Define some javascript variables that will be useful in other javascript -->
   <script>
-    const site_basename = '/';
+    const site_basename = '/python_for_datascience';
   </script>
 
   <!-- Add AnchorJS to let headers be linked -->
-  <script src="/assets/js/anchor.min.js"  type="text/javascript"></script>
+  <script src="/python_for_datascience/assets/js/anchor.min.js"  type="text/javascript"></script>
   <script>
 
 initFunction(function () {
@@ -135,7 +145,7 @@ initFunction(function () {
 
   <!-- Include Turbolinks to make page loads fast -->
   <!-- https://github.com/turbolinks/turbolinks -->
-  <script src="/assets/js/turbolinks.js" async></script>
+  <script src="/python_for_datascience/assets/js/turbolinks.js" async></script>
   <meta name="turbolinks-cache-control" content="no-cache">
 
   <!-- Load nbinteract for widgets -->
@@ -144,102 +154,9 @@ initFunction(function () {
   <!-- Load Thebelab for interactive widgets -->
   <!-- Include Thebelab for interactive code if it's enabled -->
 
-<script type="text/x-thebe-config">
-    {
-      requestKernel: true,
-      binderOptions: {
-        repo: 'YOUR-ORG/YOUR-REPO',
-        ref: 'master',
-      },
-      kernelOptions: {
-        name: 'python3',
-      }
-    }
-</script>
-<script src="https://unpkg.com/thebelab@0.3.3/lib/index.js"></script>
-<script>
-    /**
-     * Add attributes to Thebelab blocks
-     */
-
-    const initThebelab = () => {
-        const addThebelabToCodeCells = () => {
-            console.log("Adding thebelab to code cells...");
-            // If Thebelab hasn't loaded, wait a bit and try again. This
-            // happens because we load ClipboardJS asynchronously.
-            if (window.thebelab === undefined) {
-                setTimeout(addThebelabToCodeCells, 250)
-            return
-            }
-
-            // If we already detect a Thebelab cell, don't re-run
-            if (document.querySelectorAll('div.thebelab-cell').length > 0) {
-                return;
-            }
-
-            // Find all code cells, replace with Thebelab interactive code cells
-            const codeCells = document.querySelectorAll('.input_area pre')
-            codeCells.forEach((codeCell, index) => {
-                const id = codeCellId(index)
-                codeCell.setAttribute('data-executable', 'true')
-
-                // Figure out the language it uses and add this too
-                var parentDiv = codeCell.parentElement.parentElement;
-                var arrayLength = parentDiv.classList.length;
-                for (var ii = 0; ii < arrayLength; ii++) {
-                    var parts = parentDiv.classList[ii].split('language-');
-                    if (parts.length === 2) {
-                        // If found, assign dataLanguage and break the loop
-                        var dataLanguage = parts[1];
-                        break;
-                    }
-                }
-                codeCell.setAttribute('data-language', dataLanguage)
-
-                // If the code cell is hidden, show it
-                var inputCheckbox = document.querySelector(`input#hidebtn${codeCell.id}`);
-                if (inputCheckbox !== null) {
-                    setCodeCellVisibility(inputCheckbox, 'visible');
-                }
-            });
-
-            // Remove the event listener from the page so keyboard press doesn't
-            // Change page
-            document.removeEventListener('keydown', initPageNav)
-            keyboardListener = false;
-
-            // Init thebelab
-            thebelab.bootstrap();
-
-            // Remove copy buttons since they won't work anymore
-            const copyButtons = document.querySelectorAll('.copybtn')
-            copyButtons.forEach((copyButton, index) => {
-                copyButton.remove();
-            });
-
-            // Remove outputs since they'll be stale
-            const outputs = document.querySelectorAll('.output *, .output')
-            outputs.forEach((output, index) => {
-                output.remove();
-            });
-        }
-
-        // Add event listener for the function to modify code cells
-        const thebelabButton = document.getElementById('interact-button-thebelab');
-        if (thebelabButton === null) {
-            setTimeout(initThebelab, 250)
-        return
-        };
-        thebelabButton.addEventListener('click', addThebelabToCodeCells);
-    }
-
-    // Initialize Thebelab
-    initFunction(initThebelab);
-</script>
-
 
   <!-- Google analytics -->
-  <script src="/assets/js/ga.js" async></script>
+  <script src="/python_for_datascience/assets/js/ga.js" async></script>
 
   <!-- Clipboard copy button -->
   <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" async></script>
@@ -253,7 +170,7 @@ const codeCellId = index => `codecell${index}`
 
 const clipboardButton = id =>
   `<a class="btn copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#${id}">
-    <img src="/assets/images/copy-button.svg" alt="Copy to clipboard">
+    <img src="/python_for_datascience/assets/images/copy-button.svg" alt="Copy to clipboard">
   </a>`
 
 // Clears selected text since ClipboardJS will select the text when copying
@@ -392,17 +309,17 @@ initFunction(initHiddenCells);
 
 
   <!-- Load custom website scripts -->
-  <script src="/assets/js/scripts.js" async></script>
+  <script src="/python_for_datascience/assets/js/scripts.js" async></script>
 
   <!-- Load custom user CSS and JS  -->
-  <script src="/assets/custom/custom.js" async></script>
-  <link rel="stylesheet" href="/assets/custom/custom.css">
+  <script src="/python_for_datascience/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/python_for_datascience/assets/custom/custom.css">
 
   <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
   
 
   <!-- Lunr search code - will only be executed on the /search page -->
-  <script src="/assets/js/lunr/lunr.min.js" type="text/javascript"></script>
+  <script src="/python_for_datascience/assets/js/lunr/lunr.min.js" type="text/javascript"></script>
   <script>var initQuery = function() {
   // See if we have a search box
   var searchInput = document.querySelector('input#lunr_search');
@@ -498,7 +415,7 @@ initFunction(initQuery);
 
 
 <nav id="js-sidebar" class="c-textbook__sidebar">
-  <a href="https://jupyter.org/jupyter-book/"><img src="/images/logo.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/></a>
+  <a href="https://paiml.com"><img src="/python_for_datascience/images/logo.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/></a>
   <h2 class="c-sidebar__title">Python for Data Science</h2>
   <ul class="c-sidebar__chapters">
     
@@ -512,7 +429,7 @@ initFunction(initQuery);
       
       <li class="c-sidebar__chapter">
         <a class="c-sidebar__entry "
-          href="/intro.html"
+          href="/python_for_datascience/intro.html"
         >
           
           Home
@@ -546,7 +463,7 @@ initFunction(initQuery);
     
       
       
-        <li class="c-sidebar__chapter"><a class="c-sidebar__entry" href="/search.html">Search</a></li>
+        <li class="c-sidebar__chapter"><a class="c-sidebar__entry" href="/python_for_datascience/search.html">Search</a></li>
         
       
       
@@ -566,7 +483,7 @@ initFunction(initQuery);
       
       <li class="c-sidebar__chapter">
         <a class="c-sidebar__entry "
-          href="/lessons/lessons.html"
+          href="/python_for_datascience/lessons/lessons.html"
         >
           
           Lessons
@@ -588,7 +505,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/lessons/Lesson2_Python_For_Data_Science_Introduction_to_Colab.html"
+                  href="/python_for_datascience/lessons/Lesson2_Python_For_Data_Science_Introduction_to_Colab.html"
                 >
                   
                   Lesson 2 - Introduction to Colab
@@ -605,7 +522,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/lessons/Lesson3_Python_For_Data_Science_Basics.html"
+                  href="/python_for_datascience/lessons/Lesson3_Python_For_Data_Science_Basics.html"
                 >
                   
                   Lesson 3 - Basics
@@ -622,7 +539,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry c-sidebar__entry--active"
-                  href="/lessons/Lesson4_Python_For_Data_Science_Strings.html"
+                  href="/python_for_datascience/lessons/Lesson4_Python_For_Data_Science_Strings.html"
                 >
                   
                   Lesson 4 - Strings
@@ -639,7 +556,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/lessons/Lesson5_Python_For_Data_Science_Python_Data_structure.html"
+                  href="/python_for_datascience/lessons/Lesson5_Python_For_Data_Science_Python_Data_structure.html"
                 >
                   
                   Lesson 5 - Data Structures
@@ -656,7 +573,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/lessons/Lesson6_Python_For_Data_Science_Data_Conversion_Recipes.html"
+                  href="/python_for_datascience/lessons/Lesson6_Python_For_Data_Science_Data_Conversion_Recipes.html"
                 >
                   
                   Lesson 6 - Data Conversion Recipes
@@ -673,7 +590,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/lessons/Lesson7_Python_For_Datascience_Execution_Control.html"
+                  href="/python_for_datascience/lessons/Lesson7_Python_For_Datascience_Execution_Control.html"
                 >
                   
                   Lesson 7 - Execution Control
@@ -690,7 +607,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/lessons/Lesson8_Python_For_Data_Science_Functions.html"
+                  href="/python_for_datascience/lessons/Lesson8_Python_For_Data_Science_Functions.html"
                 >
                   
                   Lesson 8 - Functions
@@ -707,7 +624,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/lessons/Lesson9_Python_For_Data_Science_Data_Science_Libraries.html"
+                  href="/python_for_datascience/lessons/Lesson9_Python_For_Data_Science_Data_Science_Libraries.html"
                 >
                   
                   Lesson 9 - Data Science Libraries
@@ -724,7 +641,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/lessons/Lesson10_Python_For_Data_Science_Functional_Programming.html"
+                  href="/python_for_datascience/lessons/Lesson10_Python_For_Data_Science_Functional_Programming.html"
                 >
                   
                   Lesson 10 - Functional Programming
@@ -741,7 +658,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/lessons/Lesson11_Python_For_Data_Science_Lazy_Evaluation.html"
+                  href="/python_for_datascience/lessons/Lesson11_Python_For_Data_Science_Lazy_Evaluation.html"
                 >
                   
                   Lesson 11 - Lazy Evaluation
@@ -758,7 +675,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/lessons/Lesson12_Python_For_Data_Science_Pattern_Matching.html"
+                  href="/python_for_datascience/lessons/Lesson12_Python_For_Data_Science_Pattern_Matching.html"
                 >
                   
                   Lesson 12 - Pattern Matching
@@ -775,7 +692,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/lessons/Lesson13_Python_For_Data_Science_Sorting.html"
+                  href="/python_for_datascience/lessons/Lesson13_Python_For_Data_Science_Sorting.html"
                 >
                   
                   Lesson 13 - Sorting
@@ -792,7 +709,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/lessons/Lesson14_Python_For_Data_Science_I_O.html"
+                  href="/python_for_datascience/lessons/Lesson14_Python_For_Data_Science_I_O.html"
                 >
                   
                   Lesson 14 - I/O
@@ -809,7 +726,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/lessons/Lesson15_Python_For_Data_Science_CaseStudies.html"
+                  href="/python_for_datascience/lessons/Lesson15_Python_For_Data_Science_CaseStudies.html"
                 >
                   
                   Lesson 15 - CaseStudies
@@ -842,25 +759,32 @@ initFunction(initQuery);
     <nav class="onthispage">
       <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
       <ul class="toc__menu">
+  <li><a href="#pragmatic-ai-labs">Pragmatic AI Labs</a></li>
   <li><a href="#41-use-string-methods">4.1 Use string methods</a>
     <ul>
+      <li><a href="#string-quoting">String Quoting</a></li>
       <li><a href="#case-manipulation">Case Manipulation</a></li>
-      <li><a href="#content-manipulation">Content Manipulation</a></li>
+      <li><a href="#interrogation">Interrogation</a></li>
+      <li><a href="#content-type">Content Type</a></li>
     </ul>
   </li>
   <li><a href="#42-format-strings">4.2 Format strings</a>
     <ul>
-      <li><a href="#f-strings">F-Strings</a></li>
-      <li><a href="#string-quoting">String Quoting</a></li>
-      <li><a href="#replacing">Replacing</a></li>
-      <li><a href="#stripping">Stripping</a></li>
-      <li><a href="#splitting">Splitting</a></li>
+      <li><a href="#insert-variable-into-replacement-field">Insert variable into replacement field</a></li>
+      <li><a href="#insert-expression-into-replacement-field">Insert expression into replacement field</a></li>
+      <li><a href="#index-list-in-string-replacement-fields">Index list in string replacement fields</a></li>
+      <li><a href="#conversion-flags">Conversion flags</a></li>
+      <li><a href="#padding-a-number">Padding a number</a></li>
+      <li><a href="#setting-padding-value-at-runtime">Setting padding value at runtime</a></li>
     </ul>
   </li>
   <li><a href="#43-manipulate-strings">4.3 Manipulate strings</a>
     <ul>
-      <li><a href="#membership">Membership</a></li>
       <li><a href="#concatenation">Concatenation</a></li>
+      <li><a href="#remove-whitespace">Remove Whitespace</a></li>
+      <li><a href="#add-padding">Add padding</a></li>
+      <li><a href="#replace">Replace</a></li>
+      <li><a href="#spitting-and-joining">Spitting and Joining</a></li>
       <li><a href="#slicing">Slicing</a></li>
     </ul>
   </li>
@@ -894,11 +818,10 @@ initFunction(initQuery);
 
             
 <div class="buttons">
-<a href="/content/lessons/Lesson4_Python_For_Data_Science_Strings.ipynb" download>
+<a href="/python_for_datascience/content/lessons/Lesson4_Python_For_Data_Science_Strings.ipynb" download>
 <button id="interact-button-download" class="interact-button">Download</button>
 </a>
 
-<button id="interact-button-thebelab" class="interact-button">Thebelab</button>
 
 
 
@@ -911,13 +834,88 @@ initFunction(initQuery);
 
 <h1 id="lesson-4-strings">Lesson 4 Strings</h1>
 
+<h2 id="pragmatic-ai-labs">Pragmatic AI Labs</h2>
+
+<p><img src="https://paiml.com/images/logo_with_slogan_white_background.png" alt="alt text" /></p>
+
+<p>This notebook was produced by <a href="https://paiml.com/">Pragmatic AI Labs</a>.  You can continue learning about these topics by:</p>
+
+<ul>
+  <li>Buying a copy of <a href="http://www.informit.com/store/pragmatic-ai-an-introduction-to-cloud-based-machine-9780134863917">Pragmatic AI: An Introduction to Cloud-Based Machine Learning</a></li>
+  <li>Reading an online copy of <a href="https://www.safaribooksonline.com/library/view/pragmatic-ai-an/9780134863924/">Pragmatic AI:Pragmatic AI: An Introduction to Cloud-Based Machine Learning</a></li>
+  <li>Watching video <a href="https://www.safaribooksonline.com/videos/essential-machine-learning/9780135261118">Essential Machine Learning and AI with Python and Jupyter Notebook-Video-SafariOnline</a> on Safari Books Online.</li>
+  <li>Watching video <a href="https://learning.oreilly.com/videos/aws-certified-machine/9780135556597">AWS Certified Machine Learning-Speciality</a></li>
+  <li>Purchasing video <a href="http://www.informit.com/store/essential-machine-learning-and-ai-with-python-and-jupyter-9780135261095">Essential Machine Learning and AI with Python and Jupyter Notebook- Purchase Video</a></li>
+  <li>Viewing more content at <a href="https://noahgift.com/">noahgift.com</a></li>
+</ul>
+
 <h2 id="41-use-string-methods">4.1 Use string methods</h2>
+
+<h3 id="string-quoting">String Quoting</h3>
+
+<h4 id="single-quotes">Single quotes</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Here is a string'
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Here is a string'
+</code></pre></div></div>
+
+<h4 id="double-quotes">Double quotes</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"Here is a string" == 'Here is a string'
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<h4 id="triple-strings">Triple Strings</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a_very_large_phrase = """
+Wikipedia is hosted by the Wikimedia Foundation, 
+a non-profit organization that also hosts a range of other projects.
+"""
+
+print(a_very_large_phrase)
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Wikipedia is hosted by the Wikimedia Foundation, 
+a non-profit organization that also hosts a range of other projects.
+
+
+</code></pre></div></div>
+
+<h4 id="raw-strings">Raw Strings</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jon_jones = '...wrote on twitter he is the greatest "heavyw8e! \nfighter of all time'
+print(jon_jones)
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...wrote on twitter he is the greatest "heavyw8e! 
+fighter of all time
+
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jon_jones = r'...wrote on twitter he is the greatest "heavyw8e! \nfighter of all time'
+print(jon_jones)
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...wrote on twitter he is the greatest "heavyw8e! \nfighter of all time
+
+</code></pre></div></div>
 
 <h3 id="case-manipulation">Case Manipulation</h3>
 
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>captain = "Patrick Tayluer"
-captain.capitalize()
 
+captain
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Patrick Tayluer'
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>captain.capitalize()
 </code></pre></div></div>
 
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Patrick tayluer'
@@ -929,132 +927,134 @@ captain.capitalize()
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'patrick tayluer'
 </code></pre></div></div>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>captain.swapcase()
-</code></pre></div></div>
-
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'pATRICK tAYLUER'
-</code></pre></div></div>
-
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>captain.title()
-</code></pre></div></div>
-
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Patrick Tayluer'
-</code></pre></div></div>
-
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>captain.upper()
 </code></pre></div></div>
 
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'PATRICK TAYLUER'
 </code></pre></div></div>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>captain.swapcase()
 </code></pre></div></div>
 
-<h4 id="remove-whitespace">Remove Whitespace</h4>
-
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ship = " The Yankee Clipper "
-ship
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'pATRICK tAYLUER'
 </code></pre></div></div>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ship.strip()
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>captain = 'patrick tayluer'
+captain.title()
 </code></pre></div></div>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ship.rstrip()
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Patrick Tayluer'
 </code></pre></div></div>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ship.lstrip()
-</code></pre></div></div>
-
-<h3 id="content-manipulation">Content Manipulation</h3>
-
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>port = "Boston"
-port.center(12, '*')
-</code></pre></div></div>
-
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>port.ljust(12)
-</code></pre></div></div>
-
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>port.rjust(12)
-</code></pre></div></div>
-
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for port_city in ['Liverpool', 'Boston', 'New York', 'Philadelphia']:
-  print(port_city.rjust(12))
-</code></pre></div></div>
-
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"FILADELFIA".replace("F", "PH")
-</code></pre></div></div>
-
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'-5'.zfill(3)
-</code></pre></div></div>
-
-<h4 id="spitting-and-joining">Spitting and Joining</h4>
-
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>words_string = "Here,Are,Some,Words"
-words_string
-</code></pre></div></div>
-
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>words = words_string.split(',')
-words
-</code></pre></div></div>
-
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>' '.join(words)
-</code></pre></div></div>
-
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>multiline = "Sometimes we are given\na multiline document\nas a single string"
-multiline
-</code></pre></div></div>
-
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for line in multiline.splitlines():
-  print(line)
-</code></pre></div></div>
-
-<h4 id="interrogation">Interrogation</h4>
+<h3 id="interrogation">Interrogation</h3>
 
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>river = 'Mississippi'
-river.count('s')
+
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>len(river)
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>11
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>river.count('s')
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
 </code></pre></div></div>
 
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>river.index('pp')
 </code></pre></div></div>
 
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>8
+</code></pre></div></div>
+
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>river.index('r')
+</code></pre></div></div>
+
+<div class="output output_traceback_line highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    ---------------------------------------------------------------------------
+
+    ValueError                                Traceback (most recent call last)
+
+    &lt;ipython-input-67-fcd85454de2b&gt; in &lt;module&gt;()
+    ----&gt; 1 river.index('r')
+    
+
+    ValueError: substring not found
+
+
 </code></pre></div></div>
 
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>river.find('r')
 </code></pre></div></div>
 
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-1
+</code></pre></div></div>
+
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>river.startswith('M')
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
 </code></pre></div></div>
 
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>river.endswith('i')
 </code></pre></div></div>
 
-<h4 id="content-type">Content Type</h4>
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'sip' in river
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<h3 id="content-type">Content Type</h3>
 
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'abc123'.isalpha()
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
 </code></pre></div></div>
 
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'abc123'.isalnum()
 </code></pre></div></div>
 
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'lowercase'.islower()
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
 </code></pre></div></div>
 
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'lowercase'.isupper()
 </code></pre></div></div>
 
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
+</code></pre></div></div>
+
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'The Good Ship'.istitle()
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
 </code></pre></div></div>
 
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'The bad seed'.istitle()
 </code></pre></div></div>
 
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>False
+</code></pre></div></div>
+
 <p>More information: <a href="https://docs.python.org/3/library/stdtypes.html#string-methods">String Methods</a></p>
 
 <h2 id="42-format-strings">4.2 Format strings</h2>
+<p>F-strings where introduced in Python 3.6. They prefixed by either a ‘F’ or ‘f’ before the beginning quotation mark. Values can be inserted into F-strings at runtime using replacement fields which are deliminated by curly braces.</p>
 
-<h3 id="f-strings">F-Strings</h3>
+<h3 id="insert-variable-into-replacement-field">Insert variable into replacement field</h3>
 
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>strings_count = 5
 frets_count = 24
@@ -1064,8 +1064,7 @@ f"Noam Pikelny's banjo has {strings_count} strings and {frets_count} frets"
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"Noam Pikelny's banjo has 5 strings and 24 frets"
 </code></pre></div></div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"Noam Pikelny's banjo has 5 strings and 24 frets"
-</code></pre></div></div>
+<h3 id="insert-expression-into-replacement-field">Insert expression into replacement field</h3>
 
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = 12
 b = 32
@@ -1075,6 +1074,8 @@ f"{a} times {b} equals {a*b}"
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'12 times 32 equals 384'
 </code></pre></div></div>
 
+<h3 id="index-list-in-string-replacement-fields">Index list in string replacement fields</h3>
+
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>players = ["Tony Trischka", "Bill Evans", "Alan Munde"]
 f"Performances will be held by {players[1]}, {players[0]}, and {players[2]}"
 </code></pre></div></div>
@@ -1082,17 +1083,53 @@ f"Performances will be held by {players[1]}, {players[0]}, and {players[2]}"
 <div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Performances will be held by Bill Evans, Tony Trischka, and Alan Munde'
 </code></pre></div></div>
 
+<h3 id="conversion-flags">Conversion flags</h3>
+<p>A conversion flag can be specified to convert the type of the value before formatting. The three available flags are ‘s’, ‘r’ and ‘a’.</p>
+
+<h4 id="using-str-conversion">Using str conversion</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nuts = [1,2,3,4,5]
+f"Calling str() on a the list {nuts} produces {nuts!s}"
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Calling str() on a the list [1, 2, 3, 4, 5] produces [1, 2, 3, 4, 5]'
+</code></pre></div></div>
+
+<h4 id="using-repr-conversiont">Using repr conversiont</h4>
+
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nut = 'pistacio'
 f"Calling repr on the string {nut} results in {nut!r}"
 </code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"Calling repr on the string pistacio results in 'pistacio'"
+</code></pre></div></div>
+
+<h4 id="using-ascii-conversion">Using ascii conversion</h4>
 
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>check = "√"
 f"The ascii version of {check} is {check!a}"
 </code></pre></div></div>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>some_num = 34
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"The ascii version of √ is '\\u221a'"
+</code></pre></div></div>
+
+<h3 id="padding-a-number">Padding a number</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lucky_num = 13
+f"To pad the number {lucky_num} to 5 places:{lucky_num:5d}"
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'To pad the number 13 to 5 places:   13'
+</code></pre></div></div>
+
+<h3 id="setting-padding-value-at-runtime">Setting padding value at runtime</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>luckey_num = 13
 padding = 5
-f"To pad the number {some_num} to {padding} places:{some_num:{padding}d}"
+f"To pad the number {lucky_num} to {padding} places:{lucky_num:{padding}d}"
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'To pad the number 13 to 5 places:   13'
 </code></pre></div></div>
 
 <p>More information: <a href="https://docs.python.org/2/library/string.html#format-string-syntax">Format String Syntax</a></p>
@@ -1102,75 +1139,146 @@ f"To pad the number {some_num} to {padding} places:{some_num:{padding}d}"
 
 <p><a href="https://docs.python.org/3/library/stdtypes.html#old-string-formatting">Old Style String Formatting</a></p>
 
-<h3 id="string-quoting">String Quoting</h3>
-
-<h4 id="triple-strings">Triple Strings</h4>
-
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a_very_large_phrase = """
-Wikipedia is hosted by the Wikimedia Foundation, 
-a non-profit organization that also hosts a range of other projects.
-"""
-
-</code></pre></div></div>
-
-<h4 id="raw-strings">Raw Strings</h4>
-
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jon_jones = r'...wrote on twitter he is the greatest "heavyw8e! fighter of all time'
-jon_jones
-</code></pre></div></div>
-
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'...wrote on twitter he is the greatest "heavyw8e! fighter of all time'
-</code></pre></div></div>
-
-<h3 id="replacing">Replacing</h3>
-
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a_very_large_phrase
-
-</code></pre></div></div>
-
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'\nWikipedia is hosted by the Wikimedia Foundation, \na non-profit organization that also hosts a range of other projects.\n'
-</code></pre></div></div>
-
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a_very_large_phrase.replace("\n", "")
-</code></pre></div></div>
-
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Wikipedia is hosted by the Wikimedia Foundation, a non-profit organization that also hosts a range of other projects.'
-</code></pre></div></div>
-
-<h3 id="stripping">Stripping</h3>
-
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>annoying_text = "A half-formed sent"
-annoying_text.rstrip(" sent")
-</code></pre></div></div>
-
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'A half-formed'
-</code></pre></div></div>
-
-<h3 id="splitting">Splitting</h3>
-
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>shopping_list = "Carrots, apples, oranges"
-shopping_list.split(",")
-</code></pre></div></div>
-
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['Carrots', ' apples', ' oranges']
-</code></pre></div></div>
-
 <h2 id="43-manipulate-strings">4.3 Manipulate strings</h2>
-
-<h3 id="membership">Membership</h3>
-
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Rob' in "Robert Henry Wonderson"
-</code></pre></div></div>
-
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"Bob" not in "Robert Henry Wonderson"
-</code></pre></div></div>
 
 <h3 id="concatenation">Concatenation</h3>
 
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"Bob" + "beroo"
 </code></pre></div></div>
 
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Bobberoo'
+</code></pre></div></div>
+
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"AB" * 8
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'ABABABABABABABAB'
+</code></pre></div></div>
+
+<h3 id="remove-whitespace">Remove Whitespace</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ship = " The Yankee Clipper "
+ship
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>' The Yankee Clipper '
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ship.strip()
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'The Yankee Clipper'
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ship.lstrip()
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'The Yankee Clipper '
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ship.rstrip()
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>' The Yankee Clipper'
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ship.rstrip("per ")
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>' The Yankee Cli'
+</code></pre></div></div>
+
+<h3 id="add-padding">Add padding</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>port = "Boston"
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>port.center(12, '*')
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'***Boston***'
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>port.ljust(12, '*')
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Boston******'
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>port.rjust(12, '*')
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'******Boston'
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for port_city in ['Liverpool', 'Boston', 'New York', 'Philadelphia']:
+  print(port_city.rjust(12))
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   Liverpool
+      Boston
+    New York
+Philadelphia
+
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'-5'.zfill(4)
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'-005'
+</code></pre></div></div>
+
+<h3 id="replace">Replace</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"FILADELFIA".replace("F", "PH")
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'PHILADELPHIA'
+</code></pre></div></div>
+
+<h3 id="spitting-and-joining">Spitting and Joining</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>words_string = "Here,Are,Some,Words"
+words_string
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Here,Are,Some,Words'
+</code></pre></div></div>
+
+<h4 id="split-on-comma">Split on comma</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>words = words_string.split(',')
+words
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['Here', 'Are', 'Some', 'Words']
+</code></pre></div></div>
+
+<h4 id="joining">Joining</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>':'.join(words)
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Here:Are:Some:Words'
+</code></pre></div></div>
+
+<h4 id="split-on-newline">Split on newline</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>multiline = "Sometimes we are given\na multiline document\nas a single string"
+multiline
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Sometimes we are given\na multiline document\nas a single string'
+</code></pre></div></div>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for line in multiline.splitlines():
+  print(line)
+</code></pre></div></div>
+
+<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Sometimes we are given
+a multiline document
+as a single string
+
 </code></pre></div></div>
 
 <h3 id="slicing">Slicing</h3>
@@ -1179,46 +1287,73 @@ shopping_list.split(",")
 collector[0]
 </code></pre></div></div>
 
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'W'
+</code></pre></div></div>
+
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>collector[-1]
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'r'
 </code></pre></div></div>
 
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>collector[13:18]
 </code></pre></div></div>
 
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Doerf'
+</code></pre></div></div>
+
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>collector[-7:]
 </code></pre></div></div>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>len(collector)
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'flinger'
 </code></pre></div></div>
 
 <p>More information: <a href="https://docs.python.org/3/library/stdtypes.html#typesseq-common">common sequence operations</a></p>
 
 <h2 id="44-learn-to-use-unicode">4.4 Learn to use unicode</h2>
+<p>There are multiple encoding possible for mapping characters to bytes. Python strings default to UTF-8. Earlier versions of Python used a more limited encoding.</p>
 
 <h3 id="encode">Encode</h3>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code># encode, casefold
-twice_pie = 'ππ'
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>twice_pie = 'ππ'
 twice_pie
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'ππ'
 </code></pre></div></div>
 
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>twice_π = twice_pie
 twice_π
 </code></pre></div></div>
 
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'ππ'
+</code></pre></div></div>
+
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pie = "\N{GREEK CAPITAL LETTER PI}"
 pie
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Π'
 </code></pre></div></div>
 
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ord(pie)
 </code></pre></div></div>
 
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>928
+</code></pre></div></div>
+
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>chr(928)
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Π'
 </code></pre></div></div>
 
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>u = chr(40960) + 'abcd' + chr(1972)
 u.encode('utf-8')
 u
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'ꀀabcd\u07b4'
 </code></pre></div></div>
 
 <h3 id="saving-file-in-unicode">Saving File in Unicode</h3>
@@ -1241,14 +1376,14 @@ u
               <nav class="c-page__nav">
   
     
-    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/lessons/Lesson3_Python_For_Data_Science_Basics">
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/python_for_datascience/lessons/Lesson3_Python_For_Data_Science_Basics">
       〈 <span class="u-margin-right-tiny"></span> Lesson 3 - Basics
     </a>
   
 
   
     
-    <a id="js-page__nav__next" class="c-page__nav__next" href="/lessons/Lesson5_Python_For_Data_Science_Python_Data_structure">
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/python_for_datascience/lessons/Lesson5_Python_For_Data_Science_Python_Data_structure">
       Lesson 5 - Data Structures <span class="u-margin-right-tiny"></span> 〉
     </a>
   

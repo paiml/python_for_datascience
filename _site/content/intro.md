@@ -1,3 +1,8 @@
+# Python for Data Science
+
+An interactive Jupyter notebook that teaches you the Python geared towards Data Science.  This book is based on a Video by Pearson of the same title.  This book and video was written by <a href="https://noahgift.com/">Noah Gift</a> and <a href="https://www.linkedin.com/in/kennedybehrman/">Kennedy Behrman</a>.
+
+
 ![Pragmatic AI Labs](https://paiml.com/images/logo_with_slogan_white_background.png)
 
 These notebooks and tutorials were produced by [Pragmatic AI Labs](https://paiml.com/).  You can continue learning about these topics by:

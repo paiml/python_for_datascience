@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
   
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119562796-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-119562796-2');
+</script>
+
 
   <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
-
+  <meta name="google-site-verification" content="bkWyRPtr7Sjv5fIJKDNmPwlI_Ue219Nafc5bsmnvX3o" />
   <title>Lesson 6 - Data Conversion Recipes</title>
   <meta name="description" content="">
 
-  <link rel="canonical" href="/YOUR%20URL//lessons/Lesson6_Python_For_Data_Science_Data_Conversion_Recipes.html">
-  <link rel="alternate" type="application/rss+xml" title="Python for Data Science" href="/YOUR%20URL//feed.xml">
+  <link rel="canonical" href="https://paiml.github.io/python_for_datascience/lessons/Lesson6_Python_For_Data_Science_Data_Conversion_Recipes.html">
+  <link rel="alternate" type="application/rss+xml" title="Python for Data Science" href="https://paiml.github.io/python_for_datascience/feed.xml">
 
-  <meta property="og:url"         content="/YOUR%20URL//lessons/Lesson6_Python_For_Data_Science_Data_Conversion_Recipes.html" />
+  <meta property="og:url"         content="https://paiml.github.io/python_for_datascience/lessons/Lesson6_Python_For_Data_Science_Data_Conversion_Recipes.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Lesson 6 - Data Conversion Recipes" />
 <meta property="og:description" content="" />
@@ -25,13 +35,13 @@
   "@context": "http://schema.org",
   "@type": "NewsArticle",
   "mainEntityOfPage":
-    "YOUR URL//lessons/Lesson6_Python_For_Data_Science_Data_Conversion_Recipes.html",
+    "https://paiml.github.io/python_for_datascience/lessons/Lesson6_Python_For_Data_Science_Data_Conversion_Recipes.html",
   "headline":
     "Lesson 6 - Data Conversion Recipes",
   "datePublished":
-    "2019-03-17T15:28:48-07:00",
+    "2019-03-17T17:33:21-07:00",
   "dateModified":
-    "2019-03-17T15:28:48-07:00",
+    "2019-03-17T17:33:21-07:00",
   "description":
     "",
   "author": {
@@ -43,21 +53,21 @@
     "name": "Data 100 at UC Berkeley",
     "logo": {
       "@type": "ImageObject",
-      "url": "YOUR URL/",
+      "url": "https://paiml.github.io/python_for_datascience",
       "width": 60,
       "height": 60
     }
   },
   "image": {
     "@type": "ImageObject",
-    "url": "YOUR URL/",
+    "url": "https://paiml.github.io/python_for_datascience",
     "height": 60,
     "width": 60
   }
 }
 
   </script>
-  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="stylesheet" href="/python_for_datascience/assets/css/styles.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css ">
   <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
@@ -76,7 +86,7 @@
   <meta name="theme-color" content="#233947">
 
   <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="/images/logo/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="/python_for_datascience/images/logo/favicon.ico">
 
   <!-- MathJax Config -->
   <!-- Allow inline math using $ and automatically break long math lines -->
@@ -120,11 +130,11 @@ initFunction = function(myfunc) {
 
   <!-- Define some javascript variables that will be useful in other javascript -->
   <script>
-    const site_basename = '/';
+    const site_basename = '/python_for_datascience';
   </script>
 
   <!-- Add AnchorJS to let headers be linked -->
-  <script src="/assets/js/anchor.min.js"  type="text/javascript"></script>
+  <script src="/python_for_datascience/assets/js/anchor.min.js"  type="text/javascript"></script>
   <script>
 
 initFunction(function () {
@@ -135,7 +145,7 @@ initFunction(function () {
 
   <!-- Include Turbolinks to make page loads fast -->
   <!-- https://github.com/turbolinks/turbolinks -->
-  <script src="/assets/js/turbolinks.js" async></script>
+  <script src="/python_for_datascience/assets/js/turbolinks.js" async></script>
   <meta name="turbolinks-cache-control" content="no-cache">
 
   <!-- Load nbinteract for widgets -->
@@ -144,102 +154,9 @@ initFunction(function () {
   <!-- Load Thebelab for interactive widgets -->
   <!-- Include Thebelab for interactive code if it's enabled -->
 
-<script type="text/x-thebe-config">
-    {
-      requestKernel: true,
-      binderOptions: {
-        repo: 'YOUR-ORG/YOUR-REPO',
-        ref: 'master',
-      },
-      kernelOptions: {
-        name: 'python3',
-      }
-    }
-</script>
-<script src="https://unpkg.com/thebelab@0.3.3/lib/index.js"></script>
-<script>
-    /**
-     * Add attributes to Thebelab blocks
-     */
-
-    const initThebelab = () => {
-        const addThebelabToCodeCells = () => {
-            console.log("Adding thebelab to code cells...");
-            // If Thebelab hasn't loaded, wait a bit and try again. This
-            // happens because we load ClipboardJS asynchronously.
-            if (window.thebelab === undefined) {
-                setTimeout(addThebelabToCodeCells, 250)
-            return
-            }
-
-            // If we already detect a Thebelab cell, don't re-run
-            if (document.querySelectorAll('div.thebelab-cell').length > 0) {
-                return;
-            }
-
-            // Find all code cells, replace with Thebelab interactive code cells
-            const codeCells = document.querySelectorAll('.input_area pre')
-            codeCells.forEach((codeCell, index) => {
-                const id = codeCellId(index)
-                codeCell.setAttribute('data-executable', 'true')
-
-                // Figure out the language it uses and add this too
-                var parentDiv = codeCell.parentElement.parentElement;
-                var arrayLength = parentDiv.classList.length;
-                for (var ii = 0; ii < arrayLength; ii++) {
-                    var parts = parentDiv.classList[ii].split('language-');
-                    if (parts.length === 2) {
-                        // If found, assign dataLanguage and break the loop
-                        var dataLanguage = parts[1];
-                        break;
-                    }
-                }
-                codeCell.setAttribute('data-language', dataLanguage)
-
-                // If the code cell is hidden, show it
-                var inputCheckbox = document.querySelector(`input#hidebtn${codeCell.id}`);
-                if (inputCheckbox !== null) {
-                    setCodeCellVisibility(inputCheckbox, 'visible');
-                }
-            });
-
-            // Remove the event listener from the page so keyboard press doesn't
-            // Change page
-            document.removeEventListener('keydown', initPageNav)
-            keyboardListener = false;
-
-            // Init thebelab
-            thebelab.bootstrap();
-
-            // Remove copy buttons since they won't work anymore
-            const copyButtons = document.querySelectorAll('.copybtn')
-            copyButtons.forEach((copyButton, index) => {
-                copyButton.remove();
-            });
-
-            // Remove outputs since they'll be stale
-            const outputs = document.querySelectorAll('.output *, .output')
-            outputs.forEach((output, index) => {
-                output.remove();
-            });
-        }
-
-        // Add event listener for the function to modify code cells
-        const thebelabButton = document.getElementById('interact-button-thebelab');
-        if (thebelabButton === null) {
-            setTimeout(initThebelab, 250)
-        return
-        };
-        thebelabButton.addEventListener('click', addThebelabToCodeCells);
-    }
-
-    // Initialize Thebelab
-    initFunction(initThebelab);
-</script>
-
 
   <!-- Google analytics -->
-  <script src="/assets/js/ga.js" async></script>
+  <script src="/python_for_datascience/assets/js/ga.js" async></script>
 
   <!-- Clipboard copy button -->
   <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" async></script>
@@ -253,7 +170,7 @@ const codeCellId = index => `codecell${index}`
 
 const clipboardButton = id =>
   `<a class="btn copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#${id}">
-    <img src="/assets/images/copy-button.svg" alt="Copy to clipboard">
+    <img src="/python_for_datascience/assets/images/copy-button.svg" alt="Copy to clipboard">
   </a>`
 
 // Clears selected text since ClipboardJS will select the text when copying
@@ -392,17 +309,17 @@ initFunction(initHiddenCells);
 
 
   <!-- Load custom website scripts -->
-  <script src="/assets/js/scripts.js" async></script>
+  <script src="/python_for_datascience/assets/js/scripts.js" async></script>
 
   <!-- Load custom user CSS and JS  -->
-  <script src="/assets/custom/custom.js" async></script>
-  <link rel="stylesheet" href="/assets/custom/custom.css">
+  <script src="/python_for_datascience/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/python_for_datascience/assets/custom/custom.css">
 
   <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
   
 
   <!-- Lunr search code - will only be executed on the /search page -->
-  <script src="/assets/js/lunr/lunr.min.js" type="text/javascript"></script>
+  <script src="/python_for_datascience/assets/js/lunr/lunr.min.js" type="text/javascript"></script>
   <script>var initQuery = function() {
   // See if we have a search box
   var searchInput = document.querySelector('input#lunr_search');
@@ -498,7 +415,7 @@ initFunction(initQuery);
 
 
 <nav id="js-sidebar" class="c-textbook__sidebar">
-  <a href="https://jupyter.org/jupyter-book/"><img src="/images/logo.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/></a>
+  <a href="https://paiml.com"><img src="/python_for_datascience/images/logo.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/></a>
   <h2 class="c-sidebar__title">Python for Data Science</h2>
   <ul class="c-sidebar__chapters">
     
@@ -512,7 +429,7 @@ initFunction(initQuery);
       
       <li class="c-sidebar__chapter">
         <a class="c-sidebar__entry "
-          href="/intro.html"
+          href="/python_for_datascience/intro.html"
         >
           
           Home
@@ -546,7 +463,7 @@ initFunction(initQuery);
     
       
       
-        <li class="c-sidebar__chapter"><a class="c-sidebar__entry" href="/search.html">Search</a></li>
+        <li class="c-sidebar__chapter"><a class="c-sidebar__entry" href="/python_for_datascience/search.html">Search</a></li>
         
       
       
@@ -566,7 +483,7 @@ initFunction(initQuery);
       
       <li class="c-sidebar__chapter">
         <a class="c-sidebar__entry "
-          href="/lessons/lessons.html"
+          href="/python_for_datascience/lessons/lessons.html"
         >
           
           Lessons
@@ -588,7 +505,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/lessons/Lesson2_Python_For_Data_Science_Introduction_to_Colab.html"
+                  href="/python_for_datascience/lessons/Lesson2_Python_For_Data_Science_Introduction_to_Colab.html"
                 >
                   
                   Lesson 2 - Introduction to Colab
@@ -605,7 +522,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/lessons/Lesson3_Python_For_Data_Science_Basics.html"
+                  href="/python_for_datascience/lessons/Lesson3_Python_For_Data_Science_Basics.html"
                 >
                   
                   Lesson 3 - Basics
@@ -622,7 +539,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/lessons/Lesson4_Python_For_Data_Science_Strings.html"
+                  href="/python_for_datascience/lessons/Lesson4_Python_For_Data_Science_Strings.html"
                 >
                   
                   Lesson 4 - Strings
@@ -639,7 +556,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/lessons/Lesson5_Python_For_Data_Science_Python_Data_structure.html"
+                  href="/python_for_datascience/lessons/Lesson5_Python_For_Data_Science_Python_Data_structure.html"
                 >
                   
                   Lesson 5 - Data Structures
@@ -656,7 +573,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry c-sidebar__entry--active"
-                  href="/lessons/Lesson6_Python_For_Data_Science_Data_Conversion_Recipes.html"
+                  href="/python_for_datascience/lessons/Lesson6_Python_For_Data_Science_Data_Conversion_Recipes.html"
                 >
                   
                   Lesson 6 - Data Conversion Recipes
@@ -673,7 +590,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/lessons/Lesson7_Python_For_Datascience_Execution_Control.html"
+                  href="/python_for_datascience/lessons/Lesson7_Python_For_Datascience_Execution_Control.html"
                 >
                   
                   Lesson 7 - Execution Control
@@ -690,7 +607,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/lessons/Lesson8_Python_For_Data_Science_Functions.html"
+                  href="/python_for_datascience/lessons/Lesson8_Python_For_Data_Science_Functions.html"
                 >
                   
                   Lesson 8 - Functions
@@ -707,7 +624,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/lessons/Lesson9_Python_For_Data_Science_Data_Science_Libraries.html"
+                  href="/python_for_datascience/lessons/Lesson9_Python_For_Data_Science_Data_Science_Libraries.html"
                 >
                   
                   Lesson 9 - Data Science Libraries
@@ -724,7 +641,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/lessons/Lesson10_Python_For_Data_Science_Functional_Programming.html"
+                  href="/python_for_datascience/lessons/Lesson10_Python_For_Data_Science_Functional_Programming.html"
                 >
                   
                   Lesson 10 - Functional Programming
@@ -741,7 +658,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/lessons/Lesson11_Python_For_Data_Science_Lazy_Evaluation.html"
+                  href="/python_for_datascience/lessons/Lesson11_Python_For_Data_Science_Lazy_Evaluation.html"
                 >
                   
                   Lesson 11 - Lazy Evaluation
@@ -758,7 +675,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/lessons/Lesson12_Python_For_Data_Science_Pattern_Matching.html"
+                  href="/python_for_datascience/lessons/Lesson12_Python_For_Data_Science_Pattern_Matching.html"
                 >
                   
                   Lesson 12 - Pattern Matching
@@ -775,7 +692,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/lessons/Lesson13_Python_For_Data_Science_Sorting.html"
+                  href="/python_for_datascience/lessons/Lesson13_Python_For_Data_Science_Sorting.html"
                 >
                   
                   Lesson 13 - Sorting
@@ -792,7 +709,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/lessons/Lesson14_Python_For_Data_Science_I_O.html"
+                  href="/python_for_datascience/lessons/Lesson14_Python_For_Data_Science_I_O.html"
                 >
                   
                   Lesson 14 - I/O
@@ -809,7 +726,7 @@ initFunction(initQuery);
 
               <li class="c-sidebar__section">
                 <a class="c-sidebar__entry "
-                  href="/lessons/Lesson15_Python_For_Data_Science_CaseStudies.html"
+                  href="/python_for_datascience/lessons/Lesson15_Python_For_Data_Science_CaseStudies.html"
                 >
                   
                   Lesson 15 - CaseStudies
@@ -842,6 +759,7 @@ initFunction(initQuery);
     <nav class="onthispage">
       <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
       <ul class="toc__menu">
+  <li><a href="#pragmatic-ai-labs">Pragmatic AI Labs</a></li>
   <li><a href="#61-convert-lists-to-dicts-and-dicts-to-lists">6.1 Convert lists to dicts, and dicts to lists</a>
     <ul>
       <li><a href="#converting-lists-to-dictionaries">Converting Lists to Dictionaries</a></li>
@@ -850,14 +768,22 @@ initFunction(initQuery);
   </li>
   <li><a href="#62-convert-dicts-to-pandas-dataframe">6.2 Convert dicts to pandas Dataframe</a>
     <ul>
-      <li><a href="#create-dict-from-dataframe">Create dict from DataFrame</a></li>
+      <li><a href="#create-dataframe-using-data-parameter">Create DataFrame using data parameter</a></li>
+      <li><a href="#use-class-from_dict-method">Use class from_dict method</a></li>
       <li><a href="#create-dataframe-with-index-orientation">Create DataFrame with index orientation</a></li>
+      <li><a href="#assign-column-names">Assign column names</a></li>
     </ul>
   </li>
-  <li><a href="#63-convert-characters-to-integers-and-back">6.3 Convert characters to integers and back</a></li>
+  <li><a href="#63-convert-characters-to-integers-and-back">6.3 Convert characters to integers and back</a>
+    <ul>
+      <li><a href="#cast-str-to-int">Cast str to int</a></li>
+      <li><a href="#cast-int-to-string">Cast int to string</a></li>
+    </ul>
+  </li>
   <li><a href="#64-convert-between-hexadecimal-binary-and-floats">6.4 Convert between hexadecimal, binary, and floats</a>
     <ul>
-      <li><a href="#conversion-to-and-from-floats">Conversion to and from Floats</a></li>
+      <li><a href="#cast-to-str-from-float">Cast to str from float</a></li>
+      <li><a href="#cast-to-float-from-str">Cast to float from str</a></li>
       <li><a href="#hexadecimal">Hexadecimal</a></li>
       <li><a href="#conversion-to-and-from-binary">Conversion to and from binary</a></li>
     </ul>
@@ -885,11 +811,10 @@ initFunction(initQuery);
 
             
 <div class="buttons">
-<a href="/content/lessons/Lesson6_Python_For_Data_Science_Data_Conversion_Recipes.ipynb" download>
+<a href="/python_for_datascience/content/lessons/Lesson6_Python_For_Data_Science_Data_Conversion_Recipes.ipynb" download>
 <button id="interact-button-download" class="interact-button">Download</button>
 </a>
 
-<button id="interact-button-thebelab" class="interact-button">Thebelab</button>
 
 
 
@@ -902,13 +827,29 @@ initFunction(initQuery);
 
 <h1 id="lesson-6-data-conversion-recipes">Lesson 6: Data Conversion Recipes</h1>
 
+<h2 id="pragmatic-ai-labs">Pragmatic AI Labs</h2>
+
+<p><img src="https://paiml.com/images/logo_with_slogan_white_background.png" alt="alt text" /></p>
+
+<p>This notebook was produced by <a href="https://paiml.com/">Pragmatic AI Labs</a>.  You can continue learning about these topics by:</p>
+
+<ul>
+  <li>Buying a copy of <a href="http://www.informit.com/store/pragmatic-ai-an-introduction-to-cloud-based-machine-9780134863917">Pragmatic AI: An Introduction to Cloud-Based Machine Learning</a></li>
+  <li>Reading an online copy of <a href="https://www.safaribooksonline.com/library/view/pragmatic-ai-an/9780134863924/">Pragmatic AI:Pragmatic AI: An Introduction to Cloud-Based Machine Learning</a></li>
+  <li>Watching video <a href="https://www.safaribooksonline.com/videos/essential-machine-learning/9780135261118">Essential Machine Learning and AI with Python and Jupyter Notebook-Video-SafariOnline</a> on Safari Books Online.</li>
+  <li>Watching video <a href="https://learning.oreilly.com/videos/aws-certified-machine/9780135556597">AWS Certified Machine Learning-Speciality</a></li>
+  <li>Purchasing video <a href="http://www.informit.com/store/essential-machine-learning-and-ai-with-python-and-jupyter-9780135261095">Essential Machine Learning and AI with Python and Jupyter Notebook- Purchase Video</a></li>
+  <li>Viewing more content at <a href="https://noahgift.com/">noahgift.com</a></li>
+</ul>
+
 <h2 id="61-convert-lists-to-dicts-and-dicts-to-lists">6.1 Convert lists to dicts, and dicts to lists</h2>
 
 <h3 id="converting-lists-to-dictionaries">Converting Lists to Dictionaries</h3>
 
 <h4 id="create-basic-dictionary">Create basic dictionary</h4>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>d = dict( [('one', 1), ('two', 2), ('three', 3)] )
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>key_values = [('one', 1), ('two', 2), ('three', 3)]
+d = dict( key_values )
 d
 </code></pre></div></div>
 
@@ -924,12 +865,6 @@ d = dict(zip(instruments, players))
 d
 </code></pre></div></div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'accordian': 'Astor Pantaleón Piazzolla',
- 'banjo': 'Noam Pikelny',
- 'lute': 'Julian Bream',
- 'violin': 'Anne-Sophie Mutter'}
-</code></pre></div></div>
-
 <h4 id="from-keys">From keys</h4>
 
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>racers = ['Tom', 'Bill', 'Will', 'Jill']
@@ -938,26 +873,29 @@ d = dict.fromkeys(racers, start_distance)
 d
 </code></pre></div></div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'Bill': 0, 'Jill': 0, 'Tom': 0, 'Will': 0}
-</code></pre></div></div>
-
 <h3 id="converting-dictionaries-to--lists">Converting Dictionaries to  Lists</h3>
 
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>d = {'name': 'toby', 'id' : 14}
-print( list(d) )
-print( sorted(d) )
-print( list(d.values()) )
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['name', 'id']
-['id', 'name']
-['toby', 14]
+<h4 id="get-a-list-of-keys">Get a list of keys</h4>
 
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>list(d)
+</code></pre></div></div>
+
+<h4 id="get-keys-in-sorted-order">Get keys in sorted order</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sorted(d)
+</code></pre></div></div>
+
+<h4 id="get-list-of-values">Get list of values</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>list(d.values())
 </code></pre></div></div>
 
 <h2 id="62-convert-dicts-to-pandas-dataframe">6.2 Convert dicts to pandas Dataframe</h2>
 
-<h3 id="create-dict-from-dataframe">Create dict from DataFrame</h3>
+<h3 id="create-dataframe-using-data-parameter">Create DataFrame using data parameter</h3>
 
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from pandas import DataFrame
 
@@ -1009,6 +947,8 @@ DataFrame(data=d)
 </div>
 </div>
 
+<h3 id="use-class-from_dict-method">Use class from_dict method</h3>
+
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DataFrame.from_dict(d)
 </code></pre></div></div>
 
@@ -1031,23 +971,25 @@ DataFrame(data=d)
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>0</th>
-      <th>1</th>
-      <th>3</th>
+      <th>first</th>
+      <th>last</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>Edward</td>
-      <td>Robert</td>
-      <td>Earl</td>
+      <td>Jill</td>
+      <td>Stein</td>
     </tr>
     <tr>
       <th>1</th>
+      <td>Solma</td>
+      <td>Smith</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Elizabeth</td>
       <td>Tudor</td>
-      <td>Redford</td>
-      <td>Scruggs</td>
     </tr>
   </tbody>
 </table>
@@ -1106,108 +1048,186 @@ df
 </div>
 </div>
 
+<h3 id="assign-column-names">Assign column names</h3>
+
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>d = {'a': 'A', 'b': 'B', 'c': 'C'}
 df = DataFrame(list(d.items()), columns=['lower', 'upper'])
-print(df)
-#Dataframe.from_record
+df
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  lower upper
-0     a     A
-1     b     B
-2     c     C
+<div class="output output_html">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-</code></pre></div></div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>lower</th>
+      <th>upper</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>b</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>c</td>
+      <td>C</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
 
 <h2 id="63-convert-characters-to-integers-and-back">6.3 Convert characters to integers and back</h2>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print( float('12.3'))
-# Casting to int
-print( int('011') )
-print( int('011', 2) )
-print( int('011', 6) )
-print( int('011', 6) )
-print( int('011', 2) )
-print( int('011', 8) ) 
-print( int('011', 16) )
+<h3 id="cast-str-to-int">Cast str to int</h3>
+
+<h4 id="base-10">Base 10</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int('011')
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>12.3
-11
-3
-7
-7
-3
-9
-17
-161
-
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>11
 </code></pre></div></div>
+
+<h4 id="base-2">Base 2</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int('011', 2)
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
+</code></pre></div></div>
+
+<h4 id="base-6">Base 6</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int('011', 6)
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>7
+</code></pre></div></div>
+
+<h4 id="base-8">Base 8</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int('011', 8)
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>9
+</code></pre></div></div>
+
+<h4 id="base-16">Base 16</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int('011', 16)
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>17
+</code></pre></div></div>
+
+<h3 id="cast-int-to-string">Cast int to string</h3>
 
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>one = str(1)
-print( type(one) )
-f"{one!r} is a string"
-</code></pre></div></div>
-
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;class 'str'&gt;
+type(one)
 
 </code></pre></div></div>
 
-<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"'1' is a string"
-</code></pre></div></div>
-
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code># ascii codes
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>str
 </code></pre></div></div>
 
 <h2 id="64-convert-between-hexadecimal-binary-and-floats">6.4 Convert between hexadecimal, binary, and floats</h2>
 
-<h3 id="conversion-to-and-from-floats">Conversion to and from Floats</h3>
+<h3 id="cast-to-str-from-float">Cast to str from float</h3>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-a_float = str(12.4)
-print( f" {a_float!r} is a {type(a_float)}" )
-
-a_float = float(a_float)
-print( f" {a_float!r} is a {type(a_float)}" )
-
-
-
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a_str = str(12.4)
+f" {a_str!r} is a {type(a_str)}"
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code> '12.4' is a &lt;class 'str'&gt;
- 12.4 is a &lt;class 'float'&gt;
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>" '12.4' is a &lt;class 'str'&gt;"
+</code></pre></div></div>
 
+<h3 id="cast-to-float-from-str">Cast to float from str</h3>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a_str = "12.3"
+a_float = float(a_str)
+f" {a_float!r} is a {type(a_float)}"
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>" 12.3 is a &lt;class 'float'&gt;"
 </code></pre></div></div>
 
 <h3 id="hexadecimal">Hexadecimal</h3>
 
-<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nt_hex = hex(18)
-print( f" hex(18) returns the {type(int_hex)}: {int_hex!r}" )
+<h4 id="int-to-hex-str">Int to hex str</h4>
 
-float_hex = 12.4.hex()
-print( f" 12.4.hex() returns the {type(float_hex)}: {float_hex!r}" )
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int_hex = hex(18)
+f" hex(18) returns the {type(int_hex)}: {int_hex!r}"
+
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code> hex(18) returns the &lt;class 'str'&gt;: '0x12'
- 12.4.hex() returns the &lt;class 'str'&gt;: '0x1.8cccccccccccdp+3'
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>" hex(18) returns the &lt;class 'str'&gt;: '0x12'"
+</code></pre></div></div>
 
+<h4 id="float-to-hex-str">Float to hex str</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>float_hex = 12.0.hex()
+f" 12.4.hex() returns the {type(float_hex)}: {float_hex!r}"
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>" 12.4.hex() returns the &lt;class 'str'&gt;: '0x1.8000000000000p+3'"
 </code></pre></div></div>
 
 <p><a href="https://docs.python.org/3/library/functions.html">hex function</a></p>
 
 <h3 id="conversion-to-and-from-binary">Conversion to and from binary</h3>
 
+<h4 id="bytes-literal">Bytes literal</h4>
+<p>Similar to strings, but limited to ASCII characters.</p>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bytes_str = b"some bytes literal"
+type(bytes_str)
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bytes
+</code></pre></div></div>
+
+<h4 id="encode-to-bytes">Encode to bytes</h4>
+
 <div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import base64
 bytes_str = b"Encode this string"
 encoded_str = base64.b64encode(bytes_str)
-print( encoded_str )
+f"The encoded string {encoded_str!r} is of type {type(encoded_str)}"
 
-print( base64.b64decode(encoded_str))
+
 </code></pre></div></div>
 
-<div class="output output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>b'RW5jb2RlIHRoaXMgc3RyaW5n'
-b'Encode this string'
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"The encoded string b'RW5jb2RlIHRoaXMgc3RyaW5n' is of type &lt;class 'bytes'&gt;"
+</code></pre></div></div>
 
+<h4 id="decode-from-bytes">Decode from bytes</h4>
+
+<div class="input_area highlighter-rouge"><div class="highlight"><pre class="highlight"><code>base64.b64decode(encoded_str)
+</code></pre></div></div>
+
+<div class="output output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>b'Encode this string'
 </code></pre></div></div>
 
 <p><a href="https://docs.python.org/3/library/base64.html#module-base64">base64-module</a></p>
@@ -1225,14 +1245,14 @@ b'Encode this string'
               <nav class="c-page__nav">
   
     
-    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/lessons/Lesson5_Python_For_Data_Science_Python_Data_structure">
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/python_for_datascience/lessons/Lesson5_Python_For_Data_Science_Python_Data_structure">
       〈 <span class="u-margin-right-tiny"></span> Lesson 5 - Data Structures
     </a>
   
 
   
     
-    <a id="js-page__nav__next" class="c-page__nav__next" href="/lessons/Lesson7_Python_For_Datascience_Execution_Control">
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/python_for_datascience/lessons/Lesson7_Python_For_Datascience_Execution_Control">
       Lesson 7 - Execution Control <span class="u-margin-right-tiny"></span> 〉
     </a>
   
