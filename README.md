@@ -1,6 +1,6 @@
 # Python For Data Science
-Colab Notebooks for Pearson Video
 
+[Interactive Jupyter Book, Website and Colab Notebooks for Pearson Video](https://paiml.github.io/python_for_datascience/intro.html)
 
 ## TOC:  Python For Data Science
 
