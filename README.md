@@ -1,9 +1,8 @@
 # Python For Data Science
 
-[Interactive Jupyter Book, Website and Colab Notebooks for Pearson Video](https://paiml.github.io/python_for_datascience/intro.html)
+* [Interactive Jupyter Book, Website and Colab Notebooks for Pearson Video](https://paiml.github.io/python_for_datascience/intro.html)
+* [Watch Python for Data Science Video](https://learning.oreilly.com/videos/python-for-data/9780135687253)
 
-
-[Watch Video](https://learning.oreilly.com/videos/python-for-data/9780135687253)
 ![Video](https://learning.oreilly.com/api/v1/videoplaylists/image/800x600/media/book/35/9780135687253/9780135687253-2019-04-02.jpg)
 
 ## TOC:  Python For Data Science
