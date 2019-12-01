@@ -3,6 +3,10 @@
 * [Interactive Jupyter Book, Website and Colab Notebooks for Pearson Video](https://paiml.github.io/python_for_datascience/intro.html)
 * [Watch Python for Data Science Video](https://learning.oreilly.com/videos/python-for-data/9780135687253)
 
+## Recommended Preparation
+
+Please take the [AWS Certified Cloud Practitioner 2020-Real World & Pragmatic [Udemy Course]](https://www.udemy.com/course/aws-certified-cloud-practitioner-2020-real-world-pragmatic/?referralCode=CAC679A7D08212773428).
+
 ## TOC:  Python For Data Science
 
 * [Lesson 2: Introduction to Colab](https://github.com/paiml/python_for_datascience/blob/master/Lesson2_Python_For_Data_Science_Introduction_to_Colab.ipynb)
