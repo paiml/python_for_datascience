@@ -1,0 +1,64 @@
+# Emits the `gate` status context required by the paiml org ruleset
+# "Green Main" (id 13878864). Without a check literally named `gate`, every PR
+# in this repo reports mergeStateStatus: BLOCKED while every visible check is
+# green, and no contributor can fix it.
+#
+# The job id AND name must stay `gate` - the ruleset matches the CONTEXT, not a
+# display name. Renaming it silently re-blocks every PR in this repository.
+#
+# This repo is a Jupyter Book / Jekyll course and has no test suite to
+# aggregate, so the gate measures what the repo actually is: notebooks, YAML,
+# JSON, helper scripts, and the table of contents. Every step prints its
+# denominator and fails when it is zero.
+name: gate
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gate:
+    name: gate
+    # ubuntu-latest, not the self-hosted fleet: this repo is PUBLIC, and a
+    # `pull_request` job runs the head ref's own code, so a fork PR would
+    # execute untrusted content on the clean-room runners. Never bare
+    # `self-hosted` either - that matches the aarch64 gx10 node (paiml/infra#342).
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install YAML parser
+        run: python3 -m pip install --quiet --disable-pip-version-check pyyaml
+
+      # Runs every checker against deliberately broken fixtures and asserts it
+      # rejects them. A guard never shown to fail is not evidence of anything.
+      - name: Checkers can fail (selftest)
+        run: python3 scripts/ci_gate_check.py selftest
+
+      - name: Notebooks parse
+        run: python3 scripts/ci_gate_check.py notebooks
+
+      - name: YAML parses
+        run: python3 scripts/ci_gate_check.py yaml
+
+      - name: JSON parses
+        run: python3 scripts/ci_gate_check.py json
+
+      - name: Python compiles
+        run: python3 scripts/ci_gate_check.py python
+
+      - name: Table of contents resolves
+        run: python3 scripts/ci_gate_check.py toc
+
+      - name: Lessons published to content/lessons
+        run: python3 scripts/ci_gate_check.py lessons
